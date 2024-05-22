@@ -10,6 +10,31 @@ const routes: Routes = [
     loadChildren: () => import('./modulos/seguridad/seguridad.module').then(m => m.SeguridadModule),
   },
   {
+    path: 'perfil',
+    loadChildren: () => import('./modulos/perfil/perfil.module').then(m => m.PerfilModule),
+    canActivate:[ValidarSesionActivaGuard]
+  },
+  {
+    path: 'prueba',
+    loadChildren: () => import('./modulos/prueba/prueba.module').then(m => m.PruebaModule),
+    canActivate:[ValidarSesionActivaGuard]
+  },
+  {
+    path: 'herramientas',
+    loadChildren: () => import('./modulos/herramientas/herramientas.module').then(m => m.HerramientasModule),
+    canActivate:[ValidarSesionActivaGuard]
+  },
+  {
+    path: 'resultados',
+    loadChildren: () => import('./modulos/resultados/resultados.module').then(m => m.ResultadosModule),
+    canActivate:[ValidarSesionActivaGuard]
+  },
+  {
+    path: 'roles',
+    loadChildren: () => import('./modulos/roles/roles.module').then(m => m.RolesModule),
+    canActivate:[ValidarSesionActivaGuard]
+  },
+  {
     path:'',
     redirectTo:'/seguridad/login',
     pathMatch:'full'

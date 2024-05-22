@@ -3,34 +3,34 @@ export namespace ConfiguracionMenuLateral {
       {
         menuid: 1,
         ruta: '/perfil',
-        icono:"bx bxs-shopping-bag-alt active",
+        icono:"bx entypo--user",
         texto:"Perfil"
       },
       {
         menuid: 2,
         ruta: '/prueba',
-        icono:"bx bxs-shopping-bag-alt active",
+        icono:"bx entypo--book",
         texto:"Prueba"
 
       },
       {
         menuid: 3,
         ruta: '/herramientas',
-        icono:"",
+        icono:"bx entypo--ruler",
         texto:"Herramientas"
 
       },
       {
         menuid: 4,
         ruta: '/resultados',
-        icono:"",
+        icono:"bx entypo--area-graph",
         texto:"Resultados"
 
       },
       {
         menuid: 5,
         ruta: '/roles',
-        icono:"",
+        icono:"bx entypo--flow-tree",
         texto:"Roles"
 
       }
