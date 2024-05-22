@@ -1,0 +1,73 @@
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+
+<div class="cuerpo">
+  <div class="container">
+      <section id="formHolder">
+
+         <div class="row">
+
+            <!-- Brand Box -->
+            <div class="col-sm-6 brand">
+
+               <div class="heading">
+                  <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/fjpBb6Mjy5c?si=l_zin3WXCvUW7qLy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                 </div>
+
+               </div>
+
+
+            </div>
+
+
+            <!-- Form Box -->
+            <div class="col-sm-5 form">
+
+
+
+               <!-- Signup Form -->
+               <div class="signup form-peice">
+
+                  <!-- formulario login-->
+                  <form [formGroup]="formularioLogin"  class="login-form" action="#" method="post">
+                     <div>
+                        <h2>Bienvenido a Pienta</h2>
+
+                     </div>
+                     <div class="form-group">
+
+                        <input formControlName="usuario"  placeholder="Correo" type="email" name="loginemail" id="loginemail" required >
+                        <div class="show-errors" *ngIf="obtenerFormGroup['usuario'].errors && (obtenerFormGroup['usuario'].dirty || obtenerFormGroup['usuario'].touched)" >
+                          <strong>Este campo es obligatorio</strong>
+                        </div>
+                     </div>
+
+                     <div class="form-group">
+
+                        <input formControlName="clave"  placeholder="Contraseña" type="password" name="loginPassword" id="loginPassword" required>
+                        <div class="show-errors" *ngIf="obtenerFormGroup['clave'].errors && (obtenerFormGroup['clave'].dirty || obtenerFormGroup['clave'].touched)" >
+                          <strong>Este campo es obligatorio</strong>
+                        </div>
+                     </div>
+
+                     <div class="CTA">
+
+                      <button (click)="EnviarLogin()">Ingresar</button>
+
+                     </div>
+                  </form>
+               </div><!-- End Signup Form -->
+            </div>
+
+
+         </div>
+
+      </section>
+
+
+
+   </div>
+</div>
