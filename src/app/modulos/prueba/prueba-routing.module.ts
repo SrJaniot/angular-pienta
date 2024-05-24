@@ -5,16 +5,38 @@ import { ContextComponent } from './context/context.component';
 import { PreguntaComponent } from './pregunta/pregunta.component';
 import { OpcionComponent } from './opcion/opcion.component';
 import { QuizComponent } from './quiz/quiz.component';
+import { PreguntaEditarComponent } from './pregunta-editar/pregunta-editar.component';
+import { EditarContextComponent } from './context-editar/context-editar.component';
 
 const routes: Routes = [
   {
     path: 'crear-pregunta-contexto',
     component : CrearPreguntasContextoComponent
   },
-  { path: 'context', component: ContextComponent },
-  { path: 'pregunta', component: PreguntaComponent },
-  { path: 'opcion', component: OpcionComponent },
-  { path: 'quiz', component: QuizComponent },
+  {
+    path: 'context',
+    component: ContextComponent
+  },
+  {
+    path: 'editar-contexto/:id',
+    component: EditarContextComponent
+  },
+  {
+    path: 'pregunta',
+    component: PreguntaComponent
+  },
+  {
+    path: 'opcion',
+    component: OpcionComponent
+  },
+  {
+    path: 'quiz',
+    component: QuizComponent
+  },
+  {
+    path:'editar-pregunta-contexto/:id',
+    component: PreguntaEditarComponent
+  },
 
 ];
 

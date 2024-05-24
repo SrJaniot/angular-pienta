@@ -20,7 +20,7 @@
         <td>{{ contexto.NombreArchivo}}</td>
 
         <td>
-          <button class="btn-accion" >
+          <button class="btn-accion" (click)="editarContexto( contexto.id)" >
             <i class="entypo--edit"></i> <!-- Icono de editar -->
           </button>
           <button class="btn-accion" >
@@ -79,6 +79,16 @@
     </div>
   </div>
 </ng-container>
+
+<ng-container *ngIf="showContextEditModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeEditContextoForm()">X</button>
+      <app-context-editar [contextoId]="tuIdDeContexto"></app-context-editar>
+    </div>
+  </div>
+</ng-container>
+
 
 <ng-container *ngIf="showOpcionModal">
   <div class="modal">

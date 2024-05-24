@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { RespuestaServerObtenerAreasEvaluar } from '../Modelos/RespuestaServer.ObtenerAreasEvaluar.model';
 import { RespuestaServerObtenerTemasAreasEvaluar } from '../Modelos/RespuestaServer.ObtenerTemasAreasEvaluar.model';
 import { RespuestaServer } from '../Modelos/RespuestaServer.model';
+import { RespuestaServerObtenerContextos } from '../Modelos/RespuestaServerObtenerContextos.model';
+import { RespuestaServerObtenerUNContexto } from '../Modelos/RespuestaServerObtenerUNContexto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -47,4 +49,23 @@ export class PreguntaService {
       Autor_contexto: autor
     });
   }
+
+  ObtenerContextos():Observable<RespuestaServerObtenerContextos>{
+    return this.http.get(this.url_ms_negocio + 'ObtenerAreas');
+  }
+  ObtenerContextoID(id_contexto: string):Observable<RespuestaServerObtenerUNContexto>{
+    return this.http.get(this.url_ms_negocio + 'ObtenerContexto/' + id_contexto);
+  }
+
+  ActualizarContexto(id_contexto: number, nombre: string, descripcion: string, autor: string, nombreArchivo: string): Observable<RespuestaServer> {
+    return this.http.post<RespuestaServer>(`${this.url_ms_negocio}ActualizarContexto`, {
+      id_contexto: id_contexto,
+      Nom_contexto: nombre,
+      Desc_contexto: descripcion,
+      Nom_archivo_contexto: nombreArchivo,
+      Autor_contexto: autor
+    });
+  }
+
+
 }

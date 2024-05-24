@@ -1,0 +1,27 @@
+<div class="contenido-contexto">
+  <form [formGroup]="contextoForm" >
+    <label for="nombre">Nombre contexto:</label>
+    <input id="nombre" formControlName="nombre" required type="text" >
+
+    <label for="descripcion">Descripción contexto</label>
+    <textarea id="descripcion" formControlName="descripcion" required></textarea>
+
+    <label for="autor">Autor</label>
+    <input id="autor" formControlName="autor" required type="text">
+
+
+
+    <div class="dropzone"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    (drop)="onDrop($event)"
+    (click)="openFileSelector()">
+    <p *ngIf="!selectedFile">Arrastra y suelta un archivo aquí, o haz clic para seleccionar un archivo</p>
+    <p *ngIf="selectedFile">{{ selectedFile.name }}</p>
+    <input formControlName="archivo" #fileInput type="file" (change)="onFileSelected($event)" hidden>
+  </div>
+
+    <div class="button-container">
+      <button [disabled]="!contextoForm.valid" (click)="onSubmit()" class="btn" type="submit">Agregar Contexto</button>    </div>
+  </form>
+</div>

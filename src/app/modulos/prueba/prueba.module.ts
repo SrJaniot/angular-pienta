@@ -8,6 +8,8 @@ import { PreguntaComponent } from './pregunta/pregunta.component';
 import { OpcionComponent } from './opcion/opcion.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuizComponent } from './quiz/quiz.component';
+import { PreguntaEditarComponent } from './pregunta-editar/pregunta-editar.component';
+import { EditarContextComponent } from './context-editar/context-editar.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { QuizComponent } from './quiz/quiz.component';
     ContextComponent,
     PreguntaComponent,
     OpcionComponent,
-    QuizComponent
+    QuizComponent,
+    PreguntaEditarComponent,
+    EditarContextComponent
   ],
   imports: [
     CommonModule,

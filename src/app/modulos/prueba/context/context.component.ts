@@ -24,10 +24,10 @@ export class ContextComponent implements OnInit {
 
   constructor(
      private fb: FormBuilder,
-     private quizService: QuizService,
+     protected quizService: QuizService,
      private changeDetector: ChangeDetectorRef,
-     private preguntaService: PreguntaService,
-     private toast: NgToastService,
+     protected preguntaService: PreguntaService,
+     protected toast: NgToastService,
 
     ) { }
 
@@ -80,6 +80,8 @@ export class ContextComponent implements OnInit {
             let id_contexto_db_entero = parseInt(id_contexto_db);
             this.quizService.addContexto(this.contextoForm.value,id_contexto_db_entero);
             this.contextoForm.reset()
+          }else{
+            this.toast.error({detail:"ERROR",summary:data.MENSAJE,duration:5000, position:'topCenter'});
           }
         },
         error: (err: any) => {

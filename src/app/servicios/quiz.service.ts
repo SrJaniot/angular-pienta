@@ -53,4 +53,11 @@ export class QuizService {
   addOpcion(opcion: Opcion) {
     this.opciones.push(opcion);
   }
+
+
+  updateContexto(contexto: Contexto, id: number) {
+    let index = this.contextos.findIndex(c => c.id === id);
+    contexto.id = id;
+    this.contextos[index] = contexto;
+  }
 }
