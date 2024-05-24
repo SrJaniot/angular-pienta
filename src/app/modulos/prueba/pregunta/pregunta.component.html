@@ -1,0 +1,31 @@
+<!-- pregunta.component.html -->
+<form [formGroup]="preguntaForm" (ngSubmit)="onSubmit()" class="pregunta-form">
+  <div>
+    <label for="contextoId">Contexto:</label>
+    <select id="contextoId" formControlName="contextoId" required>
+      <option *ngFor="let contexto of contextos" [value]="contexto.id">{{contexto.nombre}}</option>
+    </select>
+  </div>
+  <div>
+    <label for="enunciado">Enunciado:</label>
+    <textarea id="enunciado" formControlName="enunciado" required></textarea>
+  </div>
+  <div>
+    <label for="tipo">Tipo de Pregunta:</label>
+    <select id="tipo" formControlName="tipo" required>
+      <option value="1">Opción Múltiple Única Respuesta</option>
+      <option value="2">Opción Múltiple Múltiple Respuesta</option>
+      <option value="3">Verdadero o Falso</option>
+      <option value="4">Ensayo</option>
+    </select>
+  </div>
+  <div>
+    <label for="puntaje">Puntaje:</label>
+    <input id="puntaje" type="number" formControlName="puntaje" required>
+  </div>
+  <div>
+    <label for="autor">Autor:</label>
+    <input id="autor" formControlName="autor" required>
+  </div>
+  <button type="submit">Agregar Pregunta</button>
+</form>

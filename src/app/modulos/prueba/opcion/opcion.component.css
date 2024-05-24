@@ -1,0 +1,59 @@
+/* opcion.component.css */
+
+.opcion-form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.opcion-form div {
+  margin-bottom: 15px;
+}
+
+.opcion-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.opcion-form input,
+.opcion-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.opcion-form input[type="checkbox"] {
+  width: auto;
+}
+
+.opcion-form button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.opcion-form button:hover {
+  background-color: #218838;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .opcion-form {
+    padding: 15px;
+  }
+
+  .opcion-form div {
+    margin-bottom: 10px;
+  }
+
+  .opcion-form button {
+    width: 100%;
+  }
+}

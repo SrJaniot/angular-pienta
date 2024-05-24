@@ -1,0 +1,18 @@
+<!-- opcion.component.html -->
+<form [formGroup]="opcionForm" (ngSubmit)="onSubmit()" class="opcion-form">
+  <div>
+    <label for="preguntaId">Pregunta:</label>
+    <select id="preguntaId" formControlName="preguntaId" required>
+      <option *ngFor="let pregunta of preguntas" [value]="pregunta.id">{{pregunta.enunciado}}</option>
+    </select>
+  </div>
+  <div>
+    <label for="texto">Texto de la Opción:</label>
+    <input id="texto" formControlName="texto" required>
+  </div>
+  <div>
+    <label for="esCorrecta">Es Correcta:</label>
+    <input id="esCorrecta" type="checkbox" formControlName="esCorrecta">
+  </div>
+  <button type="submit">Agregar Opción</button>
+</form>

@@ -1,0 +1,56 @@
+/* pregunta.component.css */
+
+.pregunta-form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.pregunta-form div {
+  margin-bottom: 15px;
+}
+
+.pregunta-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.pregunta-form input,
+.pregunta-form select,
+.pregunta-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.pregunta-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pregunta-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .pregunta-form {
+    padding: 15px;
+  }
+
+  .pregunta-form div {
+    margin-bottom: 10px;
+  }
+
+  .pregunta-form button {
+    width: 100%;
+  }
+}

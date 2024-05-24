@@ -24,14 +24,14 @@ export class AppComponent {
 ngOnInit() {
   this.ValidarSesionActiva();
   this.listaMenus = this.servicioSeguridad.ObtenerItemMenuLateral();
-  console.log(this.listaMenus);
+  //console.log(this.listaMenus);
 
 }
 
 ValidarSesionActiva() {
   this.servicioSeguridad.ObteberDatosSesion().subscribe({
     next: (datos:UsuarioValidadoModel) => {
-      console.log(datos);
+      //console.log(datos);
       if (datos.token!= "") {
         this.sesionActiva = true;
       }else{

@@ -1,0 +1,108 @@
+<div class="contexto-list">
+  <h2>Contextos</h2>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Autor</th>
+        <th>Archivo</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contexto of contextos">
+        <td>{{ contexto.id }}</td>
+        <td>{{ contexto.nombre }}</td>
+        <td>{{ contexto.descripcion }}</td>
+        <td>{{ contexto.autor }}</td>
+        <td>{{ contexto.NombreArchivo}}</td>
+
+        <td>
+          <button class="btn-accion" >
+            <i class="entypo--edit"></i> <!-- Icono de editar -->
+          </button>
+          <button class="btn-accion" >
+            <i class="material-symbols--delete"></i> <!-- Icono de eliminar -->
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="button-container">
+    <button class="btn-agregar" (click)="agregarContexto()">Agregar Contexto</button>
+    <button class="btn-buscar" >Buscar Contexto</button>
+  </div>
+</div>
+
+<div>
+  <h2>Preguntas</h2>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Contexto ID</th>
+        <th>Enunciado</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pregunta of preguntas">
+        <td>{{ pregunta.id }}</td>
+        <td>{{ pregunta.contextoId }}</td>
+        <td>{{ pregunta.enunciado }}</td>
+        <td>
+          <button class="btn-accion" >Editar</button>
+          <button class="btn-accion" >Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn-agregar" (click)="agregarPregunta()">Agregar Pregunta</button>
+</div>
+
+<div>
+  <h2>Opciones</h2>
+  <ul>
+    <li *ngFor="let opcion of opciones">{{ opcion.texto }}</li>
+  </ul>
+  <button class="btn-agregar" (click)="agregarOpcion()">Agregar Opción</button>
+</div>
+
+
+<ng-container *ngIf="showContextoModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeContextoForm()">X</button>
+      <app-context></app-context>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showOpcionModal">
+  <div class="modal">
+    <div class="modal-content">
+      <app-opcion></app-opcion>
+      <button (click)="closeOpcionForm()">Cerrar</button>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showPreguntaModal">
+  <div class="modal">
+    <div class="modal-content">
+      <app-pregunta></app-pregunta>
+      <button (click)="closePreguntaForm()">Cerrar</button>
+    </div>
+  </div>
+</ng-container>
+
+
+
+
+
+
+
+
+
