@@ -17,13 +17,12 @@
         <td>{{ contexto.nombre }}</td>
         <td>{{ contexto.descripcion }}</td>
         <td>{{ contexto.autor }}</td>
-        <td>{{ contexto.NombreArchivo}}</td>
-
+        <td><a *ngIf="contexto.NombreArchivo" href="http://localhost:3001/ObtenerArchivo/1/{{contexto.NombreArchivo}}">{{ contexto.NombreArchivo}}</a></td>
         <td>
           <button class="btn-accion" (click)="editarContexto( contexto.id)" >
-            <i class="entypo--edit"></i> <!-- Icono de editar -->
+            <i class="entypo--edit" ></i> <!-- Icono de editar -->
           </button>
-          <button class="btn-accion" >
+          <button  class="btn-accion" (click)="eliminarContexto(contexto.id)" >
             <i class="material-symbols--delete"></i> <!-- Icono de eliminar -->
           </button>
         </td>
@@ -88,6 +87,16 @@
     </div>
   </div>
 </ng-container>
+
+
+<ng-container *ngIf="showContextEliminarModal">
+  <div class="modal">
+    <div class="modal-content">
+      <app-context-eliminar [contextoId]="tuIdDeContexto" (cerrarModal)="closeEliminarContextoForm()" ></app-context-eliminar>
+    </div>
+  </div>
+</ng-container>
+
 
 
 <ng-container *ngIf="showOpcionModal">

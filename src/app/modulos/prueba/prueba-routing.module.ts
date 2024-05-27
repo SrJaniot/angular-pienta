@@ -7,6 +7,7 @@ import { OpcionComponent } from './opcion/opcion.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { PreguntaEditarComponent } from './pregunta-editar/pregunta-editar.component';
 import { EditarContextComponent } from './context-editar/context-editar.component';
+import { ContextListaComponent } from './context-lista/context-lista.component';
 
 const routes: Routes = [
   {
@@ -18,8 +19,16 @@ const routes: Routes = [
     component: ContextComponent
   },
   {
-    path: 'editar-contexto/:id',
+    path: 'editar-contexto',
     component: EditarContextComponent
+  },
+  {
+    path: 'editar-eliminar',
+    component: EditarContextComponent
+  },
+  {
+    path: 'lista-contexto',
+    component: ContextListaComponent
   },
   {
     path: 'pregunta',

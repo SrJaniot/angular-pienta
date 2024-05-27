@@ -29,6 +29,25 @@ export class QuizService {
     this.contextos.push(contexto);
     console.log(this.contextos);
   }
+  updateContexto(contexto: Contexto, id: number) {
+    let index = this.contextos.findIndex(c => c.id === id);
+    contexto.id = id;
+    this.contextos[index] = contexto;
+  }
+  eliminarContexto(id: number) {
+    // Verifica si alguna pregunta está asociada con este contexto
+    const tienePreguntasAsociadas = this.preguntas.some(p => p.contextoId === id);
+
+    // Si no hay preguntas asociadas, elimina el contexto
+    if (!tienePreguntasAsociadas) {
+      let index = this.contextos.findIndex(c => c.id === id);
+      if (index !== -1) { // Asegura que el contexto existe antes de intentar eliminarlo
+        this.contextos.splice(index, 1);
+      }
+    } else {
+      console.log(`El contexto con id ${id} tiene preguntas asociadas y no puede ser eliminado.`);
+    }
+  }
 
   getPreguntasByContexto(contextoId: number): Pregunta[] {
     return this.preguntas.filter(p => p.contextoId === contextoId);
@@ -55,9 +74,5 @@ export class QuizService {
   }
 
 
-  updateContexto(contexto: Contexto, id: number) {
-    let index = this.contextos.findIndex(c => c.id === id);
-    contexto.id = id;
-    this.contextos[index] = contexto;
-  }
+
 }

@@ -67,5 +67,11 @@ export class PreguntaService {
     });
   }
 
+  EliminarContexto(id_contexto: number): Observable<RespuestaServer> {
+    return this.http.post<RespuestaServer>(`${this.url_ms_negocio}EliminarContexto`, {
+      id: id_contexto
+    });
+  }
+
 
 }

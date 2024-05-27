@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuizComponent } from './quiz/quiz.component';
 import { PreguntaEditarComponent } from './pregunta-editar/pregunta-editar.component';
 import { EditarContextComponent } from './context-editar/context-editar.component';
+import { ContextEliminarComponent } from './context-eliminar/context-eliminar.component';
+import { ContextListaComponent } from './context-lista/context-lista.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { EditarContextComponent } from './context-editar/context-editar.componen
     OpcionComponent,
     QuizComponent,
     PreguntaEditarComponent,
-    EditarContextComponent
+    EditarContextComponent,
+    ContextEliminarComponent,
+    ContextListaComponent
   ],
   imports: [
     CommonModule,
