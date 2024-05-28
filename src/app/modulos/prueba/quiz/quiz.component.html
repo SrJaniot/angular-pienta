@@ -25,13 +25,16 @@
           <button  class="btn-accion" (click)="eliminarContexto(contexto.id)" >
             <i class="material-symbols--delete"></i> <!-- Icono de eliminar -->
           </button>
+          <button  class="btn-accion" (click)="eliminarContextoLista(contexto.id)" >
+            <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
   <div class="button-container">
     <button class="btn-agregar" (click)="agregarContexto()">Agregar Contexto</button>
-    <button class="btn-buscar" >Buscar Contexto</button>
+    <button class="btn-buscar" (click)="listarContextos()">Buscar Contexto</button>
   </div>
 </div>
 
@@ -75,6 +78,15 @@
     <div class="modal-content">
       <button class="btn-estilo" (click)="closeContextoForm()">X</button>
       <app-context></app-context>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showContextListaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closeContextListaForm()">X</button>
+      <app-context-lista></app-context-lista>
     </div>
   </div>
 </ng-container>

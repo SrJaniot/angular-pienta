@@ -9,6 +9,7 @@ import { NgToastModule } from 'ng-angular-popup';
 import { RutaNoEncontradaComponent } from './publico/errores/ruta-no-encontrada/ruta-no-encontrada.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './publico/home/home.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { HomeComponent } from './publico/home/home.component';
     NgToastModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

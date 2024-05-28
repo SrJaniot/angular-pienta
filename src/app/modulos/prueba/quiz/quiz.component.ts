@@ -18,6 +18,7 @@ export class QuizComponent implements OnInit {
   showContextoModal = false;
   showContextEditModal = false;
   showContextEliminarModal = false;
+  showContextListaModal = false;
 
   showOpcionModal = false;
   showPreguntaModal = false;
@@ -36,6 +37,9 @@ export class QuizComponent implements OnInit {
 
   agregarContexto() {
     this.showContextoModal = true;
+  }
+  listarContextos() {
+    this.showContextListaModal = true;
   }
   editarContexto(id_contexto: number) {
     let id_contexto_string = id_contexto.toString()
@@ -57,6 +61,15 @@ export class QuizComponent implements OnInit {
     this.tuIdDeContexto = id_contexto_string// El ID del contexto que quieres editar
     this.showContextEliminarModal = true;
   }
+  eliminarContextoLista(id_contexto: number) {
+    let id_contexto_string = id_contexto.toString()
+    if (id_contexto_string === '1' || id_contexto_string === '0' || id_contexto_string === '') {
+      this.toast.warning({detail:"ADVERTENCIA",summary:'ACCESO DENEGADO',duration:5000, position: 'topCenter'});
+      return;
+    }
+    this.quizService.eliminarContexto(id_contexto);
+  }
+
 
   agregarPregunta() {
     this.showPreguntaModal = true;
@@ -68,6 +81,9 @@ export class QuizComponent implements OnInit {
 
   closeContextoForm() {
     this.showContextoModal = false;
+  }
+  closeContextListaForm() {
+    this.showContextListaModal = false;
   }
   closeEditContextoForm() {
     this.showContextEditModal = false;

@@ -3,11 +3,16 @@ import { Injectable } from '@angular/core';
 import { Contexto } from '../Modelos/contexto.model';
 import { Pregunta } from '../Modelos/pregunta.model';
 import { Opcion } from '../Modelos/opcion.model';
+import { NgToastService } from 'ng-angular-popup';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
+
+
+
+
   private contextos: Contexto[] = [
     {
       id: 1, // reemplaza con los valores que necesites
@@ -29,11 +34,25 @@ export class QuizService {
     this.contextos.push(contexto);
     console.log(this.contextos);
   }
+
+  addContexto2(contexto: Contexto): boolean {
+    //preguntar si el contexto ya existe
+    if (this.contextos.find(c => c.id === contexto.id)) {
+      return false;
+    }
+    this.contextos.push(contexto);
+    if (this.contextos.find(c => c.id === contexto.id)) {
+      return true;
+    }else{
+      return false;
+    }
+  }
   updateContexto(contexto: Contexto, id: number) {
     let index = this.contextos.findIndex(c => c.id === id);
     contexto.id = id;
     this.contextos[index] = contexto;
   }
+  
   eliminarContexto(id: number) {
     // Verifica si alguna pregunta está asociada con este contexto
     const tienePreguntasAsociadas = this.preguntas.some(p => p.contextoId === id);

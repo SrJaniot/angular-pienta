@@ -1,1 +1,47 @@
-<p>context-lista works!</p>
+<div class="desktop-container ">
+  <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar" class="filter-input">
+    <div class="table-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Columna de id -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.ID_CONTEXTO}} </td>
+      </ng-container>
+
+      <!-- Columna de nombre_esquema -->
+      <ng-container matColumnDef="Nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.NOM_CONTEXTO}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Descripcion">
+        <th mat-header-cell *matHeaderCellDef> Descripción </th>
+        <td mat-cell *matCellDef="let element"> {{element.DESC_CONTEXTO}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Autor">
+        <th mat-header-cell *matHeaderCellDef> Autor </th>
+        <td mat-cell *matCellDef="let element"> {{element.AUTOR_CONTEXTO}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Archivo">
+        <th mat-header-cell *matHeaderCellDef> Archivo </th>
+        <td mat-cell *matCellDef="let element"> {{element.LINK_MEDIA}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Acciones">
+        <th mat-header-cell *matHeaderCellDef> Acción </th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="agregarContexto(element)" class="icon-button">
+            <i class="material-icons">add</i>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" class=" colorfondo"></mat-paginator>
+  </div>

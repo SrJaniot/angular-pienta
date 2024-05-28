@@ -51,7 +51,7 @@ export class PreguntaService {
   }
 
   ObtenerContextos():Observable<RespuestaServerObtenerContextos>{
-    return this.http.get(this.url_ms_negocio + 'ObtenerAreas');
+    return this.http.get(this.url_ms_negocio + 'ObtenerContextos');
   }
   ObtenerContextoID(id_contexto: string):Observable<RespuestaServerObtenerUNContexto>{
     return this.http.get(this.url_ms_negocio + 'ObtenerContexto/' + id_contexto);

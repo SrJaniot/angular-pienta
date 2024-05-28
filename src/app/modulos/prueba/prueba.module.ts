@@ -12,6 +12,11 @@ import { PreguntaEditarComponent } from './pregunta-editar/pregunta-editar.compo
 import { EditarContextComponent } from './context-editar/context-editar.component';
 import { ContextEliminarComponent } from './context-eliminar/context-eliminar.component';
 import { ContextListaComponent } from './context-lista/context-lista.component';
+//para poder usar estos modulos necesitamos instalar ng add @angular/material
+
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 
 @NgModule({
@@ -24,13 +29,18 @@ import { ContextListaComponent } from './context-lista/context-lista.component';
     PreguntaEditarComponent,
     EditarContextComponent,
     ContextEliminarComponent,
-    ContextListaComponent
+    ContextListaComponent,
+
   ],
   imports: [
     CommonModule,
     PruebaRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+
+
   ]
 })
 export class PruebaModule { }
