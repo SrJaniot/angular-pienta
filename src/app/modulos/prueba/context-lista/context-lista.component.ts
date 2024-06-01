@@ -18,7 +18,7 @@ import { Contexto } from '../../../Modelos/contexto.model';
   styleUrl: './context-lista.component.css'
 })
 export class ContextListaComponent {
-  displayedColumns: string[] = ['id', 'Nombre', 'Descripcion', 'Autor', 'Archivo','Acciones'];
+  displayedColumns: string[] = ['id', 'Nombre', 'Descripcion', 'Autor', 'Archivo','TipoContexto','Acciones'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   dataSource = new MatTableDataSource<Contextos>([]);
 
@@ -61,6 +61,7 @@ export class ContextListaComponent {
         descripcion: context.DESC_CONTEXTO!,
         autor: context.AUTOR_CONTEXTO!,
         NombreArchivo: context.LINK_MEDIA,
+        tipoContexto: context.TIPO_CONTEXTO!
       }
       let respuesta=this.quizService.addContexto2(context2);
       if(respuesta){

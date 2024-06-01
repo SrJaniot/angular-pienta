@@ -12,16 +12,27 @@
 
 
     <div class="dropzone"
-    (dragover)="onDragOver($event)"
-    (dragleave)="onDragLeave($event)"
-    (drop)="onDrop($event)"
-    (click)="openFileSelector()">
-    <p *ngIf="!selectedFile">Arrastra y suelta un archivo aquí, o haz clic para seleccionar un archivo</p>
-    <p *ngIf="selectedFile">{{ selectedFile.name }}</p>
-    <input formControlName="archivo" #fileInput type="file" (change)="onFileSelected($event)" hidden>
-  </div>
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDrop($event)"
+      (click)="openFileSelector()">
+      <p *ngIf="!selectedFile">Arrastra y suelta un archivo aquí, o haz clic para seleccionar un archivo</p>
+      <p *ngIf="selectedFile">{{ selectedFile.name }}</p>
+      <input formControlName="archivo" #fileInput type="file" (change)="onFileSelected($event)" hidden>
+    </div>
+
+    <div>
+      <label for="tipo">Tipo de Contexto:</label>
+      <select id="tipo" formControlName="tipoContexto" required>
+        <option value="" disabled selected>Seleccionar</option>
+        <option value="TEXTO">TEXTO</option>
+        <option value="IMAGEN">IMAGEN</option>
+        <option value="TEXTO_IMAGEN">TEXTO IMAGEN</option>
+      </select>
+    </div>
 
     <div class="button-container">
-      <button [disabled]="!contextoForm.valid" (click)="onSubmit()" class="btn" type="submit">Agregar Contexto</button>    </div>
+      <button [disabled]="!contextoForm.valid" (click)="onSubmit()" class="btn" type="submit">Agregar Contexto</button>
+    </div>
   </form>
 </div>

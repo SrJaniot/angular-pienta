@@ -19,7 +19,8 @@ export class QuizService {
       nombre: 'SIN CONTEXTO', // reemplaza con los valores que necesites
       descripcion: 'Preguntas sin contexto (obligatorio)', // reemplaza con los valores que necesites
       autor: 'Pienta', // reemplaza con los valores que necesites
-      NombreArchivo: "" // reemplaza con los valores que necesites
+      NombreArchivo: "", // reemplaza con los valores que necesites
+      tipoContexto: 'SIN CONTEXTO' // reemplaza con los valores que necesites
     }
   ];
   private preguntas: Pregunta[] = [];
@@ -31,6 +32,7 @@ export class QuizService {
 
   addContexto(contexto: Contexto, id: number) {
     contexto.id = id;
+
     this.contextos.push(contexto);
     console.log(this.contextos);
   }
@@ -52,7 +54,8 @@ export class QuizService {
     contexto.id = id;
     this.contextos[index] = contexto;
   }
-  
+
+
   eliminarContexto(id: number) {
     // Verifica si alguna pregunta está asociada con este contexto
     const tienePreguntasAsociadas = this.preguntas.some(p => p.contextoId === id);
@@ -77,8 +80,43 @@ export class QuizService {
   }
 
   addPregunta(pregunta: Pregunta) {
+    //console.log(pregunta);
     this.preguntas.push(pregunta);
+    //agregar pregunta a la lista de la variable contexto que tiene un campo para preguntas asociadas
   }
+
+  addPregunta2(pregunta: Pregunta): boolean {
+    //preguntar si el contexto ya existe
+    if (this.preguntas.find(p => p.id === pregunta.id)) {
+      return false;
+    }
+    this.preguntas.push(pregunta);
+    if (this.preguntas.find(p => p.id === pregunta.id)) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  updatePregunta(pregunta: Pregunta) {
+    let index = this.preguntas.findIndex(p => p.id === pregunta.id);
+    this.preguntas[index] = pregunta;
+  }
+  eliminarPregunta(id: number) {
+    // Verifica si alguna opcion está asociada con este pregunta
+    const tieneOpcionesAsociadas = this.opciones.some(o => o.preguntaId === id);
+
+    // Si no hay opciones asociadas, elimina el pregunta
+    if (!tieneOpcionesAsociadas) {
+      let index = this.preguntas.findIndex(p => p.id === id);
+      if (index !== -1) { // Asegura que el contexto existe antes de intentar eliminarlo
+        this.preguntas.splice(index, 1);
+      }
+    } else {
+      console.log(`la pregunta con id ${id} tiene opciones asociadas y no puede ser eliminado.`);
+    }
+  }
+
 
   getOpcionesByPregunta(preguntaId: number): Opcion[] {
     return this.opciones.filter(o => o.preguntaId === preguntaId);

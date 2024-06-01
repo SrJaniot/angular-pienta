@@ -21,8 +21,16 @@ export class QuizComponent implements OnInit {
   showContextListaModal = false;
 
   showOpcionModal = false;
+
   showPreguntaModal = false;
+  showPreguntaEditModal = false;
+  showPreguntaEliminarModal = false;
+  showPreguntaListaModal = false;
+
+
+
   tuIdDeContexto = ''; // El ID del contexto que quieres editar
+  tuIdDePregunta = ''; // El ID de la pregunta que quieres editar
 
   constructor(
     private quizService: QuizService,
@@ -74,6 +82,34 @@ export class QuizComponent implements OnInit {
   agregarPregunta() {
     this.showPreguntaModal = true;
   }
+  listarPreguntas() {
+    this.showPreguntaListaModal = true;
+  }
+
+  editarPregunta(id_pregunta: number) {
+    let id_pregunta_strinng = id_pregunta.toString()
+    this.tuIdDePregunta = id_pregunta_strinng// El ID del contexto que quieres editar
+    this.showPreguntaEditModal = true;
+  }
+
+  eliminarPregunta(id_pregunta: number) {
+    let id_Pregunta_string = id_pregunta.toString()
+    if (id_Pregunta_string === '0' || id_Pregunta_string === '') {
+      this.toast.warning({detail:"ADVERTENCIA",summary:'ACCESO DENEGADO',duration:5000, position: 'topCenter'});
+      return;
+
+    }
+    this.tuIdDePregunta = id_Pregunta_string// El ID del contexto que quieres editar
+    this.showPreguntaEliminarModal = true;
+  }
+  eliminarPreguntaLista(id_pregunta: number) {
+    let id_Pregunta_string = id_pregunta.toString()
+    if (id_Pregunta_string === '0' || id_Pregunta_string === '') {
+      this.toast.warning({detail:"ADVERTENCIA",summary:'ACCESO DENEGADO',duration:5000, position: 'topCenter'});
+      return;
+    }
+    this.quizService.eliminarPregunta(id_pregunta);
+  }
 
   agregarOpcion() {
     this.showOpcionModal = true;
@@ -95,6 +131,17 @@ export class QuizComponent implements OnInit {
 
   closePreguntaForm() {
     this.showPreguntaModal = false;
+  }
+  closePreguntaListaForm() {
+    this.showPreguntaListaModal = false;
+  }
+
+  closeEditPreguntaForm() {
+    this.showPreguntaEditModal = false;
+  }
+
+  closeEliminarPreguntaForm() {
+    this.showPreguntaEliminarModal = false;
   }
 
   closeOpcionForm() {

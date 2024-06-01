@@ -30,6 +30,11 @@
         <td mat-cell *matCellDef="let element"> {{element.LINK_MEDIA}} </td>
       </ng-container>
 
+      <ng-container matColumnDef="TipoContexto">
+        <th mat-header-cell *matHeaderCellDef> Tipo Contexto </th>
+        <td mat-cell *matCellDef="let element"> {{element.TIPO_CONTEXTO}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="Acciones">
         <th mat-header-cell *matHeaderCellDef> Acción </th>
         <td mat-cell *matCellDef="let element">

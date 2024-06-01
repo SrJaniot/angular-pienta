@@ -1,1 +1,84 @@
-<p>pregunta-editar works!</p>
+<!-- pregunta.component.html -->
+<form [formGroup]="preguntaForm"  class="pregunta-form">
+  <div>
+    <label for="contextoId">Contexto:</label>
+    <select id="contextoId" formControlName="contextoId" required>
+      <option *ngFor="let contexto of contextos" [value]="contexto.id">{{contexto.nombre}}</option>
+    </select>
+  </div>
+  <div>
+    <label for="enunciado">Enunciado:</label>
+    <textarea id="enunciado" formControlName="enunciado" required></textarea>
+  </div>
+  <div>
+    <label for="tipo">Tipo de Pregunta:</label>
+    <select id="tipo" formControlName="tipo" required>
+      <option value="" disabled selected>Seleccionar</option>
+      <option value="1">Opción Múltiple Única Respuesta</option>
+      <option value="2">Opción Múltiple Múltiple Respuesta</option>
+      <option value="3">Verdadero o Falso</option>
+      <option value="4">Ensayo</option>
+    </select>
+  </div>
+  <div>
+    <label for="puntaje">Puntaje:</label>
+    <input id="puntaje" type="number" formControlName="puntaje" required>
+  </div>
+  <div>
+    <label for="autor">Autor:</label>
+    <input id="autor" formControlName="autor" required type="text">
+  </div>
+  <div>
+    <label for="autor">Área Evaluar:</label>
+    <select formControlName="area_evaluar" id="topic" name="topic" (change)="onTopicChange($event)">
+
+      <option value="" disabled selected>Seleccionar</option>
+      <option *ngFor="let area of ListaAreasEvaluar" [value]="area.ID_AREA_EVALUAR">{{area.NOM_AREA_EVALUAR}}</option>
+
+    </select>
+  </div>
+
+  <label for="topic">Temas Evaluar</label>
+  <select formControlName="Tema_evaluar" id="topic" name="topic">
+
+    <option value="" disabled selected>Seleccionar</option>
+    <option *ngFor="let tema of ListaSubtemas" [value]="tema.ID_TEMA_AREA">{{tema.NOM_TEMA_AREA}}</option>
+
+  </select>
+
+  <div class="dropzone"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    (drop)="onDrop($event)"
+    (click)="openFileSelector()">
+    <p *ngIf="!selectedFile">Arrastra y suelta un archivo aquí, o haz clic para seleccionar un archivo</p>
+    <p *ngIf="selectedFile">{{ selectedFile.name }}</p>
+    <input formControlName="archivo" #fileInput type="file" (change)="onFileSelected($event)" hidden>
+  </div>
+
+  <div>
+    <label for="tipo">Tipo de Pregunta:</label>
+    <select id="tipo" formControlName="Tipo_pregunta_contenido" required>
+      <option value="" disabled selected>Seleccionar</option>
+      <option value="TEXTO">TEXTO</option>
+      <option value="IMAGEN">IMAGEN</option>
+      <option value="TEXTO_IMAGEN">TEXTO IMAGEN</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="tipo">Alineación:</label>
+    <select id="tipo" formControlName="Layout_pregunta" required>
+      <option value="" disabled selected>Seleccionar</option>
+      <option value="STANDARD">STANDARD</option>
+      <option value="CUADRADO">CUADRADO (2 2)</option>
+      <option value="HORIZONTAL">HORIZONTAL</option>
+    </select>
+  </div>
+
+
+  <div class="button-container">
+    <button [disabled]="!preguntaForm.valid" (click)="onSubmit()" class="btn" type="submit">Agregar Contexto</button>
+  </div>
+</form>
+

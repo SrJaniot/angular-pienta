@@ -8,6 +8,7 @@
         <th>Descripción</th>
         <th>Autor</th>
         <th>Archivo</th>
+        <th>Tipo Contexto</th>
         <th>Acciones</th> <!-- Nueva columna para acciones -->
       </tr>
     </thead>
@@ -18,6 +19,8 @@
         <td>{{ contexto.descripcion }}</td>
         <td>{{ contexto.autor }}</td>
         <td><a *ngIf="contexto.NombreArchivo" href="http://localhost:3001/ObtenerArchivo/1/{{contexto.NombreArchivo}}">{{ contexto.NombreArchivo}}</a></td>
+        <td>{{ contexto.tipoContexto }}</td>
+
         <td>
           <button class="btn-accion" (click)="editarContexto( contexto.id)" >
             <i class="entypo--edit" ></i> <!-- Icono de editar -->
@@ -46,6 +49,14 @@
         <th>ID</th>
         <th>Contexto ID</th>
         <th>Enunciado</th>
+        <th>Tipo Pregunta</th> <!-- Nueva columna para acciones -->
+        <th>Puntaje</th> <!-- Nueva columna para acciones -->
+        <th>Autor</th>
+        <th>Area Evaluar</th>
+        <th>Tema Evaluar</th>
+        <th>Archivo Preguna</th>
+        <th>Tipo Pregunta</th>
+        <th>Alineación</th>
         <th>Acciones</th> <!-- Nueva columna para acciones -->
       </tr>
     </thead>
@@ -54,14 +65,34 @@
         <td>{{ pregunta.id }}</td>
         <td>{{ pregunta.contextoId }}</td>
         <td>{{ pregunta.enunciado }}</td>
+        <td>{{ pregunta.tipo_nombre }}</td>
+        <td>{{ pregunta.puntaje }}</td>
+        <td>{{ pregunta.autor }}</td>
+        <td>{{ pregunta.Area_Evaluar_nombre }}</td>
+        <td>{{ pregunta.Tema_Evaluar_nombre }}</td>
+        <td><a *ngIf="pregunta.imagen_pregunta" href="http://localhost:3001/ObtenerArchivo/2/{{pregunta.imagen_pregunta}}">{{ pregunta.imagen_pregunta}}</a></td>
+        <td>{{ pregunta.tipo_pregunta_contenido }}</td>
+        <td>{{ pregunta.layout_pregunta }}</td>
         <td>
-          <button class="btn-accion" >Editar</button>
-          <button class="btn-accion" >Eliminar</button>
+          <button class="btn-accion" (click)="editarPregunta( pregunta.id)" >
+            <i class="entypo--edit" ></i> <!-- Icono de editar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarPregunta(pregunta.id)" >
+            <i class="material-symbols--delete"></i> <!-- Icono de eliminar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarPreguntaLista(pregunta.id)" >
+            <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
+          </button>
         </td>
+
       </tr>
     </tbody>
   </table>
-  <button class="btn-agregar" (click)="agregarPregunta()">Agregar Pregunta</button>
+  <div class="button-container">
+    <button class="btn-agregar" (click)="agregarPregunta()">Agregar Pregunta</button>
+    <button class="btn-buscar" (click)="listarPreguntas()">Buscar Pregunta</button>
+  </div>
+
 </div>
 
 <div>
@@ -123,11 +154,39 @@
 <ng-container *ngIf="showPreguntaModal">
   <div class="modal">
     <div class="modal-content">
+      <button class="btn-estilo" (click)="closePreguntaForm()">X</button>
       <app-pregunta></app-pregunta>
-      <button (click)="closePreguntaForm()">Cerrar</button>
     </div>
   </div>
 </ng-container>
+
+<ng-container *ngIf="showPreguntaListaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closePreguntaListaForm()">X</button>
+      <app-pregunta-lista></app-pregunta-lista>
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="showPreguntaEditModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeEditPreguntaForm()">X</button>
+      <app-pregunta-editar [preguntaID]="tuIdDePregunta"></app-pregunta-editar>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showPreguntaEliminarModal">
+  <div class="modal">
+    <div class="modal-content">
+      <app-pregunta-eliminar [PreguntaId]="tuIdDePregunta" (cerrarModal)="closeEliminarPreguntaForm()" ></app-pregunta-eliminar>
+    </div>
+  </div>
+</ng-container>
+
 
 
 

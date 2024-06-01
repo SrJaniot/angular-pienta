@@ -1,0 +1,63 @@
+<div class="desktop-container ">
+  <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar" class="filter-input">
+    <div class="table-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Columna de id -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.ID_PREGUNTA}} </td>
+      </ng-container>
+
+      <!-- Columna de nombre_esquema -->
+      <ng-container matColumnDef="ContextoID">
+        <th mat-header-cell *matHeaderCellDef> Contexto ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.ID_CONTEXTO}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Enunciado">
+        <th mat-header-cell *matHeaderCellDef> Enunciado </th>
+        <td mat-cell *matCellDef="let element"> {{element.ENUNCIADO_PREGUNTA}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="TipoPregunta">
+        <th mat-header-cell *matHeaderCellDef> Tipo Pregunta </th>
+        <td mat-cell *matCellDef="let element"> {{element.TIPO_PREGUNTA}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Puntaje">
+        <th mat-header-cell *matHeaderCellDef> Puntaje </th>
+        <td mat-cell *matCellDef="let element"> {{element.PUNTAJE_PREGUNTA}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Autor">
+        <th mat-header-cell *matHeaderCellDef> Autor </th>
+        <td mat-cell *matCellDef="let element"> {{element.AUTOR_PREGUNTA}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="AreaEvaluar">
+        <th mat-header-cell *matHeaderCellDef> Area Evaluar </th>
+        <td mat-cell *matCellDef="let element"> {{element.NOMBRE_TEMA_AREA}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="TemaEvaluar">
+        <th mat-header-cell *matHeaderCellDef> Tema Evaluar </th>
+        <td mat-cell *matCellDef="let element"> {{element.NOMBRE_AREA_EVALUAR}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="Acciones">
+        <th mat-header-cell *matHeaderCellDef> Acción </th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="agregarPregunta(element)" class="icon-button">
+            <i class="material-icons">add</i>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" class=" colorfondo"></mat-paginator>
+  </div>

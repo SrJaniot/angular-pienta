@@ -14,38 +14,12 @@ const routes: Routes = [
     path: 'crear-pregunta-contexto',
     component : CrearPreguntasContextoComponent
   },
-  {
-    path: 'context',
-    component: ContextComponent
-  },
-  {
-    path: 'editar-contexto',
-    component: EditarContextComponent
-  },
-  {
-    path: 'editar-eliminar',
-    component: EditarContextComponent
-  },
-  {
-    path: 'lista-contexto',
-    component: ContextListaComponent
-  },
-  {
-    path: 'pregunta',
-    component: PreguntaComponent
-  },
-  {
-    path: 'opcion',
-    component: OpcionComponent
-  },
+
   {
     path: 'quiz',
     component: QuizComponent
   },
-  {
-    path:'editar-pregunta-contexto/:id',
-    component: PreguntaEditarComponent
-  },
+
 
 ];
 

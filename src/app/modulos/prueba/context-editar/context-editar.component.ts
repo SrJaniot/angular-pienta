@@ -40,6 +40,7 @@ export class EditarContextComponent extends ContextComponent implements OnInit {
       // Puedes mostrar un mensaje de error o redirigir a otra página
 
     }
+    this.toast.warning({detail:"ADVERTENCIA",summary:"Ten en cuenta que si editas el contexto y tienes preguntas asociadas, debe ser editado con cambios mínimos para que las preguntas mantengan el sentido del contexto",duration:15000, position:'topCenter'});
 
     this.ConstruirFormularioArchivo();
     this.ConstruirFormulario();
@@ -54,7 +55,8 @@ export class EditarContextComponent extends ContextComponent implements OnInit {
           nombre: data.DATOS?.NOM_CONTEXTO,
           descripcion: data.DATOS?.DESC_CONTEXTO,
           autor: data.DATOS?.AUTOR_CONTEXTO,
-          NombreArchivo: data.DATOS?.LINK_MEDIA
+          NombreArchivo: data.DATOS?.LINK_MEDIA,
+          tipoContexto: data.DATOS?.TIPO_CONTEXTO
         };
         this.contextoForm.setValue(contexto);
       }else{
@@ -79,9 +81,10 @@ export class EditarContextComponent extends ContextComponent implements OnInit {
       let descripcion = this.contextoForm.controls["descripcion"].value;
       let autor = this.contextoForm.controls["autor"].value;
       let nombreArchivo = this.contextoForm.controls["NombreArchivo"].value;
+      let tipoContexto = this.contextoForm.controls["tipoContexto"].value;
       let id_contexto_int = parseInt(this.contextoId);
 
-      this.preguntaService.ActualizarContexto(id_contexto_int, nombre, descripcion, autor, nombreArchivo).subscribe({
+      this.preguntaService.ActualizarContexto(id_contexto_int, nombre, descripcion, autor, nombreArchivo,tipoContexto).subscribe({
         next: (data: RespuestaServer) => {
           if (data.CODIGO == 200) {
             this.toast.success({detail:"EXITO",summary:"Contexto actualizado correctamente",duration:5000, position:'topCenter'});

@@ -40,7 +40,7 @@ export class ContextComponent implements OnInit {
   }
   ConstruirFormularioArchivo() {
     this.cargaArchivoFG = this.fb.group({
-      archivo: [null, Validators.required] // Asegúrate de que 'archivo' es un control de formulario
+      archivo: [null ] // Asegúrate de que 'archivo' es un control de formulario
     });
   }
 
@@ -48,9 +48,10 @@ export class ContextComponent implements OnInit {
   ConstruirFormulario() {
     this.contextoForm = this.fb.group({
       nombre: ['', Validators.required],
-      descripcion: ['', Validators.required],
+      descripcion: [''],
       autor: ['', Validators.required],
-      NombreArchivo: ['', Validators.required],
+      NombreArchivo: ['' ],
+      tipoContexto: ['', Validators.required],
     });
   }
 
@@ -69,8 +70,9 @@ export class ContextComponent implements OnInit {
       let descripcion = this.contextoForm.controls["descripcion"].value;
       let autor = this.contextoForm.controls["autor"].value;
       let nombreArchivo = this.contextoForm.controls["NombreArchivo"].value;
+      let tipoContexto = this.contextoForm.controls["tipoContexto"].value;
 
-      this.preguntaService.CrearContexto(nombre, descripcion, autor, nombreArchivo).subscribe({
+      this.preguntaService.CrearContexto(nombre, descripcion, autor, nombreArchivo,tipoContexto).subscribe({
         next: (data: RespuestaServer) => {
           if (data.CODIGO == 200) {
             //console.log(data);

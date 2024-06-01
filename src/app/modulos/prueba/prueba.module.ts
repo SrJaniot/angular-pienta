@@ -16,6 +16,8 @@ import { ContextListaComponent } from './context-lista/context-lista.component';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { PreguntaEliminarComponent } from './pregunta-eliminar/pregunta-eliminar.component';
+import { PreguntaListaComponent } from './pregunta-lista/pregunta-lista.component';
 
 
 
@@ -30,6 +32,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     EditarContextComponent,
     ContextEliminarComponent,
     ContextListaComponent,
+    PreguntaEliminarComponent,
+    PreguntaListaComponent,
 
   ],
   imports: [
