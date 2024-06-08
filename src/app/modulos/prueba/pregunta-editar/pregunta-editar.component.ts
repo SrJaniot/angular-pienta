@@ -9,6 +9,7 @@ import { RespuestaServerObtenerUNAPregunta } from '../../../Modelos/RespuestaSer
 import { RespuestaServer } from '../../../Modelos/RespuestaServer.model';
 import { Pregunta } from '../../../Modelos/pregunta.model';
 import { RespuestaServerObtenerAreasEvaluar } from '../../../Modelos/RespuestaServer.ObtenerAreasEvaluar.model';
+import { SeguridadService } from '../../../servicios/seguridad.service';
 
 @Component({
   selector: 'app-pregunta-editar',
@@ -25,10 +26,11 @@ export class PreguntaEditarComponent extends PreguntaComponent implements OnInit
     changeDetector: ChangeDetectorRef,
     PreguntaService: PreguntaService,
     toast: NgToastService,
+    seguridadService: SeguridadService,
     private route: ActivatedRoute,
     private router: Router,
   ) {
-    super(fb, quizService,changeDetector, PreguntaService, toast);
+    super(fb, quizService,changeDetector, PreguntaService, toast, seguridadService);
 
   }
 
@@ -187,11 +189,7 @@ export class PreguntaEditarComponent extends PreguntaComponent implements OnInit
 
 
               };
-              //imprimir pregunta
-              console.log(pregunta)
-              console.log(pregunta)
-              console.log(pregunta)
-              console.log(pregunta)
+
               this.quizService.updatePregunta(pregunta);
             }
           }else{

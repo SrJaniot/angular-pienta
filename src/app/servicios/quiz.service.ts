@@ -13,7 +13,7 @@ export class QuizService {
 
 
 
-  private contextos: Contexto[] = [
+  public contextos: Contexto[] = [
     {
       id: 1, // reemplaza con los valores que necesites
       nombre: 'SIN CONTEXTO', // reemplaza con los valores que necesites
@@ -23,8 +23,8 @@ export class QuizService {
       tipoContexto: 'SIN CONTEXTO' // reemplaza con los valores que necesites
     }
   ];
-  private preguntas: Pregunta[] = [];
-  private opciones: Opcion[] = [];
+  public preguntas: Pregunta[] = [];
+  public opciones: Opcion[] = [];
 
   getContextos(): Contexto[] {
     return this.contextos;
@@ -86,7 +86,7 @@ export class QuizService {
   }
 
   addPregunta2(pregunta: Pregunta): boolean {
-    //preguntar si el contexto ya existe
+    //preguntar si el pregunta ya existe
     if (this.preguntas.find(p => p.id === pregunta.id)) {
       return false;
     }
@@ -117,6 +117,19 @@ export class QuizService {
     }
   }
 
+  updateOpcion(opcion: Opcion) {
+    let index = this.opciones.findIndex(o => o.id === opcion.id);
+    this.opciones[index] = opcion;
+  }
+
+  eliminarOpcion(id: number) {
+    let index = this.opciones.findIndex(o => o.id === id);
+    if (index !== -1) { // Asegura que el contexto existe antes de intentar eliminarlo
+      this.opciones.splice(index, 1);
+    }
+
+  }
+
 
   getOpcionesByPregunta(preguntaId: number): Opcion[] {
     return this.opciones.filter(o => o.preguntaId === preguntaId);
@@ -128,6 +141,19 @@ export class QuizService {
 
   addOpcion(opcion: Opcion) {
     this.opciones.push(opcion);
+  }
+
+  addOpcion2(opcion: Opcion): boolean {
+    //preguntar si el Opcion ya existe
+    if (this.opciones.find(o => o.id === opcion.id)) {
+      return false;
+    }
+    this.opciones.push(opcion);
+    if (this.opciones.find(o => o.id === opcion.id)) {
+      return true;
+    }else{
+      return false;
+    }
   }
 
 

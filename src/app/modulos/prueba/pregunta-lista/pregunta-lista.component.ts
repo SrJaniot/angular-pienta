@@ -11,6 +11,8 @@ import { QuizService } from '../../../servicios/quiz.service';
 import { RespuestaServerObtenerPreguntas } from '../../../Modelos/RespuestaServerObtenerPreguntas.model';
 import { Preguntas } from '../../../Modelos/Preguntas.model';
 import { Pregunta } from '../../../Modelos/pregunta.model';
+import { RespuestaServerObtenerUNContexto } from '../../../Modelos/RespuestaServerObtenerUNContexto.model';
+import { Contexto } from '../../../Modelos/contexto.model';
 
 @Component({
   selector: 'app-pregunta-lista',
@@ -85,6 +87,29 @@ export class PreguntaListaComponent {
       }
       let respuesta=this.quizService.addPregunta2(pregunta2);
       if(respuesta){
+        //agregar contexto a la lista si no existe
+        let existe = this.quizService.contextos.find(c => c.id == pregunta2.contextoId);
+        if(!existe){
+          //construir contexto haciendo un llamado al backend
+          this.PreguntaService.ObtenerContextoID(""+pregunta2.contextoId).subscribe(
+            (data:RespuestaServerObtenerUNContexto ) => {
+              if (data.CODIGO == 200) {
+                //console.log(data.DATOS);
+                //construir el contexto para mandarlo al servicio
+                const contexto: Contexto = {
+                  id: data.DATOS?.ID_CONTEXTO!,
+                  nombre: data.DATOS?.NOM_CONTEXTO!,
+                  descripcion: data.DATOS?.DESC_CONTEXTO!,
+                  NombreArchivo: data.DATOS?.LINK_MEDIA!,
+                  autor: data.DATOS?.AUTOR_CONTEXTO!,
+                  tipoContexto: data.DATOS?.TIPO_CONTEXTO!,
+                }
+                this.quizService.addContexto2(contexto);
+              } else {
+                this.toast.error({ detail: 'ERROR', summary: data.MENSAJE!, duration: 5000, position: 'topCenter' });
+              }
+            });
+        }
         this.toast.success({ detail: "Pregunta agregado correctamente", summary: 'Éxito', duration: 5000, position: 'topCenter' });
       } else {
         this.toast.error({ detail: "Error al agregar el Pregunta", summary: 'Error', duration: 5000, position: 'topCenter' });

@@ -54,8 +54,8 @@
         <th>Autor</th>
         <th>Area Evaluar</th>
         <th>Tema Evaluar</th>
-        <th>Archivo Preguna</th>
-        <th>Tipo Pregunta</th>
+        <th>Archivo Pregunta</th>
+        <th>Tipo Pregunta contenido</th>
         <th>Alineación</th>
         <th>Acciones</th> <!-- Nueva columna para acciones -->
       </tr>
@@ -97,10 +97,52 @@
 
 <div>
   <h2>Opciones</h2>
-  <ul>
-    <li *ngFor="let opcion of opciones">{{ opcion.texto }}</li>
-  </ul>
-  <button class="btn-agregar" (click)="agregarOpcion()">Agregar Opción</button>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Pregunta ID</th>
+        <th>Enunciado</th>
+        <th>Respuesta</th> <!-- Nueva columna para acciones -->
+        <th>Archivo Opción</th>
+        <th>Tipo Opción contenido</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let opcion of opciones">
+        <td>{{ opcion.id }}</td>
+        <td>{{ opcion.preguntaId }}</td>
+        <td>{{ opcion.texto }}</td>
+        <td>
+          <div class="icon-container">
+            <i *ngIf="opcion.esCorrecta" class="icon-park-outline--correct"></i>
+            <i *ngIf="!opcion.esCorrecta" class="iconoir--xmark"></i>
+          </div>
+        </td>
+        <td><a *ngIf="opcion.imagen_opcion" href="http://localhost:3001/ObtenerArchivo/3/{{opcion.imagen_opcion}}">{{ opcion.imagen_opcion}}</a></td>
+        <td>{{ opcion.tipo_opcion }}</td>
+        <td>
+          <button class="btn-accion" (click)="editarOpcion(opcion.id)" >
+            <i class="entypo--edit" ></i> <!-- Icono de editar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarOpcion(opcion.id)" >
+            <i class="material-symbols--delete"></i> <!-- Icono de eliminar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarOpcionLista(opcion.id)" >
+            <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
+          </button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+  <div class="button-container">
+    <button class="btn-agregar" (click)="agregarOpcion()">Agregar opción</button>
+    <button class="btn-buscar" (click)="listarOpciones()">Buscar opción</button>
+  </div>
+
 </div>
 
 
@@ -145,8 +187,34 @@
 <ng-container *ngIf="showOpcionModal">
   <div class="modal">
     <div class="modal-content">
+      <button class="btn-estilo" (click)="closeOpcionForm()">X</button>
       <app-opcion></app-opcion>
-      <button (click)="closeOpcionForm()">Cerrar</button>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showOpcionListaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closeOpcionListaForm()">X</button>
+      <app-opcion-lista></app-opcion-lista>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showOpcionEditModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeEditOpcionForm()">X</button>
+      <app-opcion-editar [opcionID]="tuIdDeOpcion"></app-opcion-editar>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showOpcionEliminarModal">
+  <div class="modal">
+    <div class="modal-content">
+      <app-opcion-eliminar [OpcionId]="tuIdDeOpcion" (cerrarModal)="closeEliminarOpcionForm()" ></app-opcion-eliminar>
     </div>
   </div>
 </ng-container>

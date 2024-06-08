@@ -18,6 +18,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PreguntaEliminarComponent } from './pregunta-eliminar/pregunta-eliminar.component';
 import { PreguntaListaComponent } from './pregunta-lista/pregunta-lista.component';
+import { OpcionEditarComponent } from './opcion-editar/opcion-editar.component';
+import { OpcionEliminarComponent } from './opcion-eliminar/opcion-eliminar.component';
+import { OpcionListaComponent } from './opcion-lista/opcion-lista.component';
 
 
 
@@ -34,6 +37,9 @@ import { PreguntaListaComponent } from './pregunta-lista/pregunta-lista.componen
     ContextListaComponent,
     PreguntaEliminarComponent,
     PreguntaListaComponent,
+    OpcionEditarComponent,
+    OpcionEliminarComponent,
+    OpcionListaComponent,
 
   ],
   imports: [

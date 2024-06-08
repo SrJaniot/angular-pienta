@@ -10,6 +10,9 @@ import { RespuestaServerObtenerUNContexto } from '../Modelos/RespuestaServerObte
 import { RespuestaServerCrearPregunta } from '../Modelos/RespuestaServer.CrearPregunta.model';
 import { RespuestaServerObtenerPreguntas } from '../Modelos/RespuestaServerObtenerPreguntas.model';
 import { RespuestaServerObtenerUNAPregunta } from '../Modelos/RespuestaServerObtenerUNAPregunta.model';
+import { RespuestaServerCrearOpcion } from '../Modelos/RespuestaServerCrearOpcion.model';
+import { RespuestaServerObtenerOpciones } from '../Modelos/RespuestaServerObtenerOpciones.model';
+import { RespuestaServerObtenerUNAOpcion } from '../Modelos/RespuestaServerObtenerUNAOpcion.model';
 
 @Injectable({
   providedIn: 'root'
@@ -142,6 +145,43 @@ export class PreguntaService {
   EliminarPregunta(id_Pregunta: number): Observable<RespuestaServer> {
     return this.http.post<RespuestaServer>(`${this.url_ms_negocio}EliminarPregunta`, {
       id: id_Pregunta
+    });
+  }
+
+
+  CrearOpcion(pregunta_id: number, enunciado: string, Valor_opcion: boolean,Imagen_opcion:string,Tipo_opcion:string): Observable<RespuestaServerCrearOpcion> {
+    return this.http.post<RespuestaServer>(`${this.url_ms_negocio}CrearOpcion`, {
+      Id_Pregunta: pregunta_id,
+      Texto_opcion: enunciado,
+      Opcion_Correcta: Valor_opcion,
+      Imagen_opcion: Imagen_opcion,
+      Tipo_opcion: Tipo_opcion
+    });
+  }
+
+  ObtenerOpciones():Observable<RespuestaServerObtenerOpciones>{
+    return this.http.get(this.url_ms_negocio + 'ObtenerOpciones');
+  }
+  ObtenerOpcionID(id_opcion: string):Observable<RespuestaServerObtenerUNAOpcion>{
+    return this.http.get(this.url_ms_negocio + 'ObtenerOpcion/' + id_opcion);
+  }
+
+
+  ActualizarOpcion(id_opcion:number,id_pregunta:number,enunciado:string,Opcion_Correcta:boolean,imagen_opcion:string,Tipo_opcion:string): Observable<RespuestaServer> {
+    return this.http.post<RespuestaServer>(`${this.url_ms_negocio}ActualizarOpcion`, {
+      id_opcion: id_opcion,
+      id_pregunta: id_pregunta,
+      Texto_opcion: enunciado,
+      Opcion_Correcta: Opcion_Correcta,
+      Imagen_opcion: imagen_opcion,
+      Tipo_opcion: Tipo_opcion
+    });
+  }
+
+
+  EliminarOpcion(id_opcion: number): Observable<RespuestaServer> {
+    return this.http.post<RespuestaServer>(`${this.url_ms_negocio}EliminarOpcion`, {
+      id: id_opcion
     });
   }
 

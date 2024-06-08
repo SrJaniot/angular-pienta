@@ -1,0 +1,57 @@
+<div class="desktop-container ">
+  <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar" class="filter-input">
+    <div class="table-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Columna de id -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.ID_OPCION}} </td>
+      </ng-container>
+
+      <!-- Columna de nombre_esquema -->
+      <ng-container matColumnDef="PreguntaID">
+        <th mat-header-cell *matHeaderCellDef> Pregunta ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.ID_PREGUNTA}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Enunciado">
+        <th mat-header-cell *matHeaderCellDef> Enunciado </th>
+        <td mat-cell *matCellDef="let element"> {{element.TEXTO_OPCION}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Respuesta">
+        <th mat-header-cell *matHeaderCellDef> Respuesta </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="icon-container">
+            <i *ngIf="element.ES_CORRECTA" class="icon-park-outline--correct"></i>
+            <i *ngIf="!element.ES_CORRECTA" class="iconoir--xmark"></i>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Archivo">
+        <th mat-header-cell *matHeaderCellDef> Archivo </th>
+        <td mat-cell *matCellDef="let element"> {{element.IMAGEN_OPCION}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Tipo_opcion">
+        <th mat-header-cell *matHeaderCellDef> Tipo Opción </th>
+        <td mat-cell *matCellDef="let element"> {{element.TIPO_OPCION}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Acciones">
+        <th mat-header-cell *matHeaderCellDef> Acción </th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="agregarOpcion(element)" class="icon-button">
+            <i class="material-icons">add</i>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" class=" colorfondo"></mat-paginator>
+  </div>

@@ -15,12 +15,16 @@ export class QuizComponent implements OnInit {
   contextos: Contexto[] = [];
   preguntas: Pregunta[] = [];
   opciones: Opcion[] = [];
+
   showContextoModal = false;
   showContextEditModal = false;
   showContextEliminarModal = false;
   showContextListaModal = false;
 
   showOpcionModal = false;
+  showOpcionEditModal = false;
+  showOpcionEliminarModal = false;
+  showOpcionListaModal = false;
 
   showPreguntaModal = false;
   showPreguntaEditModal = false;
@@ -31,6 +35,8 @@ export class QuizComponent implements OnInit {
 
   tuIdDeContexto = ''; // El ID del contexto que quieres editar
   tuIdDePregunta = ''; // El ID de la pregunta que quieres editar
+  tuIdDeOpcion = ''; // El ID de la pregunta que quieres editar
+
 
   constructor(
     private quizService: QuizService,
@@ -115,6 +121,38 @@ export class QuizComponent implements OnInit {
     this.showOpcionModal = true;
   }
 
+  listarOpciones() {
+    this.showOpcionListaModal = true;
+  }
+
+
+  editarOpcion(id_Opcion: number) {
+    let id_opcion_strinng = id_Opcion.toString()
+    this.tuIdDeOpcion = id_opcion_strinng// El ID del contexto que quieres editar
+    this.showOpcionEditModal = true;
+  }
+
+  eliminarOpcion(id_opcion: number) {
+    let id_Opcion_string = id_opcion.toString()
+    if (id_Opcion_string === '0' || id_Opcion_string === '') {
+      this.toast.warning({detail:"ADVERTENCIA",summary:'ACCESO DENEGADO',duration:5000, position: 'topCenter'});
+      return;
+
+    }
+    this.tuIdDeOpcion = id_Opcion_string// El ID del contexto que quieres editar
+    this.showOpcionEliminarModal = true;
+  }
+  eliminarOpcionLista(id_opcion: number) {
+    let id_Opcion_string = id_opcion.toString()
+    if (id_Opcion_string === '0' || id_Opcion_string === '') {
+      this.toast.warning({detail:"ADVERTENCIA",summary:'ACCESO DENEGADO',duration:5000, position: 'topCenter'});
+      return;
+    }
+    this.quizService.eliminarOpcion(id_opcion);
+  }
+
+
+
   closeContextoForm() {
     this.showContextoModal = false;
   }
@@ -135,6 +173,9 @@ export class QuizComponent implements OnInit {
   closePreguntaListaForm() {
     this.showPreguntaListaModal = false;
   }
+  closeOpcionListaForm() {
+    this.showOpcionListaModal = false;
+  }
 
   closeEditPreguntaForm() {
     this.showPreguntaEditModal = false;
@@ -146,5 +187,13 @@ export class QuizComponent implements OnInit {
 
   closeOpcionForm() {
     this.showOpcionModal = false;
+  }
+
+  closeEditOpcionForm() {
+    this.showOpcionEditModal = false;
+  }
+
+  closeEliminarOpcionForm() {
+    this.showOpcionEliminarModal = false;
   }
 }

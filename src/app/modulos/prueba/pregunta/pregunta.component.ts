@@ -12,6 +12,8 @@ import { RespuestaServerCrearPregunta } from '../../../Modelos/RespuestaServer.C
 import { NgToastService } from 'ng-angular-popup';
 import { Pregunta } from '../../../Modelos/pregunta.model';
 import e from 'express';
+import { SeguridadService } from '../../../servicios/seguridad.service';
+import { RespuestaServerObtenerRol } from '../../../Modelos/RespuestaServerObtenerRol.model';
 
 @Component({
   selector: 'app-pregunta',
@@ -39,6 +41,9 @@ export class PreguntaComponent implements OnInit {
     { id: '4', nombre: 'Ensayo' }
   ];
 
+  id_rol:number = 0;
+  nombre_role:string = '';
+
 
   constructor(
     protected fb: FormBuilder,
@@ -46,9 +51,23 @@ export class PreguntaComponent implements OnInit {
     protected changeDetector: ChangeDetectorRef,
     protected PreguntaService: PreguntaService,
     protected toast: NgToastService,
+    protected seguridadService: SeguridadService,
   ) { }
 
   ngOnInit(): void {
+    //obtener rol del usuario a travez del servicio de seguridad
+    this.seguridadService.ObtenerRolUsuario().subscribe(
+      (data: RespuestaServerObtenerRol) => {
+        if (data.CODIGO == 200) {
+          this.id_rol = data.DATOS?.rol!;
+          this.nombre_role = data.DATOS?.nombre_rol!;
+          //console.log(this.id_rol);
+          //console.log(this.nombre_role);
+        }
+      }
+    );
+
+  //obtener contextos
     this.PreguntaService.ObtenerAreasPreguntas().subscribe(
       (data: RespuestaServerObtenerAreasEvaluar) => {
         if (data.CODIGO == 200) {

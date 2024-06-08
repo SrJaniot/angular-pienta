@@ -5,6 +5,8 @@ import { QuizService } from '../../../servicios/quiz.service';
 import { PreguntaService } from '../../../servicios/pregunta.service';
 import { NgToastService } from 'ng-angular-popup';
 import { RespuestaServer } from '../../../Modelos/RespuestaServer.model';
+import { SeguridadService } from '../../../servicios/seguridad.service';
+import { RespuestaServerObtenerRol } from '../../../Modelos/RespuestaServerObtenerRol.model';
 
 @Component({
   selector: 'app-context',
@@ -20,6 +22,9 @@ export class ContextComponent implements OnInit {
   archivoCargado = false;
   nombreArchivoCargado = '';
 
+  id_rol:number = 0;
+  nombre_role:string = '';
+
 
 
   constructor(
@@ -28,10 +33,23 @@ export class ContextComponent implements OnInit {
      private changeDetector: ChangeDetectorRef,
      protected preguntaService: PreguntaService,
      protected toast: NgToastService,
+     protected seguridadService: SeguridadService,
 
     ) { }
 
   ngOnInit(): void {
+    //obtener rol del usuario a travez del servicio de seguridad
+    this.seguridadService.ObtenerRolUsuario().subscribe(
+      (data: RespuestaServerObtenerRol) => {
+        if (data.CODIGO == 200) {
+          this.id_rol = data.DATOS?.rol!;
+          this.nombre_role = data.DATOS?.nombre_rol!;
+          //console.log(this.id_rol);
+          //console.log(this.nombre_role);
+        }
+      }
+    );
+    //construir formularios
     this.ConstruirFormularioArchivo();
     this.ConstruirFormulario();
 

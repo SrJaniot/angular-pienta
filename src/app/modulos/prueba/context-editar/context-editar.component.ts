@@ -8,6 +8,7 @@ import { RespuestaServer } from '../../../Modelos/RespuestaServer.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContextComponent } from '../context/context.component';
 import { RespuestaServerObtenerUNContexto } from '../../../Modelos/RespuestaServerObtenerUNContexto.model';
+import { SeguridadService } from '../../../servicios/seguridad.service';
 
 @Component({
   selector: 'app-context-editar',
@@ -23,10 +24,11 @@ export class EditarContextComponent extends ContextComponent implements OnInit {
     changeDetector: ChangeDetectorRef,
     preguntaService: PreguntaService,
     toast: NgToastService,
+    seguridadService: SeguridadService,
     private route: ActivatedRoute,
     private router: Router,
   ) {
-    super(fb, quizService, changeDetector, preguntaService, toast);
+    super(fb, quizService, changeDetector, preguntaService, toast, seguridadService);
 
   }
 

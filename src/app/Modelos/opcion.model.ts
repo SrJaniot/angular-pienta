@@ -3,4 +3,6 @@ export interface Opcion {
   preguntaId: number;
   texto: string;
   esCorrecta: boolean;
+  imagen_opcion: string;
+  tipo_opcion: string;
 }

@@ -8,6 +8,7 @@ import { UsuarioValidadoModel } from '../Modelos/UsuarioValidado.model';
 import { PermisoModel } from '../Modelos/Permiso.model';
 import { ItemMenuModel } from '../Modelos/item.menu.model';
 import { ConfiguracionMenuLateral } from '../config/configuracion.menu.latreal';
+import { RespuestaServerObtenerRol } from '../Modelos/RespuestaServerObtenerRol.model';
 
 @Injectable({
   providedIn: 'root'
@@ -230,6 +231,20 @@ ObtenerItemMenuLateral(): ItemMenuModel[]{
   }
   return menu;
 }
+
+
+
+
+//metodo para obtener el id_rol y nombre_rol del usuario a partir del token
+ObtenerRolUsuario():Observable<RespuestaServerObtenerRol>{
+  let datosLS = this.ObtenerDatosUsuarioIdentificadoSESION();
+  let token = datosLS?.token;
+  return this.http.post(this.url_ms_seguridad + 'consultar-rol',{
+    token: token
+  });
+}
+
+
 
 
 

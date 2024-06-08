@@ -1,0 +1,117 @@
+.table-container {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-elevation-z8 {
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* Estilos para pantallas de escritorio */
+@media screen and (min-width: 768px) {
+  .desktop-container {
+    background-color: #ffffff; /* Color de fondo para pantallas de escritorio */
+    padding: 20px; /* Ajusta el espaciado según sea necesario */
+  }
+
+  .table-container {
+    max-width: calc(100% - 40px); /* Ajusta el ancho de la tabla dentro del contenedor */
+    margin: 0 auto; /* Centra la tabla horizontalmente */
+    background-color: white; /* Fondo blanco para la tabla */
+    border-radius: 8px; /* Añade bordes redondeados al contenedor */
+    overflow-x: auto;
+  }
+}
+
+.colorfondo{
+  background-color: #eeebeb;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+
+.filter-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.icon-button {
+  background-color: #4CAF50; /* Green background */
+  border: none; /* Remove border */
+  color: white; /* White text */
+  padding: 10px; /* Adjust padding */
+  text-align: center; /* Centered text */
+  text-decoration: none; /* Remove underline */
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer; /* Mouse pointer on hover */
+  transition-duration: 0.4s; /* Transition effects */
+  width: 40px; /* Adjust width */
+  height: 40px; /* Adjust height */
+  border-radius: 50%; /* Make button circular */
+}
+
+.icon-button:hover {
+  background-color: white; /* White background */
+  color: black; /* Black text */
+}
+
+.icon-button i.material-icons {
+  color: white; /* White icon */
+}
+
+.icon-button:hover i.material-icons {
+  color: #4CAF50; /* Green icon on hover */
+}
+
+.icon-park-outline--correct {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='4' d='m4 24l5-5l10 10L39 9l5 5l-25 25z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-color: green;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+
+.iconoir--xmark {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6.758 17.243L12.001 12m5.243-5.243L12 12m0 0L6.758 6.757M12.001 12l5.243 5.243'/%3E%3C/svg%3E");
+  background-color: red;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
