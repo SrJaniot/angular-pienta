@@ -72,7 +72,7 @@ export class OpcionComponent implements OnInit {
   ConstruirFormularioOpcion() {
     this.opcionForm = this.fb.group({
       preguntaId: ['', Validators.required],
-      texto: ['', Validators.required],
+      texto: [''],
       esCorrecta: [false],
       imagen_opcion: [''],
       tipo_opcion: ['', Validators.required]
