@@ -13,6 +13,7 @@ import { RespuestaServerObtenerUNAPregunta } from '../Modelos/RespuestaServerObt
 import { RespuestaServerCrearOpcion } from '../Modelos/RespuestaServerCrearOpcion.model';
 import { RespuestaServerObtenerOpciones } from '../Modelos/RespuestaServerObtenerOpciones.model';
 import { RespuestaServerObtenerUNAOpcion } from '../Modelos/RespuestaServerObtenerUNAOpcion.model';
+import { RespuestaServerObtenerPreviewPregunta } from '../Modelos/RespuestaServer.RespuestaServer.ObtenerPreviewPregunta.model';
 
 @Injectable({
   providedIn: 'root'
@@ -183,6 +184,12 @@ export class PreguntaService {
     return this.http.post<RespuestaServer>(`${this.url_ms_negocio}EliminarOpcion`, {
       id: id_opcion
     });
+  }
+
+
+
+  TraerPreguntaPreview(id_pregunta: string):Observable<RespuestaServerObtenerPreviewPregunta>{
+    return this.http.get(this.url_ms_negocio + 'ObtenerPreviewPregunta/' + id_pregunta);
   }
 
 

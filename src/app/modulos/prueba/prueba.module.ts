@@ -21,6 +21,7 @@ import { PreguntaListaComponent } from './pregunta-lista/pregunta-lista.componen
 import { OpcionEditarComponent } from './opcion-editar/opcion-editar.component';
 import { OpcionEliminarComponent } from './opcion-eliminar/opcion-eliminar.component';
 import { OpcionListaComponent } from './opcion-lista/opcion-lista.component';
+import { PreviewPreguntaComponent } from './preview-pregunta/preview-pregunta.component';
 
 
 
@@ -40,6 +41,7 @@ import { OpcionListaComponent } from './opcion-lista/opcion-lista.component';
     OpcionEditarComponent,
     OpcionEliminarComponent,
     OpcionListaComponent,
+    PreviewPreguntaComponent,
 
   ],
   imports: [

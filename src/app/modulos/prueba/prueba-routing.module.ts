@@ -8,6 +8,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { PreguntaEditarComponent } from './pregunta-editar/pregunta-editar.component';
 import { EditarContextComponent } from './context-editar/context-editar.component';
 import { ContextListaComponent } from './context-lista/context-lista.component';
+import { PreviewPreguntaComponent } from './preview-pregunta/preview-pregunta.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'quiz',
     component: QuizComponent
+  },
+  {
+    path: 'preview-pregunta/:id_pregunta',
+    component: PreviewPreguntaComponent
   },
 
 
