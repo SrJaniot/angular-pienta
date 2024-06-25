@@ -5,4 +5,5 @@ export class Contextos{
   LINK_MEDIA?: string;
   AUTOR_CONTEXTO?: string;
   TIPO_CONTEXTO?: string;
+
 }
