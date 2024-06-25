@@ -93,6 +93,14 @@ export class OpcionComponent implements OnInit {
       let Tipo_opcion:string = this.opcionForm.controls['tipo_opcion'].value;
 
 
+      console.log(pregunta_id);
+      console.log(enunciado);
+      console.log(Valor_opcion);
+      console.log(Imagen_opcion);
+      console.log(Tipo_opcion);
+
+
+
       this.PreguntaService.CrearOpcion(+pregunta_id, enunciado, Valor_opcion, Imagen_opcion, Tipo_opcion).subscribe(
         (data1: RespuestaServerCrearOpcion) => {
           if (data1.CODIGO == 200) {
@@ -110,6 +118,12 @@ export class OpcionComponent implements OnInit {
                   };
                   this.quizService.addOpcion(opcion);
                   this.opcionForm.reset();
+                  this.cargaArchivoFG.reset();
+                  //dejamos el valor del formgrup en false de opcionform
+                  this.opcionForm.controls['esCorrecta'].setValue(false);
+                  //dejamos el valor del formgrup en null de archivo
+                  this.opcionForm.controls['imagen_opcion'].setValue('');
+
           }else{
             this.toast.error({detail:data1.MENSAJE!,summary:'ERROR',duration:5000, position: 'topCenter'});
           }

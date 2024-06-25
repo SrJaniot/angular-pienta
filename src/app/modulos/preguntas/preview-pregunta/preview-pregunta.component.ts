@@ -40,9 +40,9 @@ export class PreviewPreguntaComponent {
 
   ngOnInit() {
     //variable de prueba para mandar por url el parametro OJO CAMBIAR CUANDOS SE TERMINE DE TESTING POR THIS.preguntaID
-    let id_pregunta = this.route.snapshot.paramMap.get('id_pregunta');
+    //let id_pregunta = this.route.snapshot.paramMap.get('id_pregunta');
     //aca se inicializa el componente, es decir tengo que llamar a una funcion que me traiga la preview de la pregunta
-    this.PreguntaService.TraerPreguntaPreview(id_pregunta!).subscribe(
+    this.PreguntaService.TraerPreguntaPreview(this.preguntaID!).subscribe(
       (data: RespuestaServerObtenerPreviewPregunta) => {
         if (data.CODIGO == 200){
           this.CapturarDatos(data);

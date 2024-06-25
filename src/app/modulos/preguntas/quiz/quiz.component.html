@@ -74,6 +74,9 @@
         <td>{{ pregunta.tipo_pregunta_contenido }}</td>
         <td>{{ pregunta.layout_pregunta }}</td>
         <td>
+          <button  class="btn-accion" (click)="previewpregunta(pregunta.id)" >
+            <i class="tabler--eye-question"></i> <!-- Icono de eliminar -->
+          </button>
           <button class="btn-accion" (click)="editarPregunta( pregunta.id)" >
             <i class="entypo--edit" ></i> <!-- Icono de editar -->
           </button>
@@ -83,6 +86,7 @@
           <button  class="btn-accion" (click)="eliminarPreguntaLista(pregunta.id)" >
             <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
           </button>
+
         </td>
 
       </tr>
@@ -251,6 +255,15 @@
   <div class="modal">
     <div class="modal-content">
       <app-pregunta-eliminar [PreguntaId]="tuIdDePregunta" (cerrarModal)="closeEliminarPreguntaForm()" ></app-pregunta-eliminar>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showPreguntaPreviewModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estilo" (click)="closePreviewPreguntaForm()">X</button>
+      <app-preview-pregunta [preguntaID]="tuIdDePregunta"></app-preview-pregunta>
     </div>
   </div>
 </ng-container>

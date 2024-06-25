@@ -39,7 +39,7 @@
 
             <label class="preguntatexto" for="pregunta"> {{Pregunta.ENUNCIADO_PREGUNTA}} </label>
 
-            <div *ngFor="let opcion of Opciones" class="radio-option-">
+            <div *ngFor="let opcion of Opciones" class="radio-option-H">
               <input type="radio" [id]="opcion.ID_OPCION" [value]="opcion.ID_OPCION" name="Respuesta1">
               <label [for]="opcion.ID_OPCION" class="light">{{opcion.TEXTO_OPCION}}</label>
             </div>
@@ -97,7 +97,7 @@
 
             <div class="radio-options-container-CUADRADO">
 
-                <div *ngFor="let opcion of Opciones" class="radio-option">
+                <div *ngFor="let opcion of Opciones" class="radio-option-H">
                   <input type="radio" [id]="opcion.ID_OPCION" [value]="opcion.ID_OPCION" name="Respuesta1">
                   <label [for]="opcion.ID_OPCION" class="light"><img class="imagenopcion" src="http://localhost:3001/ObtenerArchivo/3/{{opcion.IMAGEN_OPCION}}"></label>
                 </div>
@@ -118,7 +118,7 @@
 
           <div class="radio-options-container">
 
-              <div *ngFor="let opcion of Opciones" class="radio-option">
+              <div *ngFor="let opcion of Opciones" class="radio-option-H">
                 <input type="radio" [id]="opcion.ID_OPCION" [value]="opcion.ID_OPCION" name="Respuesta1">
                 <label [for]="opcion.ID_OPCION" class="light"><img class="imagenopcion" src="http://localhost:3001/ObtenerArchivo/3/{{opcion.IMAGEN_OPCION}}"></label>
               </div>
@@ -141,28 +141,13 @@
 <div *ngIf="Contexto.ID_CONTEXTO == 1 && Pregunta.TIPO_PREGUNTA_CONTENIDO=='TEXTO' && Pregunta.LAYOUT_PREGUNTA=='CUADRADO' && Tipo_opcion=='IMAGEN'" class="contenido-pregunta">
   <form>
 
-          <label class="preguntatexto" for="pregunta">La ecuación para resolver este gráfico es: (Pregunta cuando sea texto) </label>
+          <label class="preguntatexto" for="pregunta">{{Pregunta.ENUNCIADO_PREGUNTA}} </label>
 
           <div class="radio-options-container-CUADRADO">
 
-              <div class="radio-option">
-                  <input type="radio" id="rtacorrecta" value="correct1" name="Respuesta1">
-                  <img class="imagenopcion" src="../../../logo/icons/Florespiritual.jpg">
-              </div>
-
-              <div class="radio-option">
-                  <input type="radio" id="rtaincorrecta" value="nocorrecta1" name="Respuesta1">
-                  <img class="imagenopcion" src="../../../logo/icons/user.png">
-              </div>
-
-              <div class="radio-option">
-                  <input type="radio" id="rtaincorrecta" value="nocorrecta1" name="Respuesta1">
-                  <img class="imagenopcion" src="../../../logo/icons/user.png">
-              </div>
-
-              <div class="radio-option">
-                  <input type="radio" id="rtaincorrecta" value="nocorrecta1" name="Respuesta1">
-                  <img class="imagenopcion" src="../../../logo/icons/Pikachu.jpg">
+              <div *ngFor="let opcion of Opciones"  class="radio-option-H">
+                <input type="radio" [id]="opcion.ID_OPCION" [value]="opcion.ID_OPCION" name="Respuesta1">
+                <label [for]="opcion.ID_OPCION" class="light"><img class="imagenopcion" src="http://localhost:3001/ObtenerArchivo/3/{{opcion.IMAGEN_OPCION}}"></label>
               </div>
 
           </div>

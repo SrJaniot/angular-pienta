@@ -33,6 +33,13 @@ export namespace ConfiguracionMenuLateral {
         icono:"bx entypo--flow-tree",
         texto:"Roles"
 
+      },
+      {
+        menuid: 6,
+        ruta: '/preguntas/quiz',
+        icono:"bx carbon--question-answering",
+        texto:"Preguntas"
+
       }
   ];
 }

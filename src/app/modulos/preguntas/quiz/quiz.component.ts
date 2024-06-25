@@ -30,6 +30,7 @@ export class QuizComponent implements OnInit {
   showPreguntaEditModal = false;
   showPreguntaEliminarModal = false;
   showPreguntaListaModal = false;
+  showPreguntaPreviewModal = false;
 
 
 
@@ -195,5 +196,14 @@ export class QuizComponent implements OnInit {
 
   closeEliminarOpcionForm() {
     this.showOpcionEliminarModal = false;
+  }
+  closePreviewPreguntaForm() {
+    this.showPreguntaPreviewModal = false;
+  }
+
+  previewpregunta(id_pregunta: number) {
+    let id_pregunta_strinng = id_pregunta.toString()
+    this.tuIdDePregunta = id_pregunta_strinng// El ID del contexto que quieres editar
+    this.showPreguntaPreviewModal = true;
   }
 }

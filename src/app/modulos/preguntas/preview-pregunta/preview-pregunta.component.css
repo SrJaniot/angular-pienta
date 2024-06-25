@@ -82,6 +82,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Esto crea dos columnas de igual tamaño */
     gap: 10px; /* Esto añade un espacio de 10px entre los elementos */
+
   }
 
   .imagenopcion{
