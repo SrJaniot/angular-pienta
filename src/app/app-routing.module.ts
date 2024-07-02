@@ -40,6 +40,11 @@ const routes: Routes = [
     canActivate:[ValidarSesionActivaGuard]
   },
   {
+    path: 'institucion',
+    loadChildren: () => import('./modulos/institucion/institucion.module').then(m => m.InstitucionModule),
+    canActivate:[ValidarSesionActivaGuard]
+  },
+  {
     path:'',
     redirectTo:'/seguridad/login',
     pathMatch:'full'

@@ -41,7 +41,7 @@ export class OpcionEliminarComponent {
         if (data.CODIGO == 200) {
           this.quizService.eliminarOpcion(+this.OpcionId);
           this.toast.success({ detail: "Opcion eliminada correctamente", summary: 'Éxito', duration: 5000, position: 'topCenter' });
-          this.router.navigate(['/prueba/quiz']);
+          this.router.navigate(['/preguntas/quiz']);
           //cierra el modal del componente padre
           this.cerrarModal.emit(); // Emite el evento para cerrar el modal
 
@@ -57,7 +57,7 @@ export class OpcionEliminarComponent {
   }
 
   volver() {
-    this.router.navigate(['/prueba/quiz']);
+    this.router.navigate(['/preguntas/quiz']);
     this.cerrarModal.emit(); // Emite el evento para cerrar el modal
 
   }

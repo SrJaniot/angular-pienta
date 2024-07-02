@@ -29,7 +29,7 @@ export class PreguntaEliminarComponent {
     //console.log(this.contextoId);
     if (!this.PreguntaId || this.PreguntaId === ''  ||this.PreguntaId === '0') {
       // Maneja el caso en el que no se proporciona un ID de contexto
-      this.router.navigate(['/prueba/quiz']);
+      this.router.navigate(['/preguntas/quiz']);
       return;
       // Puedes mostrar un mensaje de error o redirigir a otra página
     }
@@ -57,7 +57,7 @@ export class PreguntaEliminarComponent {
   }
 
   volver() {
-    this.router.navigate(['/prueba/quiz']);
+    this.router.navigate(['/preguntas/quiz']);
     this.cerrarModal.emit(); // Emite el evento para cerrar el modal
 
   }

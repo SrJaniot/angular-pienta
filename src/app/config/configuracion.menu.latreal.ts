@@ -40,6 +40,14 @@ export namespace ConfiguracionMenuLateral {
         icono:"bx carbon--question-answering",
         texto:"Preguntas"
 
-      }
+      },
+      {
+        menuid: 7,
+        ruta: '/institucion/control',
+        icono:"bx material-symbols--apartment-rounded",
+        texto:"Institución"
+
+      },
+
   ];
 }

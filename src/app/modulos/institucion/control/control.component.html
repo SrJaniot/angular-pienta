@@ -1,0 +1,508 @@
+<!--------------------------------------------------------------SEDES------------------------------------------------------------------------------------------------------>
+
+<div class="contexto-list">
+  <h2>Sedes</h2>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ID Institución</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Teléfono</th>
+        <th>Correo</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sede of sedes">
+        <td>{{ sede.ID_SEDE }}</td>
+        <td>{{ sede.ID_INSTITUCION }}</td>
+        <td>{{ sede.NOM_SEDE }}</td>
+        <td>{{ sede.DIR_SEDE }}</td>
+        <td>{{ sede.TEL_SEDE }}</td>
+        <td>{{ sede.EMAIL_SEDE }}</td>
+
+
+        <td>
+          <button class="btn-accion" (click)="editarSede( sede.ID_SEDE)" >
+            <i class="entypo--edit" ></i> <!-- Icono de editar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarSede(sede.ID_SEDE)" >
+            <i class="material-symbols--delete"></i> <!-- Icono de eliminar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarSedeLista(sede.ID_SEDE)" >
+            <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="button-container">
+    <button class="btn-agregar" (click)="agregarSede()">Agregar Sede</button>
+    <button class="btn-buscar" (click)="listarSede()">Buscar Sede</button>
+  </div>
+</div>
+
+
+
+<ng-container *ngIf="showSedeModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeSedeForm()">X</button>
+      <app-sede></app-sede>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showSedeListaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closeSedeListaForm()">X</button>
+      <app-sede-listar></app-sede-listar>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showSedeEditModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeSedeEditForm()">X</button>
+      <app-sede-editar [sedeID]="tuIdDeSede"></app-sede-editar>
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="showSedeEliminarModal">
+  <div class="modal">
+    <div class="modal-content">
+      <app-sede-eliminar [sedeID]="tuIdDeSede" (cerrarModal)="closeSedeEliminarForm()" ></app-sede-eliminar>
+    </div>
+  </div>
+</ng-container>
+
+
+<!--------------------------------------------------------------AREAS ESTUDIO------------------------------------------------------------------------------------------------------>
+
+<div class="contexto-list">
+  <h2>Areas Estudio</h2>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ID Sede</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let area_estudio of areas_estudio">
+        <td>{{ area_estudio.ID_AREA_ESTUDIO }}</td>
+        <td>{{ area_estudio.ID_SEDE }}</td>
+        <td>{{ area_estudio.NOM_AREA_ESTUDIO }}</td>
+        <td>{{ area_estudio.DESCRIPCION_AREA_ESTUDIO }}</td>
+
+        <td>
+          <button class="btn-accion" (click)="editarArea( area_estudio.ID_AREA_ESTUDIO)" >
+            <i class="entypo--edit" ></i> <!-- Icono de editar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarArea(area_estudio.ID_AREA_ESTUDIO)" >
+            <i class="material-symbols--delete"></i> <!-- Icono de eliminar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarAreaLista(area_estudio.ID_AREA_ESTUDIO)" >
+            <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="button-container">
+    <button class="btn-agregar" (click)="agregarArea()">Agregar Area</button>
+    <button class="btn-buscar" (click)="listarArea()">Buscar Area</button>
+  </div>
+</div>
+
+
+<ng-container *ngIf="showAreaModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeAreaForm()">X</button>
+      <app-area-estudio></app-area-estudio>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showAreaListaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closeAreaListaForm()">X</button>
+      <app-area-estudio-listar></app-area-estudio-listar>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showAreaEditModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeAreaEditForm()">X</button>
+      <app-area-estudio-editar [AreaID]="tuIdDeArea"></app-area-estudio-editar>
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="showAreaEliminarModal">
+  <div class="modal">
+    <div class="modal-content">
+      <app-area-estudio-eliminar [AreaID]="tuIdDeArea" (cerrarModal)="closeAreaEliminarForm()" ></app-area-estudio-eliminar>
+    </div>
+  </div>
+</ng-container>
+
+
+<!---------------------------------------------------------------PROGRAMAS----------------------------------------------------------------------------------------------------->
+
+<div class="contexto-list">
+  <h2>Programas</h2>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ID Area</th>
+        <th>Nombre Programa</th>
+        <th>Descripción</th>
+        <th>Tipo Formación</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let programa of programas_estudio">
+        <td>{{ programa.ID_PROGRAMA_ESTUDIO }}</td>
+        <td>{{ programa.ID_AREA_ESTUDIO }}</td>
+        <td>{{ programa.NOM_PROGRAMA_ESTUDIO }}</td>
+        <td>{{ programa.DESCRIPCION_PROGRAMA_ESTUDIO }}</td>
+        <td>{{ programa.TIPO_FORMACION_PROGRAMA_ESTUDIO }}</td>
+
+
+        <td>
+          <button class="btn-accion" (click)="editarPrograma( programa.ID_PROGRAMA_ESTUDIO)" >
+            <i class="entypo--edit" ></i> <!-- Icono de editar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarPrograma( programa.ID_PROGRAMA_ESTUDIO)" >
+            <i class="material-symbols--delete"></i> <!-- Icono de eliminar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarProgramaLista( programa.ID_PROGRAMA_ESTUDIO)" >
+            <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="button-container">
+    <button class="btn-agregar" (click)="agregarPrograma()">Agregar Programa</button>
+    <button class="btn-buscar" (click)="listarPrograma()">Buscar Programa</button>
+  </div>
+</div>
+
+
+<ng-container *ngIf="showProgramaModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeProgramaForm()">X</button>
+      <app-programa-estudio></app-programa-estudio>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showProgramaListaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closeProgramaListaForm()">X</button>
+      <app-programa-estudio-listar></app-programa-estudio-listar>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showProgramaEditModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeProgramaEditForm()">X</button>
+      <app-programa-estudio-editar [ProgramaID]="tuIdDePrograma"></app-programa-estudio-editar>
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="showSedeEliminarModal">
+  <div class="modal">
+    <div class="modal-content">
+      <app-programa-estudio-eliminar [ProgramaID]="tuIdDePrograma" (cerrarModal)="closeProgramaEliminarForm()" ></app-programa-estudio-eliminar>
+    </div>
+  </div>
+</ng-container>
+
+<!---------------------------------------------------------------GRUPOS----------------------------------------------------------------------------------------------------->
+
+<div class="contexto-list">
+  <h2>Grupos</h2>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ID Programa</th>
+        <th>Nombre Grupo</th>
+        <th>Descripción</th>
+        <th>Jornada</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let grupo of grupos_estudio">
+        <td>{{ grupo.ID_GRUPO_ESTUDIO }}</td>
+        <td>{{ grupo.ID_PROGRAMA_ESTUDIO }}</td>
+        <td>{{ grupo.NOM_GRUPO_ESTUDIO }}</td>
+        <td>{{ grupo.DESCRIPCION_GRUPO_ESTUDIO }}</td>
+        <td>{{ grupo.JORNADA_GRUPO_ESTUDIO }}</td>
+
+        <td>
+          <button class="btn-accion" (click)="editarGrupo( grupo.ID_GRUPO_ESTUDIO)" >
+            <i class="entypo--edit" ></i> <!-- Icono de editar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarGrupo( grupo.ID_GRUPO_ESTUDIO)" >
+            <i class="material-symbols--delete"></i> <!-- Icono de eliminar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarGrupoLista( grupo.ID_GRUPO_ESTUDIO)" >
+            <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="button-container">
+    <button class="btn-agregar" (click)="agregarGrupo()">Agregar Grupo</button>
+    <button class="btn-buscar" (click)="listarGrupo()">Buscar Grupo</button>
+  </div>
+
+</div>
+
+
+<ng-container *ngIf="showGrupoModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeGrupoForm()">X</button>
+      <app-grupo-estudio></app-grupo-estudio>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showGrupoListaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closeGrupoListaForm()">X</button>
+      <app-grupo-estudio-listar></app-grupo-estudio-listar>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showGrupoEditModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeGrupoEditForm()">X</button>
+      <app-grupo-estudio-editar [GrupoID]="tuIdDeGrupo"></app-grupo-estudio-editar>
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="showGrupoEliminarModal">
+  <div class="modal">
+    <div class="modal-content">
+      <app-grupo-estudio-eliminar [GrupoID]="tuIdDeGrupo" (cerrarModal)="closeGrupoEliminarForm()" ></app-grupo-estudio-eliminar>
+    </div>
+  </div>
+</ng-container>
+
+
+<!---------------------------------------------------------------Estudiantes----------------------------------------------------------------------------------------------------->
+
+<div class="contexto-list">
+  <h2>Estudiantes</h2>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>Documento</th>
+        <th>Tipo Documento</th>
+        <th>ID Grupo</th>
+        <th>Nombre Estudiante</th>
+        <th>Correo</th>
+        <th>Telefono</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let estudiante of estudiantes">
+        <td>{{ estudiante.ID_ESTUDIANTE }}</td>
+        <td>{{ estudiante.TIPO_DOCUMENTO }}</td>
+        <td>{{ estudiante.ID_GRUPO_ESTUDIO }}</td>
+        <td>{{ estudiante.NOM_ESTUDIANTE }}</td>
+        <td>{{ estudiante.EMAIL_ESTUDIANTE }}</td>
+        <td>{{ estudiante.TEL_ESTUDIANTE }}</td>
+
+        <td>
+          <button class="btn-accion" (click)="editarEstudiante( estudiante.ID_ESTUDIANTE)" >
+            <i class="entypo--edit" ></i> <!-- Icono de editar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarEstudiante( estudiante.ID_ESTUDIANTE)" >
+            <i class="material-symbols--delete"></i> <!-- Icono de eliminar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarEstudianteLista( estudiante.ID_ESTUDIANTE)" >
+            <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="button-container">
+    <button class="btn-agregar" (click)="agregarEstudiante()">Agregar Estudiante</button>
+    <button class="btn-buscar" (click)="listarEstudiante()">Buscar Estudiante</button>
+  </div>
+</div>
+
+
+<ng-container *ngIf="showEstudianteModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeEstudianteForm()">X</button>
+      <app-estudiante></app-estudiante>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showEstudianteListaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closeEstudianteListaForm()">X</button>
+      <app-estudiante-listar></app-estudiante-listar>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showEstudianteEditModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeEstudianteEditForm()">X</button>
+      <app-estudiante-editar [EstudianteID]="tuIdDeEstudiante"></app-estudiante-editar>
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="showEstudianteEliminarModal">
+  <div class="modal">
+    <div class="modal-content">
+      <app-estudiante-eliminar [EstudianteID]="tuIdDeEstudiante" (cerrarModal)="closeEstudianteEliminarForm()" ></app-estudiante-eliminar>
+    </div>
+  </div>
+</ng-container>
+
+<!---------------------------------------------------------------TUTORES----------------------------------------------------------------------------------------------------->
+
+
+<div class="contexto-list">
+  <h2>Tutores</h2>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>ID Tutor</th>
+        <th>Area Evaluar</th>
+        <th>Nombre Tutor</th>
+        <th>Correo</th>
+        <th>Telefono</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tutor of tutores">
+        <td>{{ tutor.ID_TUTOR }}</td>
+        <td>{{ tutor.NOM_AREA_EVALUAR }}</td>
+        <td>{{ tutor.NOM_TUTOR }}</td>
+        <td>{{ tutor.EMAIL_TUTOR }}</td>
+        <td>{{ tutor.TEL_TUTOR }}</td>
+
+        <td>
+          <button class="btn-accion" (click)="editarTutor( tutor.ID_TUTOR)" >
+            <i class="entypo--edit" ></i> <!-- Icono de editar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarTutor( tutor.ID_TUTOR)" >
+            <i class="material-symbols--delete"></i> <!-- Icono de eliminar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarTutorLista( tutor.ID_TUTOR)" >
+            <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="button-container">
+    <button class="btn-agregar" (click)="agregarTutor()">Agregar Tutor</button>
+    <button class="btn-buscar" (click)="listarTutor()">Buscar Tutor</button>
+  </div>
+</div>
+
+
+<ng-container *ngIf="showTutorModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeTutorForm()">X</button>
+      <app-tutor></app-tutor>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showTutorListaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closeTutorListaForm()">X</button>
+      <app-tutor-listar></app-tutor-listar>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showTutorEditModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeTutorEditForm()">X</button>
+      <app-tutor-editar [TutorID]="tuIdDeTutor"></app-tutor-editar>
+    </div>
+  </div>
+</ng-container>
+
+
+
+<ng-container *ngIf="showTutorEliminarModal">
+  <div class="modal">
+    <div class="modal-content">
+      <app-tutor-eliminar [TutorID]="tuIdDeTutor" (cerrarModal)="closeTutorEliminarForm()" ></app-tutor-eliminar>
+    </div>
+  </div>
+</ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
