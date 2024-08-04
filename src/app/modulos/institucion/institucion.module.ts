@@ -27,6 +27,9 @@ import { TutorComponent } from './tutor/tutor.component';
 import { TutorEditarComponent } from './tutor-editar/tutor-editar.component';
 import { TutorEliminarComponent } from './tutor-eliminar/tutor-eliminar.component';
 import { TutorListarComponent } from './tutor-listar/tutor-listar.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -59,7 +62,12 @@ import { TutorListarComponent } from './tutor-listar/tutor-listar.component';
   ],
   imports: [
     CommonModule,
-    InstitucionRoutingModule
+    InstitucionRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+
   ]
 })
 export class InstitucionModule { }

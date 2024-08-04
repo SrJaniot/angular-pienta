@@ -1,1 +1,27 @@
-<p>area-estudio works!</p>
+
+
+
+ <div class="contenido-contexto">
+     <form [formGroup]="AreaForm" >
+
+         <!-- ID_SEDE-->
+         <select formControlName="id_sede" >
+             <!-- Los datos que vayas añadir aquí-->
+             <option *ngFor="let sede of Sedes" [value]="sede.ID_SEDE"  >{{sede.NOM_SEDE}}</option>
+         </select>
+
+          <!-- Nombre área de estudio -->
+       <label for="nombre">Nombre área de estudio</label>
+       <input id="nombre" formControlName="nombre" required type="text" >
+
+
+         <!-- Descripción área de estudio -->
+       <label for="descripcion">Descripción</label>
+       <textarea id="descripcion" formControlName="descripcion" required></textarea>
+
+
+         <div class="button-container">
+             <button [disabled]="!AreaForm.valid" (click)="onSubmit()" class="btn" type="submit">Agregar Área de estudio</button>
+         </div>
+     </form>
+   </div>

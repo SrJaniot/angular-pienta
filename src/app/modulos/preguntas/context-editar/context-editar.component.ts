@@ -37,7 +37,7 @@ export class EditarContextComponent extends ContextComponent implements OnInit {
     //console.log(this.contextoId);
     if (!this.contextoId || this.contextoId === '' || this.contextoId === '1' || this.contextoId === '0') {
       // Maneja el caso en el que no se proporciona un ID de contexto
-      this.router.navigate(['/prueba/quiz']);
+      this.router.navigate(['/preguntas/quiz']);
       return;
       // Puedes mostrar un mensaje de error o redirigir a otra página
 

@@ -1,1 +1,44 @@
-<p>area-estudio-listar works!</p>
+<div class="desktop-container ">
+  <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar" class="filter-input">
+    <div class="table-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Columna de id -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.ID_AREA_ESTUDIO}} </td>
+      </ng-container>
+
+      <!-- Columna de nombre_esquema -->
+      <ng-container matColumnDef="Nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.NOM_AREA_ESTUDIO}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Descripcion">
+        <th mat-header-cell *matHeaderCellDef> DescripciÓn </th>
+        <td mat-cell *matCellDef="let element"> {{element.DESCRIPCION_AREA_ESTUDIO}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="id_sede">
+        <th mat-header-cell *matHeaderCellDef> ID SEDE </th>
+        <td mat-cell *matCellDef="let element"> {{element.ID_SEDE}} </td>
+      </ng-container>
+
+
+
+      <ng-container matColumnDef="Acciones">
+        <th mat-header-cell *matHeaderCellDef> Acción </th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="agregarSede(element)" class="icon-button">
+            <i class="material-icons">add</i>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" class=" colorfondo"></mat-paginator>
+  </div>

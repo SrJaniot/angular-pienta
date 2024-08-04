@@ -5,6 +5,8 @@ import { ProgramaEstudio } from '../../../Modelos/programaestudio.model';
 import { GrupoEstudio } from '../../../Modelos/grupoestudio.model';
 import { Estudiante } from '../../../Modelos/estudiante.model';
 import { Tutor } from '../../../Modelos/tutor.modle';
+import { InstitucionService } from '../../../servicios/institucion.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-control',
@@ -64,6 +66,24 @@ export class ControlComponent {
 
 
 
+  constructor(
+    private InstitucionService: InstitucionService,
+    private toast: NgToastService,
+  ) { }
+
+  ngOnInit(): void {
+    this.sedes = this.InstitucionService.getSedes();
+    this.areas_estudio = this.InstitucionService.getAreas_estudio();
+    this.programas_estudio = this.InstitucionService.getProgramas_estudio();
+    this.grupos_estudio = this.InstitucionService.getGrupos_estudio();
+    this.estudiantes = this.InstitucionService.getEstudiantes();
+    this.tutores = this.InstitucionService.getTutores();
+  }
+
+
+
+
+
 
 
 
@@ -83,7 +103,12 @@ export class ControlComponent {
     this.showSedeEliminarModal = true;
   }
   eliminarSedeLista(id_sede: number) {
-    this.showSedeListaModal = true;
+    let id_sede_string = id_sede.toString()
+    if (id_sede_string === '0' || id_sede_string === '') {
+      this.toast.warning({detail:"ADVERTENCIA",summary:'ACCESO DENEGADO',duration:5000, position: 'topCenter'});
+      return;
+    }
+    this.InstitucionService.eliminarSede(id_sede);
   }
   agregarSede() {
     this.showSedeModal = true;
@@ -118,7 +143,12 @@ export class ControlComponent {
     this.showAreaEliminarModal = true;
   }
   eliminarAreaLista(id_area: number) {
-    this.showAreaListaModal = true;
+    let id_area_estudio_string = id_area.toString()
+    if (id_area_estudio_string === '0' || id_area_estudio_string === '') {
+      this.toast.warning({detail:"ADVERTENCIA",summary:'ACCESO DENEGADO',duration:5000, position: 'topCenter'});
+      return;
+    }
+    this.InstitucionService.eliminarArea_estudio(id_area);
   }
   agregarArea() {
     this.showAreaModal = true;

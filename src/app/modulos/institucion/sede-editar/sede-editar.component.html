@@ -1,1 +1,37 @@
-<p>sede-editar works!</p>
+
+
+
+<div class="contenido-contexto">
+  <form [formGroup]="institucionForm" >
+
+      <!-- ID_INSTITUCIÓN-->
+      <select formControlName="institucion">
+          <!-- Los datos que vayas añadir aquí-->
+          <option *ngFor="let institucion of Instituciones" [value]="institucion.ID_INSTITUCION">{{institucion.NOM_INSTITUCION}}</option>
+      </select>
+
+       <!-- Nombre sede -->
+    <label for="nombre">Nombre Sede</label>
+    <input id="nombre" formControlName="nombre" required type="text" >
+
+
+
+      <!-- Dirección -->
+      <label for="autor">Dirección</label>
+      <input id="autor" formControlName="direccion" required type="text">
+
+      <!-- Teléfono -->
+      <label for="autor">Teléfono</label>
+      <input id="autor" formControlName="telefono" required type="text">
+
+      <!-- Email -->
+      <!-- Tener en cuenta que es de la persona quién está a cargo o en su debido caso, el subdirector -->
+      <label for="autor">Email del encargado</label>
+      <input id="autor" formControlName="email" required type="text">
+
+
+      <div class="button-container">
+          <button [disabled]="!institucionForm.valid" (click)="onSubmit()" class="btn" type="submit">Agregar Sede</button>
+      </div>
+  </form>
+</div>

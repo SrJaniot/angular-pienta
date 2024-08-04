@@ -94,6 +94,8 @@
         <th>ID Sede</th>
         <th>Nombre</th>
         <th>Descripción</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+
       </tr>
     </thead>
     <tbody>
@@ -173,6 +175,8 @@
         <th>Nombre Programa</th>
         <th>Descripción</th>
         <th>Tipo Formación</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+
 
       </tr>
     </thead>
@@ -234,7 +238,7 @@
 </ng-container>
 
 
-<ng-container *ngIf="showSedeEliminarModal">
+<ng-container *ngIf="showProgramaEliminarModal">
   <div class="modal">
     <div class="modal-content">
       <app-programa-estudio-eliminar [ProgramaID]="tuIdDePrograma" (cerrarModal)="closeProgramaEliminarForm()" ></app-programa-estudio-eliminar>
@@ -254,6 +258,8 @@
         <th>Nombre Grupo</th>
         <th>Descripción</th>
         <th>Jornada</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+
       </tr>
     </thead>
     <tbody>
@@ -336,6 +342,8 @@
         <th>Nombre Estudiante</th>
         <th>Correo</th>
         <th>Telefono</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+
       </tr>
     </thead>
     <tbody>
@@ -417,6 +425,8 @@
         <th>Nombre Tutor</th>
         <th>Correo</th>
         <th>Telefono</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+
       </tr>
     </thead>
     <tbody>
