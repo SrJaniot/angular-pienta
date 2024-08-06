@@ -4,6 +4,6 @@ export interface ProgramaEstudio {
   ID_AREA_ESTUDIO: number;
   NOM_PROGRAMA_ESTUDIO: string;
   DESCRIPCION_PROGRAMA_ESTUDIO: string;
-  TIPO_FORMACION_PROGRAMA_ESTUDIO: string;
+  TIPO_FORMACION_PROGRAMA: string;
 
 }

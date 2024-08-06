@@ -1,1 +1,46 @@
-<p>grupo-estudio-editar works!</p>
+
+<div class="contenido-contexto">
+  <form [formGroup]="GrupoForm" >
+
+    <select formControlName="id_programa_estudio">
+      <!-- Los datos que vayas añadir aquí-->
+
+      <option *ngFor="let programa of ProgramasEstudio" [value]="programa.ID_PROGRAMA_ESTUDIO" >{{programa.NOM_PROGRAMA_ESTUDIO}}</option>
+
+    </select>
+
+      <!-- ID_NUMERO_DE_GRUPO -->
+     <label for="nombre">Id numero de grupo</label>
+     <input id="nombre" formControlName="id_grupo_estudio" required type="text" >
+
+      <!-- ID_Programa de estudio-->
+
+
+       <!-- Nombre Grupo de estudio -->
+    <label for="nombre">Nombre Grupo de estudio</label>
+    <input id="nombre" formControlName="nombre" required type="text" >
+
+    <!-- Jornada-->
+    <label for="nombre">Jornada</label>
+    <select formControlName="jornada">
+     <!-- Los datos que vayas añadir aquí-->
+
+     <option value="MAÑANA">Mañana</option>
+     <option value="TARDE">Tarde</option>
+     <option value="NOCHE">Noche</option>
+     <option value="MIXTA">Mixta</option>
+     <option value="VIRTUAL">Virtual</option>
+     <option value="DISTANCIA">A distancia</option>
+
+
+ </select>
+
+      <!-- Descripción Grupo de estudio -->
+    <label for="descripcion">Descripción</label>
+    <textarea id="descripcion" formControlName="descripcion" required></textarea>
+
+      <div class="button-container">
+          <button [disabled]="!GrupoForm.valid" (click)="onSubmit()" class="btn" type="submit">Agregar Programa de estudio</button>
+      </div>
+  </form>
+</div>

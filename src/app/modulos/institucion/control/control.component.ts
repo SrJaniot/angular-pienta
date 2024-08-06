@@ -183,7 +183,13 @@ export class ControlComponent {
     this.showProgramaEliminarModal = true;
   }
   eliminarProgramaLista(id_programa: number) {
-    this.showProgramaListaModal = true;
+    let id_programa_estudio_string = id_programa.toString()
+    if (id_programa_estudio_string === '0' || id_programa_estudio_string === '') {
+      this.toast.warning({detail:"ADVERTENCIA",summary:'ACCESO DENEGADO',duration:5000, position: 'topCenter'});
+      return;
+    }
+    this.InstitucionService.eliminarPrograma_estudio(id_programa);
+
   }
   agregarPrograma() {
     this.showProgramaModal = true;
@@ -224,7 +230,12 @@ export class ControlComponent {
     this.showGrupoEliminarModal = true;
   }
   eliminarGrupoLista(id_grupo: number) {
-    this.showGrupoListaModal = true;
+    let id_grupo_estudio_string = id_grupo.toString()
+    if (id_grupo_estudio_string === '0' || id_grupo_estudio_string === '') {
+      this.toast.warning({detail:"ADVERTENCIA",summary:'ACCESO DENEGADO',duration:5000, position: 'topCenter'});
+      return;
+    }
+    this.InstitucionService.eliminarGrupo_estudio(id_grupo);
   }
   agregarGrupo() {
     this.showGrupoModal = true;

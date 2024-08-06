@@ -10,6 +10,12 @@ import { RespuestaServerObtenerSedes } from '../Modelos/RespuestaServerObtenerSe
 import { RespuestaServerCrearAreaEstudio } from '../Modelos/RespuestaServerCrearAreaEstudio.model';
 import { RespuestaServerObtenerAreasEstudios } from '../Modelos/RespuestaServerObtenerAreasEstudios.model';
 import { RespuestaServerObtenerAreaEstudio } from '../Modelos/RespuestaServerObtenerAreaEstudio.model';
+import { RespuestaServerCrearProgramaEstudio } from '../Modelos/RespuestaServerCrearProgramaEstudio.model';
+import { RespuestaServerObtenerProgramasEstudios } from '../Modelos/RespuestaServerObtenerProgramasEstudios.model';
+import { RespuestaServerObtenerProgramaEstudio } from '../Modelos/RespuestaServerObtenerProgramaEstudio.model';
+import { RespuestaServerCrearGrupoEstudio } from '../Modelos/RespuestaServerCrearGrupoEstudio.model';
+import { RespuestaServerObtenerGrupoEstudios } from '../Modelos/RespuestaServerObtenerGrupoEstudios.model';
+import { RespuestaServerObtenerGrupoEstudio } from '../Modelos/RespuestaServerObtenerGrupoEstudio.model';
 
 @Injectable({
   providedIn: 'root'
@@ -95,6 +101,81 @@ export class InstitucionBackendConectionService {
       id: id
     });
   }
+
+
+  //Funciones del modulo PROGRAMA DE ESTUDIO ---------------------------------------------------------------------------------------------------------------------
+
+  CrearProgramaEstudio(nombre: string, descripcion: string, id_area_estudio: number, tipo_formacion: string): Observable<RespuestaServerCrearProgramaEstudio> {
+
+    return this.http.post(`${this.url_ms_negocio}CrearProgramaEstudio`, {
+      Nom_ProgramaEstudio: nombre,
+      Descripcion_ProgramaEstudio: descripcion,
+      Tipo_Formacion: tipo_formacion,
+      id_area_estudio: id_area_estudio,
+    });
+  }
+
+  ObtenerProgramasEstudios():Observable<RespuestaServerObtenerProgramasEstudios>{
+    return this.http.get(this.url_ms_negocio + 'ObtenerProgramasEstudio');
+  }
+
+  ObtenerProgramaEstudioID(id: string):Observable<RespuestaServerObtenerProgramaEstudio>{
+    return this.http.get(this.url_ms_negocio + 'ObtenerProgramaEstudio/'+id);
+  }
+
+  ActualizarProgramaEstudio(id: number,nombre: string, descripcion: string, tipo_formacion:string ,id_area_estudio: number): Observable<RespuestaServer> {
+    return this.http.post(`${this.url_ms_negocio}ActualizarProgramaEstudio`, {
+      id_porgrama_estudio: id,
+      nombre_programa_estudio: nombre,
+      descripcion_porgrama_estudio: descripcion,
+      tipo_formacion_programa_estudio: tipo_formacion,
+      id_area_estudio: id_area_estudio
+    });
+  }
+
+  EliminarProgramaEstudio(id: number): Observable<RespuestaServer> {
+    return this.http.post(`${this.url_ms_negocio}EliminarProgramaEstudio`, {
+      id: id
+    });
+  }
+
+
+
+  //Funciones del modulo GRUPO DE ESTUDIO ---------------------------------------------------------------------------------------------------------------------
+  CrearGrupoEstudio(id_grupo_estudio: number,nombre: string, descripcion: string,  jornada: string,id_programa_estudio: number): Observable<RespuestaServerCrearGrupoEstudio> {
+    return this.http.post(`${this.url_ms_negocio}CrearGrupoEstudio`, {
+      id_grupo_estudio: id_grupo_estudio,
+      Nom_GrupoEstudio: nombre,
+      Descripcion_GrupoEstudio: descripcion,
+      Jornada_GrupoEstudio: jornada,
+      id_programa_estudio: id_programa_estudio
+    });
+  }
+
+  ObtenerGruposEstudios():Observable<RespuestaServerObtenerGrupoEstudios>{
+    return this.http.get(this.url_ms_negocio + 'ObtenerGruposEstudio');
+  }
+
+  ObtenerGrupoEstudioID(id: string):Observable<RespuestaServerObtenerGrupoEstudio>{
+    return this.http.get(this.url_ms_negocio + 'ObtenerGrupoEstudio/'+id);
+  }
+
+  ActualizarGrupoEstudio(id: number,nombre: string, descripcion: string, jornada: string ,id_programa_estudio: number): Observable<RespuestaServer> {
+    return this.http.post(`${this.url_ms_negocio}ActualizarGrupoEstudio`, {
+      id_grupo_estudio: id,
+      nombre_grupo_estudio: nombre,
+      descripcion_grupo_estudio: descripcion,
+      jornada_grupo_estudio: jornada,
+      id_programa_estudio: id_programa_estudio
+    });
+  }
+
+  EliminarGrupoEstudio(id: number): Observable<RespuestaServer> {
+    return this.http.post(`${this.url_ms_negocio}EliminarGrupoEstudio`, {
+      id: id
+    });
+  }
+
 
 
 

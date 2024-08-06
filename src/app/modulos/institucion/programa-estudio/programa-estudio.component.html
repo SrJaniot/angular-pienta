@@ -1,1 +1,42 @@
-<p>programa-estudio works!</p>
+
+
+
+ <div class="contenido-contexto">
+     <form [formGroup]="ProgramaForm" >
+
+         <!-- ID_Área de estudio-->
+         <select formControlName="id_area_estudio">
+             <!-- Los datos que vayas añadir aquí-->
+
+             <option *ngFor="let area_estudio of AreasEstudio" [value]="area_estudio.ID_AREA_ESTUDIO">{{area_estudio.NOM_AREA_ESTUDIO}}</option>
+
+
+
+         </select>
+
+          <!-- Nombre programa de estudio -->
+       <label for="nombre">Nombre programa de estudio</label>
+       <input id="nombre" formControlName="nombre" required type="text" >
+
+
+         <!-- Descripción programa de estudio -->
+       <label for="descripcion">Descripción</label>
+       <textarea id="descripcion" formControlName="descripcion" required></textarea>
+
+        <!-- Tipo de formación-->
+        <label for="descripcion">Tipo de formación</label>
+        <select formControlName="tipo_formacion">
+            <!-- Los datos que vayas añadir aquí-->
+            <option value="" disabled selected>-SELECCIONAR-</option>
+            <option value="TECNICO">Técnico</option>
+            <option value="TECNOLOGO">tecnólogo</option>
+            <option value="TECNICO PROFESIONAL"> Técnico profesional </option>
+            <option value="PROFESIONAL">Profesional</option>
+        </select>
+
+
+         <div class="button-container">
+             <button [disabled]="!ProgramaForm.valid" (click)="onSubmit()" class="btn" type="submit">Agregar Programa de estudio</button>
+         </div>
+     </form>
+   </div>
