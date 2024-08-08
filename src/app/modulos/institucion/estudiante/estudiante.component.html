@@ -1,1 +1,60 @@
-<p>estudiante works!</p>
+ <div class="contenido-contexto">
+     <form [formGroup]="estudianteForm" >
+
+
+      <!-- Grupo al que pertenece-->
+        <label for="nombre">Grupo Perteneciente</label>
+            <select formControlName="id_gurpo_estudio">
+                <!-- Los datos que vayas añadir aquí-->
+                <option *ngFor="let grupo of GrupoEstudio" [value]="grupo.ID_GRUPO_ESTUDIO" value="1">{{grupo.NOM_GRUPO_ESTUDIO}}</option>
+            </select>
+
+      <!-- Nombre del estudiante -->
+        <label for="nombre">Nombre del estudiante</label>
+        <input id="nombre" formControlName="nombre" required type="text">
+
+
+
+      <!--Dirección del estudiante -->
+       <label for="nombre">Dirección</label>
+       <input id="nombre" formControlName="direccion" required type="text">
+
+      <!--Teléfono del estudiante -->
+       <label for="nombre">Teléfono</label>
+       <input id="nombre" formControlName="telefono" required type="text">
+
+      <!--Correo del estudiante -->
+        <label for="nombre">Correo</label>
+        <input id="nombre" formControlName="correo" required type="text">
+
+
+      <!--Cédula del estudiante -->
+        <label for="nombre">Documento del estudiante (SÓLO NÚMEROS)</label>
+        <input id="nombre" formControlName="num_documento" required type="text">
+
+       <!-- Tipo de documento -->
+       <label for="nombre">Tipo de documento</label>
+       <select formControlName="tipo_documento">
+        <!-- Los datos que vayas añadir aquí-->
+
+        <option value="RC">RC (Registro Civil)</option>
+        <option value="TI">TI (Tarjeta de Identidad)</option>
+        <option value="CC">CC (Cédula de Ciudadanía)</option>
+        <option value="CE">CE (Cédula de Extranjería)</option>
+        <option value="PP">PP (Pasaporte)</option>
+        <option value="PEP">PEP (Permiso Especial de Permanencia)</option>
+
+    </select>
+
+
+    <div class="checkbox-container">
+      <input id="esCorrecta" type="checkbox" formControlName="usuario_activo">
+      <label for="esCorrecta">Usuario Activo?</label>
+    </div>
+
+
+    <div class="button-container">
+      <button [disabled]="!estudianteForm.valid" (click)="onSubmit()" class="btn" type="submit">Agregar Grupo perteneciente</button>
+    </div>
+  </form>
+</div>

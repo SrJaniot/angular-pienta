@@ -1,0 +1,450 @@
+/* context.component.css */
+
+.context-form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #e3f2fd;
+}
+
+.context-form div {
+  margin-bottom: 15px;
+}
+
+.context-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.context-form input,
+.context-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.context-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.context-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .context-form {
+    padding: 15px;
+  }
+
+  .context-form div {
+    margin-bottom: 10px;
+  }
+
+  .context-form button {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+.cuerpoo::after {
+    content: "";
+    background: url("../../../../assets/img/pienta.png") repeat;
+    opacity: 0.5; /* Ajusta este valor según tus necesidades */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    background-size: 10%;
+    }
+
+.cuerpoo {
+  font-family: 'work sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow-x: hidden; /* Esconde el scroll horizontal */
+  overflow-y: auto; /* Permite el scroll vertical si es necesario */
+}
+
+
+
+.contenedor-para-formularios {
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px;
+    border-radius: 5px;
+    background-color: #ffffffc2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-height: calc(90vh - 70px); /* Ajusta este valor según la altura de tu título */
+    overflow-y: auto;
+
+}
+
+.contenido-contexto {
+    width: 100%;
+
+}
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    padding: 15px;
+    text-align: center;
+    color: #704214;
+  }
+
+
+
+    /* ESTILO PARA BOTON DE SELECCIÓN DE FORMULARIO */
+summary {
+    width: 100%;
+    background-color: #671C34;
+    color: white;
+    padding: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+
+    display: inline-block;
+    font-size: 20px;
+    text-align: center;
+    outline: none;
+    box-shadow: 0 5px #999;
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+
+summary:hover {background-color: #704214}
+
+summary:active {
+  background-color: #704214;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+    /* ESTILO PARA CONTENEDOR DE TEXTO */
+form {
+        max-width: 400px;
+        margin: 10px auto;
+        padding: 10px 20px;
+        border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    padding: 5px;
+  }
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+  input[type="text"], textarea, input[type="number"], select {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    font-size: 16px;
+    height: auto;
+    margin: 0;
+    outline: 0;
+    padding: 15px;
+    width: 100%;
+    background-color: #e8eeef;
+    color: #8a97a0;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 10px;
+  }
+
+  textarea {
+    resize: vertical; /* Permite al usuario cambiar el tamaño del textarea solo verticalmente */
+    max-width: 100%; /* Evita que el textarea sobrepase el borde del div */
+}
+
+.radio-option {
+    display: inline-block;
+    margin-right: 10px; /* Añade un espacio a la derecha de cada elemento */
+}
+
+.botonCreado {
+    width: 25%; /* Reduce el ancho */
+    margin: 0 auto;
+    margin-top: 15px; /* Centra el botón */
+    color: #ffffff;
+    background: #39A900;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    border-bottom: 4px solid #15824b;
+    transition: all 0.2s ease;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: block; /* Necesario para centrar el botón con margin: auto */
+
+}
+
+.botonCreado:hover {
+    background: #60AD39;
+    color: #ffffff;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+  .botonCreadon:active {
+    border: 0;
+    transition: all 0.2s ease;
+  }
+
+
+
+/* ... ESTILO PARA SUBIR MULTIMEDIA ... */
+
+.file-upload {
+    background-color: #ffffff;
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .file-upload-btn {
+    width: 100%;
+    margin: 0;
+    color: #ffffff;
+    background: #39A900;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    border-bottom: 4px solid #15824b;
+    transition: all 0.2s ease;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .file-upload-btn:hover {
+    background: #60AD39;
+    color: #ffffff;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .file-upload-btn:active {
+    border: 0;
+    transition: all 0.2s ease;
+  }
+
+  .file-upload-content {
+    display: none;
+    text-align: center;
+  }
+
+  .file-upload-input {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .image-upload-wrap {
+    margin-top: 10px;
+    border: 4px dashed #39A900;
+    position: relative;
+  }
+  .image-upload-wrap:hover {
+    background-color: #ffffff;
+    border: 4px dashed #39A900;
+  }
+
+  .image-dropping {
+
+    border: 4px dashed #39A900;
+
+  }
+
+
+  .drag-text {
+    text-align: center;
+  }
+
+  .drag-text h3 {
+    font-weight: 50;
+    text-transform: uppercase;
+    color: #15824b;
+    padding: 5px 0;
+  }
+
+  .file-upload-image {
+    max-height: 150px;
+    max-width: 150px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .remove-image {
+    width: 150px;
+    margin: 0;
+    color: #ffffff;
+    background: #cd4535;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    border-bottom: 4px solid #b02818;
+    transition: all 0.2s ease;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .remove-image:hover {
+    background: #c13b2a;
+    color: #ffffff;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .remove-image:active {
+    border: 0;
+    transition: all 0.2s ease;
+  }
+
+
+
+@media screen and (min-width: 480px) {
+
+    form {
+      max-width: 480px;
+    }
+
+  }
+
+
+/* ... ESTILO PARA OPCIONES ... */
+
+#Op_A, #Op_B, #Op_C, #Op_D {
+padding: 20px;
+}
+
+
+
+.btn {
+  background-color: #008CBA; /* Blue */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.4s; /* transition */
+}
+
+.btn:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.dropzone {
+  border: 2px dashed #008CBA;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.dropzone p {
+  margin: 0;
+  padding: 0;
+}
+
+
+.dropzone.dragover {
+  background-color: #f0f0f0;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+}
+
+button:disabled:hover {
+  background-color: #cccccc;
+  color: #666666;
+}
+
+
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.checkbox-container input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.checkbox-container input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-container label {
+  margin-left: 10px;
+  cursor: pointer;
+}

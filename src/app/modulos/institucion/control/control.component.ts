@@ -259,19 +259,24 @@ export class ControlComponent {
 
   //----------------------ESTUDIANTES-----------------------------------------------------------------------------------------------------------------------
 
-  editarEstudiante(id_estudiante: number) {
+  editarEstudiante(id_estudiante: string) {
     let id_estudiante_string = id_estudiante.toString()
     this.tuIdDeEstudiante = id_estudiante_string;
     this.showEstudianteEditModal = true;
   }
-  eliminarEstudiante(id_estudiante: number) {
+  eliminarEstudiante(id_estudiante: string) {
     let id_estudiante_string = id_estudiante.toString()
     this.tuIdDeEstudiante = id_estudiante_string;
     this.showEstudianteEliminarModal = true;
   }
-  eliminarEstudianteLista(id_estudiante: number) {
-    this.showEstudianteListaModal = true;
-  }
+  eliminarEstudianteLista(id_estudiante: string) {
+    let id_estudiante_string = id_estudiante.toString()
+    if (id_estudiante_string === '0' || id_estudiante_string === '') {
+      this.toast.warning({detail:"ADVERTENCIA",summary:'ACCESO DENEGADO',duration:5000, position: 'topCenter'});
+      return;
+    }
+    this.InstitucionService.eliminarEstudiante(id_estudiante);  }
+    
   agregarEstudiante() {
     this.showEstudianteModal = true;
   }

@@ -1,6 +1,6 @@
 // Estudiante.model.ts
 export interface Estudiante {
-  ID_ESTUDIANTE: number;
+  ID_ESTUDIANTE: string;
   ID_GRUPO_ESTUDIO: number;
   NOM_ESTUDIANTE: string;
   DIR_ESTUDIANTE: string;

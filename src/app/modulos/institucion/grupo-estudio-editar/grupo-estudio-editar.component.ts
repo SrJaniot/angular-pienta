@@ -85,7 +85,7 @@ export class GrupoEstudioEditarComponent  extends GrupoEstudioComponent implemen
      let nombre = this.GrupoForm.controls["nombre"].value;
      let descripcion = this.GrupoForm.controls["descripcion"].value;
      let jornada = this.GrupoForm.controls["jornada"].value;
-     let id_grupo_estudio = this.GrupoForm.controls["id_grupo_estudio"].value;
+     let id_grupo_estudio = this.GrupoID;
      let id_programa_estudio = this.GrupoForm.controls["id_programa_estudio"].value;
      //se llama al servicio de institucionBackendConectionService para actualizar la sede
      this.institucionBackendConectionService.ActualizarGrupoEstudio(+id_grupo_estudio,nombre,descripcion,jornada,+id_programa_estudio).subscribe({

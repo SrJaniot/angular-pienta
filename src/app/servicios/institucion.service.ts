@@ -184,13 +184,13 @@ export class InstitucionService {
       return false;
     }
   }
-  updateEstudiante(estudiante: Estudiante, id: number) {
+  updateEstudiante(estudiante: Estudiante, id: string) {
     let index = this.Estudiantes.findIndex(e => e.ID_ESTUDIANTE === id);
     estudiante.ID_ESTUDIANTE = id;
     this.Estudiantes[index] = estudiante;
   }
 
-  eliminarEstudiante(id: number) {
+  eliminarEstudiante(id: string) {
     let index = this.Estudiantes.findIndex(e => e.ID_ESTUDIANTE === id);
     if (index !== -1) { // Asegura que el estudiante existe antes de intentar eliminarlo
       this.Estudiantes.splice(index, 1);

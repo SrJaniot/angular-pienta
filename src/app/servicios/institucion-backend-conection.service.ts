@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ConfiguracionRutasBackend } from '../config/configuracion.rutas.backend';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {  Observable,forkJoin } from 'rxjs';
 import { RespuestaServerObtenerInstitucion } from '../Modelos/RespuestaServerObtenerInstitucion.model';
 import { RespuestaServerCrearSede } from '../Modelos/RespuestaServerCrearSede.model';
 import { RespuestaServerObtenerSede } from '../Modelos/RespuestaServerObtenerSede.model';
@@ -16,6 +16,10 @@ import { RespuestaServerObtenerProgramaEstudio } from '../Modelos/RespuestaServe
 import { RespuestaServerCrearGrupoEstudio } from '../Modelos/RespuestaServerCrearGrupoEstudio.model';
 import { RespuestaServerObtenerGrupoEstudios } from '../Modelos/RespuestaServerObtenerGrupoEstudios.model';
 import { RespuestaServerObtenerGrupoEstudio } from '../Modelos/RespuestaServerObtenerGrupoEstudio.model';
+import { map, catchError, switchMap } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { RespuestaServerObtenerEstudiantes } from '../Modelos/RespuestaServerObtenerEstudiantes.model';
+import { RespuestaServerObtenerEstudiante } from '../Modelos/RespuestaServerObtenerEstudiante.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +27,7 @@ import { RespuestaServerObtenerGrupoEstudio } from '../Modelos/RespuestaServerOb
 export class InstitucionBackendConectionService {
 
   private url_ms_negocio : string = ConfiguracionRutasBackend.url_backend_ms_negocio;
+  private url_ms_seguridad : string = ConfiguracionRutasBackend.url_backend_ms_seguridad;
 
 
   constructor(
@@ -177,7 +182,122 @@ export class InstitucionBackendConectionService {
   }
 
 
+  //Funciones del modulo ESTUDIANTE ---------------------------------------------------------------------------------------------------------------------
+  CrearEstudiante(id_grupo_estudio: number, nombre: string, direccion: string, telefono: string, correo: string, num_documento: string, tipo_documento: string, estudiante_activo: boolean): Observable<any> {
+    const negocioRequest = this.http.post<RespuestaServerCrearGrupoEstudio>(`${this.url_ms_negocio}CrearEstudiante`, {
+      id_grupo_estudio: id_grupo_estudio,
+      Nom_Estudiante: nombre,
+      Direccion_Estudiante: direccion,
+      Telefono_estudiante: telefono,
+      Correo_Estudiante: correo,
+      id_estudiante: num_documento,
+      Tipo_documento_Estudiante: tipo_documento,
+    });
+
+    return negocioRequest.pipe(
+      switchMap(negocioResponse => {
+        if (negocioResponse.CODIGO === 200) {
+          const seguridadRequest = this.http.post<any>(`${this.url_ms_seguridad}funcion-inserta-usuario-rolEstudiante-CONACTIVACION`, {
+            id_usuario: num_documento,
+            nombre: nombre,
+            correo: correo,
+            celular: telefono,
+            clave: num_documento,
+            cuenta_activa: estudiante_activo,
+          });
+
+          return seguridadRequest.pipe(
+            map(seguridadResponse => {
+              if (seguridadResponse.CODIGO === 200) {
+                return { success: true, negocioResponse, seguridadResponse };
+              } else {
+                const errorMessage = `Error en la solicitud de seguridad: ${seguridadResponse.MENSAJE || ''}`;
+                console.error(errorMessage);
+                return { success: false, error: errorMessage };
+              }
+            }),
+            catchError(error => {
+              console.error('Error en seguridadRequest:', error);
+              return throwError({ success: false, error: error.message });
+            })
+          );
+        } else {
+          const errorMessage = `Error en la solicitud de negocio: ${negocioResponse.MENSAJE || ''}`;
+          console.error(errorMessage);
+          return throwError({ success: false, error: errorMessage });
+        }
+      }),
+      catchError(error => {
+        console.error('Error en negocioRequest:', error);
+        return throwError({ success: false, error: error.message });
+      })
+    );
+  }
 
 
+  ObtenerEstudiantes():Observable<RespuestaServerObtenerEstudiantes>{
+    return this.http.get(this.url_ms_negocio + 'ObtenerEstudiantes');
+  }
+
+  ObtenerEstudiante(id: string):Observable<RespuestaServerObtenerEstudiante>{
+    return this.http.get(this.url_ms_negocio + 'ObtenerEstudiante/'+id);
+  }
+
+
+  ActualizarEstudiante(id_grupo_estudio: number, nombre: string, direccion: string, telefono: string, correo: string, num_documento: string, tipo_documento: string, estudiante_activo: boolean): Observable<any> {
+    const negocioRequest = this.http.post<any>(`${this.url_ms_negocio}ActualizarEstudiante`, {
+      num_documento: num_documento,
+      nombre: nombre,
+      direccion: direccion,
+      telefono: telefono,
+      correo: correo,
+      id_grupo_estudio: id_grupo_estudio,
+      tipo_documento: tipo_documento,
+    });
+
+    return negocioRequest.pipe(
+      switchMap(negocioResponse => {
+        if (negocioResponse.CODIGO === 200) {
+          const seguridadRequest = this.http.post<any>(`${this.url_ms_seguridad}funcion-actualiza-usuario-rolEstudiante-CONACTIVACION`, {
+            id_usuario: num_documento,
+            nombre: nombre,
+            correo: correo,
+            celular: telefono,
+            clave: num_documento,
+            cuenta_activa: estudiante_activo,
+          });
+
+          return seguridadRequest.pipe(
+            map(seguridadResponse => {
+              if (seguridadResponse.CODIGO === 200) {
+                return { success: true, negocioResponse, seguridadResponse };
+              } else {
+                const errorMessage = `Error en la solicitud de seguridad: ${seguridadResponse.MENSAJE || ''}`;
+                console.error(errorMessage);
+                return { success: false, error: errorMessage };
+              }
+            }),
+            catchError(error => {
+              console.error('Error en seguridadRequest:', error);
+              return throwError({ success: false, error: error.message });
+            })
+          );
+        } else {
+          const errorMessage = `Error en la solicitud de negocio: ${negocioResponse.MENSAJE || ''}`;
+          console.error(errorMessage);
+          return throwError({ success: false, error: errorMessage });
+        }
+      }),
+      catchError(error => {
+        console.error('Error en negocioRequest:', error);
+        return throwError({ success: false, error: error.message });
+      })
+    );
+  }
 
 }
+
+
+
+
+
