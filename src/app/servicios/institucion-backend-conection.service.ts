@@ -20,6 +20,8 @@ import { map, catchError, switchMap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { RespuestaServerObtenerEstudiantes } from '../Modelos/RespuestaServerObtenerEstudiantes.model';
 import { RespuestaServerObtenerEstudiante } from '../Modelos/RespuestaServerObtenerEstudiante.model';
+import { RespuestaServerObtenerTutores } from '../Modelos/RespuestaServerObtenerTutores.model';
+import { RespuestaServerObtenerTutor } from '../Modelos/RespuestaServerObtenerTutor.model';
 
 @Injectable({
   providedIn: 'root'
@@ -245,13 +247,16 @@ export class InstitucionBackendConectionService {
 
 
   ActualizarEstudiante(id_grupo_estudio: number, nombre: string, direccion: string, telefono: string, correo: string, num_documento: string, tipo_documento: string, estudiante_activo: boolean): Observable<any> {
+
+    console.log(+id_grupo_estudio)
+
     const negocioRequest = this.http.post<any>(`${this.url_ms_negocio}ActualizarEstudiante`, {
       num_documento: num_documento,
       nombre: nombre,
       direccion: direccion,
       telefono: telefono,
       correo: correo,
-      id_grupo_estudio: id_grupo_estudio,
+      id_grupo_estudio: +id_grupo_estudio,
       tipo_documento: tipo_documento,
     });
 
@@ -294,6 +299,128 @@ export class InstitucionBackendConectionService {
       })
     );
   }
+
+  //Funciones del modulo TUTOR ---------------------------------------------------------------------------------------------------------------------
+  CrearTutor(id_area_evaluar: number, nombre: string, direccion: string, telefono: string, correo: string, id_tutor: number, apellido: string, tutor_activo: boolean): Observable<any> {
+    console.log("id_area_evaluar",id_area_evaluar,"nombre",nombre,"direccion",direccion,"telefono",telefono,"correo",correo,"id_tutor",id_tutor,"apellido",apellido,"tutor_activo",tutor_activo)
+
+    const negocioRequest = this.http.post<any>(`${this.url_ms_negocio}CrearTutor`,
+      {
+        Nombre: nombre,
+        Apellido: apellido,
+        id_tutor: +id_tutor,
+        direccion: direccion,
+        telefono: telefono,
+        correo: correo,
+        id_area_evaluar: +id_area_evaluar,
+      });
+
+    return negocioRequest.pipe(
+      switchMap(negocioResponse => {
+        if (negocioResponse.CODIGO === 200) {
+          const seguridadRequest = this.http.post<any>(`${this.url_ms_seguridad}funcion-inserta-usuario-rolTutor-CONACTIVACION`, {
+            id_usuario: ""+id_tutor,
+            nombre: nombre + ' ' + apellido,
+            correo: correo,
+            celular: telefono,
+            clave: ""+id_tutor,
+            cuenta_activa: tutor_activo,
+          });
+
+          return seguridadRequest.pipe(
+            map(seguridadResponse => {
+              if (seguridadResponse.CODIGO === 200) {
+                return { success: true, negocioResponse, seguridadResponse };
+              } else {
+                const errorMessage = `Error en la solicitud de seguridad: ${seguridadResponse.MENSAJE || ''}`;
+                console.error(errorMessage);
+                return { success: false, error: errorMessage };
+              }
+            }),
+            catchError(error => {
+              console.error('Error en seguridadRequest:', error);
+              return throwError({ success: false, error: error.message });
+            })
+          );
+        } else {
+          const errorMessage = `Error en la solicitud de negocio: ${negocioResponse.MENSAJE || ''}`;
+          console.error(errorMessage);
+          return throwError({ success: false, error: errorMessage });
+        }
+      }),
+      catchError(error => {
+        console.error('Error en negocioRequest:', error);
+        return throwError({ success: false, error: error.message });
+      })
+    );
+
+
+  }
+
+  ObtenerTutores():Observable<RespuestaServerObtenerTutores>{
+    return this.http.get(this.url_ms_negocio + 'ObtenerTutores');
+  }
+  ObtenerTutor(id: string):Observable<RespuestaServerObtenerTutor>{
+    return this.http.get(this.url_ms_negocio + 'ObtenerTutor/'+id);
+  }
+
+  ActualizarTutor(id_area_evaluar: number, nombre: string, direccion: string, telefono: string, correo: string, id_tutor: number, apellido: string, tutor_activo: boolean): Observable<any> {
+    console.log("id_area_evaluar",id_area_evaluar,"nombre",nombre,"direccion",direccion,"telefono",telefono,"correo",correo,"id_tutor",id_tutor,"apellido",apellido,"tutor_activo",tutor_activo)
+
+    const negocioRequest = this.http.post<any>(`${this.url_ms_negocio}ActualizarTutor`, {
+      Nombre: nombre,
+      Apellido: apellido,
+      id_tutor: +id_tutor,
+      direccion: direccion,
+      telefono: telefono,
+      correo: correo,
+      id_area_evaluar: +id_area_evaluar,
+    });
+
+    return negocioRequest.pipe(
+      switchMap(negocioResponse => {
+        if (negocioResponse.CODIGO === 200) {
+          const seguridadRequest = this.http.post<any>(`${this.url_ms_seguridad}funcion-actualiza-usuario-rolTutor-CONACTIVACION`, {
+            id_usuario: ""+id_tutor,
+            nombre: nombre + ' ' + apellido,
+            correo: correo,
+            celular: telefono,
+            clave: ""+id_tutor,
+            cuenta_activa: tutor_activo,
+          });
+
+          return seguridadRequest.pipe(
+            map(seguridadResponse => {
+              if (seguridadResponse.CODIGO === 200) {
+                return { success: true, negocioResponse, seguridadResponse };
+              } else {
+                const errorMessage = `Error en la solicitud de seguridad: ${seguridadResponse.MENSAJE || ''}`;
+                console.error(errorMessage);
+                return { success: false, error: errorMessage };
+              }
+            }),
+            catchError(error => {
+              console.error('Error en seguridadRequest:', error);
+              return throwError({ success: false, error: error.message });
+            })
+          );
+        } else {
+          const errorMessage = `Error en la solicitud de negocio: ${negocioResponse.MENSAJE || ''}`;
+          console.error(errorMessage);
+          return throwError({ success: false, error: errorMessage });
+        }
+      }),
+      catchError(error => {
+        console.error('Error en negocioRequest:', error);
+        return throwError({ success: false, error: error.message });
+      })
+    );
+  }
+
+
+
+
+
 
 }
 

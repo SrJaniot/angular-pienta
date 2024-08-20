@@ -359,7 +359,7 @@
           <button class="btn-accion" (click)="editarEstudiante( estudiante.ID_ESTUDIANTE)" >
             <i class="entypo--edit" ></i> <!-- Icono de editar -->
           </button>
-          
+
 
           <button  class="btn-accion" (click)="eliminarEstudianteLista( estudiante.ID_ESTUDIANTE)" >
             <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
@@ -431,8 +431,8 @@
     <tbody>
       <tr *ngFor="let tutor of tutores">
         <td>{{ tutor.ID_TUTOR }}</td>
-        <td>{{ tutor.NOM_AREA_EVALUAR }}</td>
         <td>{{ tutor.NOM_TUTOR }}</td>
+        <td>{{ tutor.APELLIDO_TUTOR }}</td>
         <td>{{ tutor.EMAIL_TUTOR }}</td>
         <td>{{ tutor.TEL_TUTOR }}</td>
 
@@ -440,9 +440,7 @@
           <button class="btn-accion" (click)="editarTutor( tutor.ID_TUTOR)" >
             <i class="entypo--edit" ></i> <!-- Icono de editar -->
           </button>
-          <button  class="btn-accion" (click)="eliminarTutor( tutor.ID_TUTOR)" >
-            <i class="material-symbols--delete"></i> <!-- Icono de eliminar -->
-          </button>
+
           <button  class="btn-accion" (click)="eliminarTutorLista( tutor.ID_TUTOR)" >
             <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
           </button>

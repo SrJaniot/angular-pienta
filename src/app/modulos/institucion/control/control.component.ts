@@ -276,7 +276,7 @@ export class ControlComponent {
       return;
     }
     this.InstitucionService.eliminarEstudiante(id_estudiante);  }
-    
+
   agregarEstudiante() {
     this.showEstudianteModal = true;
   }
@@ -311,7 +311,12 @@ export class ControlComponent {
     this.showTutorEliminarModal = true;
   }
   eliminarTutorLista(id_tutor: number) {
-    this.showTutorListaModal = true;
+    let id_tutor_string = id_tutor.toString()
+    if (id_tutor_string === '0' || id_tutor_string === '') {
+      this.toast.warning({detail:"ADVERTENCIA",summary:'ACCESO DENEGADO',duration:5000, position: 'topCenter'});
+      return;
+    }
+    this.InstitucionService.eliminarTutor(id_tutor);
   }
   agregarTutor() {
     this.showTutorModal = true;

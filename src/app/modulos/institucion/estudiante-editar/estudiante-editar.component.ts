@@ -94,6 +94,9 @@ export class EstudianteEditarComponent extends EstudianteComponent implements On
       let usuario_activo = this.estudianteForm.controls["usuario_activo"].value;
       let id_grupo_estudio = this.estudianteForm.controls["id_gurpo_estudio"].value;
 
+
+      //console.log(nombre,direccion,telefono,correo,num_documento,tipo_documento,usuario_activo,+id_grupo_estudio);
+
       correo = correo.toLowerCase();
 
      //se llama al servicio de institucionBackendConectionService para actualizar la sede

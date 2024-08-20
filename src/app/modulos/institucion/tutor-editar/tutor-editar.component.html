@@ -1,1 +1,52 @@
-<p>tutor-editar works!</p>
+<div class="contenido-contexto">
+  <form [formGroup]="TutorForm" >
+
+
+   <!-- Grupo al que pertenece-->
+     <label for="nombre">Area evaluar Perteneciente</label>
+         <select formControlName="id_area_evaluar">
+             <!-- Los datos que vayas añadir aquí-->
+             <option *ngFor="let area_evaluar of ListaAreasEvaluar" [value]="area_evaluar.ID_AREA_EVALUAR" value="1">{{area_evaluar.NOM_AREA_EVALUAR}}</option>
+         </select>
+
+   <!-- Nombre del estudiante -->
+     <label for="nombre">Nombre</label>
+     <input id="nombre" formControlName="nombre" required type="text">
+
+     <label for="nombre">Apellido</label>
+     <input id="nombre" formControlName="apellido" required type="text">
+
+
+
+   <!--Dirección del estudiante -->
+    <label for="nombre">Dirección</label>
+    <input id="nombre" formControlName="direccion" required type="text">
+
+   <!--Teléfono del estudiante -->
+    <label for="nombre">Teléfono</label>
+    <input id="nombre" formControlName="telefono" required type="text">
+
+   <!--Correo del estudiante -->
+     <label for="nombre">Correo</label>
+     <input id="nombre" formControlName="correo" required type="text">
+
+
+   <!--Cédula del estudiante -->
+     <label for="nombre">Documento del Tutor (SÓLO NÚMEROS)</label>
+     <input placeholder="disabled" id="nombre" formControlName="id_tutor" required type="text" [readonly]="true">
+
+
+
+
+
+ <div class="checkbox-container">
+   <input id="esCorrecta" type="checkbox" formControlName="usuario_activo">
+   <label for="esCorrecta">Usuario Activo?</label>
+ </div>
+
+
+ <div class="button-container">
+   <button [disabled]="!TutorForm.valid" (click)="onSubmit()" class="btn" type="submit">Agregar Grupo perteneciente</button>
+ </div>
+</form>
+</div>
