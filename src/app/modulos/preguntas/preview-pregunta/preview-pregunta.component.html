@@ -4,7 +4,7 @@
     <form>
             <label class="contextotexto">{{Contexto.DESC_CONTEXTO}}</label>
 
-            <img class="imagencontexto" src="http://localhost:3001/ObtenerArchivo/1/{{Contexto.LINK_MEDIA}}">
+            <img class="imagencontexto" src="http://127.0.0.1:3001/ObtenerArchivo/1/{{Contexto.LINK_MEDIA}}">
 
             <label class="preguntatexto" for="pregunta"> {{Pregunta.ENUNCIADO_PREGUNTA}} </label>
 
@@ -19,7 +19,7 @@
 <!-- PREVIEW PREGUNTA CON: CONTEXTO IMAGEN, PREGUNTA TEXTO, ALINEACION ESTANDAR, OPCIONES TEXTO-->
 <div *ngIf="Contexto.ID_CONTEXTO != 1 && Contexto.TIPO_CONTEXTO == 'IMAGEN' && Pregunta.TIPO_PREGUNTA_CONTENIDO == 'TEXTO' && Pregunta.LAYOUT_PREGUNTA=='STANDARD' && Tipo_opcion=='TEXTO'" class="contenido-pregunta">
     <form >
-            <img class="imagencontexto" src="http://localhost:3001/ObtenerArchivo/1/{{Contexto.LINK_MEDIA}}">
+            <img class="imagencontexto" src="http://127.0.0.1:3001/ObtenerArchivo/1/{{Contexto.LINK_MEDIA}}">
 
             <label class="preguntatexto" for="pregunta"> {{Pregunta.ENUNCIADO_PREGUNTA}} </label>
 
@@ -51,7 +51,7 @@
     <form >
             <label class="contextotexto">{{Contexto.DESC_CONTEXTO}}</label>
 
-            <img class="imagencontexto" src="http://localhost:3001/ObtenerArchivo/1/{{Contexto.LINK_MEDIA}}">
+            <img class="imagencontexto" src="http://127.0.0.1:3001/ObtenerArchivo/1/{{Contexto.LINK_MEDIA}}">
 
             <label class="preguntatexto" for="pregunta"> {{Pregunta.ENUNCIADO_PREGUNTA}} </label>
 
@@ -70,7 +70,7 @@
 <div *ngIf="Contexto.ID_CONTEXTO != 1 && Contexto.TIPO_CONTEXTO == 'IMAGEN' && Pregunta.TIPO_PREGUNTA_CONTENIDO == 'TEXTO' && Pregunta.LAYOUT_PREGUNTA=='HORIZONTAL' && Tipo_opcion=='TEXTO'" class="contenido-pregunta">
   <form >
 
-          <img class="imagencontexto" src="http://localhost:3001/ObtenerArchivo/1/{{Contexto.LINK_MEDIA}}">
+          <img class="imagencontexto" src="http://127.0.0.1:3001/ObtenerArchivo/1/{{Contexto.LINK_MEDIA}}">
 
           <label class="preguntatexto" for="pregunta"> {{Pregunta.ENUNCIADO_PREGUNTA}} </label>
 
@@ -91,7 +91,7 @@
     <form>
             <label class="contextotexto">{{Contexto.DESC_CONTEXTO}}</label>
 
-            <img class="imagencontexto" src="http://localhost:3001/ObtenerArchivo/1/{{Contexto.LINK_MEDIA}}">
+            <img class="imagencontexto" src="http://127.0.0.1:3001/ObtenerArchivo/1/{{Contexto.LINK_MEDIA}}">
 
             <label class="preguntatexto" for="pregunta">{{Pregunta.ENUNCIADO_PREGUNTA}} </label>
 
@@ -99,7 +99,7 @@
 
                 <div *ngFor="let opcion of Opciones" class="radio-option-H">
                   <input type="radio" [id]="opcion.ID_OPCION" [value]="opcion.ID_OPCION" name="Respuesta1">
-                  <label [for]="opcion.ID_OPCION" class="light"><img class="imagenopcion" src="http://localhost:3001/ObtenerArchivo/3/{{opcion.IMAGEN_OPCION}}"></label>
+                  <label [for]="opcion.ID_OPCION" class="light"><img class="imagenopcion" src="http://127.0.0.1:3001/ObtenerArchivo/3/{{opcion.IMAGEN_OPCION}}"></label>
                 </div>
 
 
@@ -112,7 +112,7 @@
   <form>
           <label class="contextotexto">{{Contexto.DESC_CONTEXTO}}</label>
 
-          <img class="imagencontexto" src="http://localhost:3001/ObtenerArchivo/1/{{Contexto.LINK_MEDIA}}">
+          <img class="imagencontexto" src="http://127.0.0.1:3001/ObtenerArchivo/1/{{Contexto.LINK_MEDIA}}">
 
           <label class="preguntatexto" for="pregunta">{{Pregunta.ENUNCIADO_PREGUNTA}} </label>
 
@@ -133,7 +133,7 @@
   <form>
           <label class="contextotexto">{{Contexto.DESC_CONTEXTO}}</label>
 
-          <img class="imagencontexto" src="http://localhost:3001/ObtenerArchivo/1/{{Contexto.LINK_MEDIA}}">
+          <img class="imagencontexto" src="http://127.0.0.1:3001/ObtenerArchivo/1/{{Contexto.LINK_MEDIA}}">
 
           <label class="preguntatexto" for="pregunta"> {{Pregunta.ENUNCIADO_PREGUNTA}} </label>
 
@@ -141,7 +141,7 @@
 
               <div *ngFor="let opcion of Opciones" class="radio-option-H">
                 <input type="radio" [id]="opcion.ID_OPCION" [value]="opcion.ID_OPCION" name="Respuesta1">
-                <label [for]="opcion.ID_OPCION" class="light"><img class="imagenopcion" src="http://localhost:3001/ObtenerArchivo/3/{{opcion.IMAGEN_OPCION}}"></label>
+                <label [for]="opcion.ID_OPCION" class="light"><img class="imagenopcion" src="http://127.0.0.1:3001/ObtenerArchivo/3/{{opcion.IMAGEN_OPCION}}"></label>
               </div>
 
           </div>
@@ -168,7 +168,7 @@
 
               <div *ngFor="let opcion of Opciones"  class="radio-option-H">
                 <input type="radio" [id]="opcion.ID_OPCION" [value]="opcion.ID_OPCION" name="Respuesta1">
-                <label [for]="opcion.ID_OPCION" class="light"><img class="imagenopcion" src="http://localhost:3001/ObtenerArchivo/3/{{opcion.IMAGEN_OPCION}}"></label>
+                <label [for]="opcion.ID_OPCION" class="light"><img class="imagenopcion" src="http://127.0.0.1:3001/ObtenerArchivo/3/{{opcion.IMAGEN_OPCION}}"></label>
               </div>
 
           </div>

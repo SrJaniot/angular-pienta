@@ -68,6 +68,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatTableModule,
     MatPaginatorModule,
 
+  ],
+  exports: [
+    GrupoEstudioListarComponent,
+    EstudianteListarComponent
   ]
 })
 export class InstitucionModule { }

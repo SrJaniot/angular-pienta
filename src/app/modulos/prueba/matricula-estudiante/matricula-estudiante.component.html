@@ -1,0 +1,20 @@
+
+
+
+<div class="contenido-contexto">
+  <form [formGroup]="matriculaForm" >
+
+      <!-- ID_SEDE-->
+      <select formControlName="id_prueba" >
+          <!-- Los datos que vayas añadir aquí-->
+          <option value='' disabled>Seleccione la prueba a matricular</option>
+          <option *ngFor="let prueba of Pruebas" [value]="prueba.ID_PRUEBA"  >{{prueba.ID_PRUEBA+"-"+prueba.NOM_PRUEBA}}</option>
+      </select>
+
+
+
+      <div class="button-container">
+          <button [disabled]="!matriculaForm.valid" (click)="onSubmit()" class="btn" type="submit">Matricular</button>
+      </div>
+  </form>
+</div>

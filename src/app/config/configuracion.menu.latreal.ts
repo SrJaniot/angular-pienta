@@ -8,7 +8,7 @@ export namespace ConfiguracionMenuLateral {
       },
       {
         menuid: 2,
-        ruta: '/prueba',
+        ruta: '/prueba/control',
         icono:"bx entypo--book",
         texto:"Prueba"
 

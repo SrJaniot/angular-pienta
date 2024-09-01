@@ -1,0 +1,102 @@
+<div *ngFor="let contexto of Contextos">
+  <ng-container *ngFor="let pregunta of Preguntas">
+    <div *ngIf="pregunta.ID_CONTEXTO === contexto.ID_CONTEXTO">
+      <!-- PREVIEW PREGUNTA CON: CONTEXTO TEXTO IMAGEN, PREGUNTA TEXTO, ALINEACION ESTANDAR, OPCIONES TEXTO -->
+      <div *ngIf="contexto.ID_CONTEXTO != 1 && contexto.TIPO_CONTEXTO == 'TEXTO_IMAGEN' && pregunta.TIPO_PREGUNTA_CONTENIDO == 'TEXTO' && pregunta.LAYOUT_PREGUNTA=='STANDARD'" class="contenido-pregunta">
+        <form>
+          <label class="contextotexto">{{contexto.DESC_CONTEXTO}}</label>
+          <img class="imagencontexto" [src]="'http://127.0.0.1:3001/ObtenerArchivo/1/' + contexto.LINK_MEDIA">
+          <label class="preguntatexto" for="pregunta">{{pregunta.ENUNCIADO_PREGUNTA}}</label>
+          <div *ngFor="let opcion of getOpcionesPorPregunta(pregunta.ID_PREGUNTA!!)" class="radio-option-H">
+            <input type="radio" [id]="opcion.ID_OPCION" [value]="opcion.ID_OPCION" name="Respuesta1">
+            <label [for]="opcion.ID_OPCION" class="light">{{opcion.TEXTO_OPCION}}</label>
+          </div>
+        </form>
+      </div>
+
+
+      <!-- PREVIEW PREGUNTA CON: CONTEXTO IMAGEN, PREGUNTA TEXTO, ALINEACION ESTANDAR, OPCIONES TEXTO -->
+      <div *ngIf="contexto.ID_CONTEXTO != 1 && contexto.TIPO_CONTEXTO == 'IMAGEN' && pregunta.TIPO_PREGUNTA_CONTENIDO == 'TEXTO' && pregunta.LAYOUT_PREGUNTA=='STANDARD'" class="contenido-pregunta">
+        <form>
+          <img class="imagencontexto" [src]="'http://127.0.0.1:3001/ObtenerArchivo/1/' + contexto.LINK_MEDIA">
+          <label class="preguntatexto" for="pregunta">{{pregunta.ENUNCIADO_PREGUNTA}}</label>
+          <div *ngFor="let opcion of getOpcionesPorPregunta(pregunta.ID_PREGUNTA!!)" class="radio-option-H">
+            <input type="radio" [id]="opcion.ID_OPCION" [value]="opcion.ID_OPCION" name="Respuesta1">
+            <label [for]="opcion.ID_OPCION" class="light">{{opcion.TEXTO_OPCION}}</label>
+          </div>
+        </form>
+      </div>
+
+      <!-- PREVIEW PREGUNTA CON: CONTEXTO TEXTO, PREGUNTA TEXTO, ALINEACION ESTANDAR, OPCIONES TEXTO -->
+      <div *ngIf="contexto.ID_CONTEXTO != 1 && contexto.TIPO_CONTEXTO == 'TEXTO' && pregunta.TIPO_PREGUNTA_CONTENIDO == 'TEXTO' && pregunta.LAYOUT_PREGUNTA=='STANDARD'" class="contenido-pregunta">
+        <form>
+          <label class="contextotexto">{{contexto.DESC_CONTEXTO}}</label>
+          <label class="preguntatexto" for="pregunta">{{pregunta.ENUNCIADO_PREGUNTA}}</label>
+          <div *ngFor="let opcion of getOpcionesPorPregunta(pregunta.ID_PREGUNTA!!)" class="radio-option-H">
+            <input type="radio" [id]="opcion.ID_OPCION" [value]="opcion.ID_OPCION" name="Respuesta1">
+            <label [for]="opcion.ID_OPCION" class="light">{{opcion.TEXTO_OPCION}}</label>
+          </div>
+        </form>
+      </div>
+
+      <!-- PREVIEW PREGUNTA CON: CONTEXTO TEXTO IMAGEN, PREGUNTA TEXTO, ALINEACION HORIZONTAL, OPCIONES TEXTO -->
+      <div *ngIf="contexto.ID_CONTEXTO != 1 && contexto.TIPO_CONTEXTO == 'TEXTO_IMAGEN' && pregunta.TIPO_PREGUNTA_CONTENIDO == 'TEXTO' && pregunta.LAYOUT_PREGUNTA=='HORIZONTAL'" class="contenido-pregunta">
+        <form>
+          <label class="contextotexto">{{contexto.DESC_CONTEXTO}}</label>
+          <img class="imagencontexto" [src]="'http://127.0.0.1:3001/ObtenerArchivo/1/' + contexto.LINK_MEDIA">
+          <label class="preguntatexto" for="pregunta">{{pregunta.ENUNCIADO_PREGUNTA}}</label>
+          <div class="radio-options-container">
+            <div *ngFor="let opcion of getOpcionesPorPregunta(pregunta.ID_PREGUNTA!!)" class="radio-option-H">
+              <input type="radio" [id]="opcion.ID_OPCION" [value]="opcion.ID_OPCION" name="Respuesta1">
+              <label [for]="opcion.ID_OPCION" class="light">{{opcion.TEXTO_OPCION}}</label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- PREVIEW PREGUNTA CON: CONTEXTO IMAGEN, PREGUNTA TEXTO, ALINEACION HORIZONTAL, OPCIONES TEXTO -->
+      <div *ngIf="contexto.ID_CONTEXTO != 1 && contexto.TIPO_CONTEXTO == 'IMAGEN' && pregunta.TIPO_PREGUNTA_CONTENIDO == 'TEXTO' && pregunta.LAYOUT_PREGUNTA=='HORIZONTAL'" class="contenido-pregunta">
+        <form>
+          <img class="imagencontexto" [src]="'http://127.0.0.1:3001/ObtenerArchivo/1/' + contexto.LINK_MEDIA">
+          <label class="preguntatexto" for="pregunta">{{pregunta.ENUNCIADO_PREGUNTA}}</label>
+          <div class="radio-options-container">
+            <div *ngFor="let opcion of getOpcionesPorPregunta(pregunta.ID_PREGUNTA!!)" class="radio-option-H">
+              <input type="radio" [id]="opcion.ID_OPCION" [value]="opcion.ID_OPCION" name="Respuesta1">
+              <label [for]="opcion.ID_OPCION" class="light">{{opcion.TEXTO_OPCION}}</label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- PREVIEW PREGUNTA CON: CONTEXTO TEXTO IMAGEN, PREGUNTA TEXTO, ALINEACION CUADRADO, OPCIONES IMAGEN -->
+      <div *ngIf="contexto.ID_CONTEXTO != 1 && contexto.TIPO_CONTEXTO == 'TEXTO_IMAGEN' && pregunta.TIPO_PREGUNTA_CONTENIDO == 'TEXTO' && pregunta.LAYOUT_PREGUNTA=='CUADRADO' && getOpcionesPorPregunta(pregunta.ID_PREGUNTA!!)[0]?.TIPO_OPCION == 'IMAGEN'" class="contenido-pregunta">
+        <form>
+          <label class="contextotexto">{{contexto.DESC_CONTEXTO}}</label>
+          <img class="imagencontexto" [src]="'http://127.0.0.1:3001/ObtenerArchivo/1/' + contexto.LINK_MEDIA">
+          <label class="preguntatexto" for="pregunta">{{pregunta.ENUNCIADO_PREGUNTA}}</label>
+          <div class="radio-options-container-CUADRADO">
+            <div *ngFor="let opcion of getOpcionesPorPregunta(pregunta.ID_PREGUNTA!!)" class="radio-option-H">
+              <input type="radio" [id]="opcion.ID_OPCION" [value]="opcion.ID_OPCION" name="Respuesta1">
+              <label [for]="opcion.ID_OPCION" class="light"><img class="imagenopcion" [src]="'http://127.0.0.1:3001/ObtenerArchivo/3/' + opcion.IMAGEN_OPCION"></label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- PREVIEW PREGUNTA CON: CONTEXTO TEXTO IMAGEN, PREGUNTA TEXTO, ALINEACION CUADRADO, OPCIONES TEXTO -->
+      <div *ngIf="contexto.ID_CONTEXTO != 1 && contexto.TIPO_CONTEXTO == 'TEXTO_IMAGEN' && pregunta.TIPO_PREGUNTA_CONTENIDO == 'TEXTO' && pregunta.LAYOUT_PREGUNTA=='CUADRADO' && getOpcionesPorPregunta(pregunta.ID_PREGUNTA!!)[0]?.TIPO_OPCION == 'TEXTO'" class="contenido-pregunta">
+        <form>
+          <label class="contextotexto">{{contexto.DESC_CONTEXTO}}</label>
+          <img class="imagencontexto" [src]="'http://127.0.0.1:3001/ObtenerArchivo/1/' + contexto.LINK_MEDIA">
+          <label class="preguntatexto" for="pregunta">{{pregunta.ENUNCIADO_PREGUNTA}}</label>
+          <div class="radio-options-container-CUADRADO">
+            <div *ngFor="let opcion of getOpcionesPorPregunta(pregunta.ID_PREGUNTA!!)" class="radio-option-H">
+              <input type="radio" [id]="opcion.ID_OPCION" [value]="opcion.ID_OPCION" name="Respuesta1">
+              <label [for]="opcion.ID_OPCION" class="light">{{opcion.TEXTO_OPCION}}</label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- PREVIEW PREGUNTA CON: CONTEXTO TEXTO IMAGEN, PREGUNTA TEXTO, ALINEACION HORIZONTAL, OPCIONES IMAGEN -->
+

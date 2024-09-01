@@ -18,7 +18,7 @@
         <td>{{ contexto.nombre }}</td>
         <td>{{ contexto.descripcion }}</td>
         <td>{{ contexto.autor }}</td>
-        <td><a *ngIf="contexto.NombreArchivo" href="http://localhost:3001/ObtenerArchivo/1/{{contexto.NombreArchivo}}">{{ contexto.NombreArchivo}}</a></td>
+        <td><a *ngIf="contexto.NombreArchivo" href="http://127.0.0.1:3001/ObtenerArchivo/1/{{contexto.NombreArchivo}}">{{ contexto.NombreArchivo}}</a></td>
         <td>{{ contexto.tipoContexto }}</td>
 
         <td>
@@ -70,7 +70,7 @@
         <td>{{ pregunta.autor }}</td>
         <td>{{ pregunta.Area_Evaluar_nombre }}</td>
         <td>{{ pregunta.Tema_Evaluar_nombre }}</td>
-        <td><a *ngIf="pregunta.imagen_pregunta" href="http://localhost:3001/ObtenerArchivo/2/{{pregunta.imagen_pregunta}}">{{ pregunta.imagen_pregunta}}</a></td>
+        <td><a *ngIf="pregunta.imagen_pregunta" href="http://127.0.0.1:3001/ObtenerArchivo/2/{{pregunta.imagen_pregunta}}">{{ pregunta.imagen_pregunta}}</a></td>
         <td>{{ pregunta.tipo_pregunta_contenido }}</td>
         <td>{{ pregunta.layout_pregunta }}</td>
         <td>
@@ -125,7 +125,7 @@
             <i *ngIf="!opcion.esCorrecta" class="iconoir--xmark"></i>
           </div>
         </td>
-        <td><a *ngIf="opcion.imagen_opcion" href="http://localhost:3001/ObtenerArchivo/3/{{opcion.imagen_opcion}}">{{ opcion.imagen_opcion}}</a></td>
+        <td><a *ngIf="opcion.imagen_opcion" href="http://127.0.0.1:3001/ObtenerArchivo/3/{{opcion.imagen_opcion}}">{{ opcion.imagen_opcion}}</a></td>
         <td>{{ opcion.tipo_opcion }}</td>
         <td>
           <button class="btn-accion" (click)="editarOpcion(opcion.id)" >

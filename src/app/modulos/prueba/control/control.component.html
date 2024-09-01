@@ -1,0 +1,213 @@
+<!---------------------------------------------------------------Pruebas----------------------------------------------------------------------------------------------------->
+
+<div class="contexto-list">
+  <h2>Pruebas</h2>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre prueba</th>
+        <th>Descripción</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prueba of pruebas">
+        <td>{{ prueba.ID_PRUEBA }}</td>
+        <td>{{ prueba.NOM_PRUEBA }}</td>
+        <td>{{ prueba.DESCRIPCION_PRUEBA }}</td>
+
+        <td>
+          <button  class="btn-accion" (click)="eliminarPruebaLista( prueba.ID_PRUEBA)" >
+            <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="button-container">
+    <button class="btn-buscar colorpienta" (click)="CrearPruebaGenerica()">Prueba Genérica</button>
+    <button class="btn-buscar colorpienta" (click)="listarGrupo()">Prueba Custom</button>
+    <button class="btn-buscar colorpienta" (click)="listarGrupo()">Prueba Inicial</button>
+    <button class="btn-buscar colorpienta" (click)="listarGrupo()">Prueba Final</button>
+  </div>
+  <div class="button-container">
+    <button class="btn-buscar " (click)="listarPrueba()">Buscar Prueba</button>
+
+  </div>
+
+</div>
+
+<ng-container *ngIf="showPruebaListaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closePruebaListaForm()">X</button>
+      <app-prueba-listar></app-prueba-listar>
+    </div>
+  </div>
+</ng-container>
+
+
+
+
+<ng-container *ngIf="showPruebaGenericaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closePruebaGenericaForm()">X</button>
+      <app-prueba-generica></app-prueba-generica>
+    </div>
+  </div>
+</ng-container>
+
+
+
+
+
+
+
+<!---------------------------------------------------------------GRUPOS----------------------------------------------------------------------------------------------------->
+
+<div class="contexto-list">
+  <h2>Grupos</h2>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ID Programa</th>
+        <th>Nombre Grupo</th>
+        <th>Descripción</th>
+        <th>Jornada</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let grupo of grupos_estudio">
+        <td>{{ grupo.ID_GRUPO_ESTUDIO }}</td>
+        <td>{{ grupo.ID_PROGRAMA_ESTUDIO }}</td>
+        <td>{{ grupo.NOM_GRUPO_ESTUDIO }}</td>
+        <td>{{ grupo.DESCRIPCION_GRUPO_ESTUDIO }}</td>
+        <td>{{ grupo.JORNADA_GRUPO_ESTUDIO }}</td>
+
+        <td>
+          <button  class="btn-accion" (click)="MatricularGrupo( grupo.ID_GRUPO_ESTUDIO)" >
+            <i class="codicon--code-oss"></i> <!-- Icono de eliminar -->
+          </button>
+
+          <button  class="btn-accion" (click)="eliminarGrupoLista( grupo.ID_GRUPO_ESTUDIO)" >
+            <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
+          </button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="button-container">
+    <button class="btn-buscar" (click)="listarGrupo()">Buscar Grupo</button>
+  </div>
+
+</div>
+
+
+
+
+<ng-container *ngIf="showGrupoListaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closeGrupoListaForm()">X</button>
+      <app-grupo-estudio-listar></app-grupo-estudio-listar>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showGrupoMatricularModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeGrupoMatricularModal()">X</button>
+      <app-matricula-grupo [ID_grupo]="tuIdDeGrupo"></app-matricula-grupo>
+    </div>
+  </div>
+</ng-container>
+
+
+
+
+
+
+
+<!---------------------------------------------------------------Estudiantes----------------------------------------------------------------------------------------------------->
+
+<div class="contexto-list">
+  <h2>Estudiantes</h2>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>Documento</th>
+        <th>Tipo Documento</th>
+        <th>ID Grupo</th>
+        <th>Nombre Estudiante</th>
+        <th>Correo</th>
+        <th>Telefono</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let estudiante of estudiantes">
+        <td>{{ estudiante.ID_ESTUDIANTE }}</td>
+        <td>{{ estudiante.TIPO_DOCUMENTO }}</td>
+        <td>{{ estudiante.ID_GRUPO_ESTUDIO }}</td>
+        <td>{{ estudiante.NOM_ESTUDIANTE }}</td>
+        <td>{{ estudiante.EMAIL_ESTUDIANTE }}</td>
+        <td>{{ estudiante.TEL_ESTUDIANTE }}</td>
+
+        <td>
+          <button  class="btn-accion" (click)="MatricularEstudiante( estudiante.ID_ESTUDIANTE)" >
+            <i class="codicon--code-oss"></i> <!-- Icono de eliminar -->
+          </button>
+          
+          <button  class="btn-accion" (click)="eliminarEstudianteLista( estudiante.ID_ESTUDIANTE)" >
+            <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
+          </button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="button-container">
+    <button class="btn-buscar" (click)="listarEstudiante()">Buscar Estudiante</button>
+  </div>
+</div>
+
+
+
+<ng-container *ngIf="showEstudianteListaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closeEstudianteListaForm()">X</button>
+      <app-estudiante-listar></app-estudiante-listar>
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="showEstudianteMatricularModal">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="btn-estilo" (click)="closeEstudianteMatricularModal()">X</button>
+      <app-matricula-estudiante [ID_Estudiante]="tuIdDeEstudiante"></app-matricula-estudiante >
+    </div>
+  </div>
+</ng-container>
+
+
+
+
+
+
+
+
+
+

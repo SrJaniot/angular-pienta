@@ -1,0 +1,13 @@
+ARCHIVOS QUE TOCA CAMBIAR PARA QUE FUNCIONE EN EL SERVIDOR DEL SENA: CAMBIAR LAS RUTAS QUE DICEN LOCALHOST O 127.0.0.1 POR 10.200.138.62
+
+src\app\config\configuracion.rutas.backend.ts
+
+src\app\modulos\preguntas\preview-pregunta\preview-pregunta.component.html
+
+src\app\modulos\preguntas\quiz\quiz.component.html
+
+CAMBIAR LA RUTA DE INICIO POR /PIENTAS/
+
+src/index.html
+
+

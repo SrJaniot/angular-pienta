@@ -1,0 +1,52 @@
+<div class="contenido-contexto">
+  <form [formGroup]="PruebaForm">
+    <h1> Bienvenido al creador de pruebas genéricas</h1>
+
+    <h5>En este espacio usted solo colocará la cantidad de preguntas que desee realizar en la prueba y el sistema automáticamente
+      generará una prueba con preguntas aleatorias de la base de datos.
+    </h5>
+    <br>
+
+    <label for="text">Nombre de la Prueba</label>
+    <input formControlName="nombre" type="text" id="nombre" name="nombre" placeholder="Nombre de la prueba" required>
+
+
+    <label for="tipoPrueba">Tipo de prueba</label>
+    <!-- Cantidad preguntas-->
+    <select formControlName="id_area_evaluar" [(ngModel)]="tipoPruebaSeleccionada" name="tipoPrueba">
+      <option value="0" disabled selected>Seleccione un tipo de prueba</option>
+      <option value="0.1">Prueba TYT</option>
+      <option *ngFor="let area of ListaAreasEvaluar" [value]="area.ID_AREA_EVALUAR">{{area.NOM_AREA_EVALUAR}}</option>
+>
+    </select>
+
+    <label for="cantidadPreguntas" *ngIf="tipoPruebaSeleccionada>=1">Cantidad de preguntas</label>
+    <!-- Cantidad preguntas-->
+    <select formControlName="num_preguntas" *ngIf="tipoPruebaSeleccionada>=1" name="cantidadPreguntas">
+      <option value="0" disabled selected>Seleccione el numero de preguntas</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+      <option value="25">25</option>
+    </select>
+
+    <!-- Input para fecha y hora -->
+    <div class="date-input-container">
+      <label for="fechaHoraPrueba" *ngIf="tipoPruebaSeleccionada!=0">Fecha y hora Inicio de la prueba</label>
+      <input formControlName="Fecha_inicio_prueba" *ngIf="tipoPruebaSeleccionada!=0" type="datetime-local" id="fechaHoraPrueba" name="fechaHoraPrueba" >
+      <label for="fechaHoraPrueba" *ngIf="tipoPruebaSeleccionada!=0">Fecha y hora Fin de la prueba</label>
+      <input formControlName="Fecha_fin_prueba" *ngIf="tipoPruebaSeleccionada!=0" type="datetime-local" id="fechaHoraPrueba" name="fechaHoraPrueba" >
+    </div>
+
+    <div *ngIf="tipoPruebaSeleccionada!=0" id="cronometro-container">
+      <label for="cronometro">Duración de Prueba</label>
+      <input formControlName="Cantidad_minutos" type="number" id="minutos" placeholder="Cantidad en minutos" min="0">
+
+    </div>
+
+    <div class="button-container">
+      <button  [disabled]="!PruebaForm.valid" (click)="onSubmit()" class="btn" type="submit">Crear prueba genérica</button>
+    </div>
+  </form>
+</div>

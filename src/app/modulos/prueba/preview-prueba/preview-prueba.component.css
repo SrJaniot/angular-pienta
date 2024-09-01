@@ -1,0 +1,119 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.contenido-pregunta{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    font-family: 'work sans';
+
+}
+
+.contextotexto {
+  display: block; /* Añade esta línea */
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: #704214;
+  margin: 5px;
+  padding: 5px;
+}
+
+
+  .imagencontexto {
+    display: block;
+    margin: auto; /* Añade esta línea */
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    padding: 5px;
+  }
+
+  .preguntatexto{
+    display: block; /* Añade esta línea */
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    color: #000000;
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .radio-option-H {
+    display: flex;
+    align-items: flex-start; /* Cambiado a flex-start para alinear al inicio, permitiendo múltiples líneas */
+    padding: 10px;
+    min-height: 50px; /* Establece una altura mínima para cada opción */
+    max-width: 100%; /* Asegura que el contenedor no sea más ancho que su contenedor padre */
+    margin-bottom: 10px; /* Espacio entre opciones */
+    border: 1px solid #ccc; /* Opcional: Añade un borde para visualizar los límites de cada opción */
+    border-radius: 5px; /* Añade esquinas redondeadas */
+    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el cálculo del ancho/altura */
+    margin: 10px;
+}
+
+.radio-option-H input[type="radio"] {
+    margin-right: 10px; /* Espacio entre el botón de radio y el texto */
+}
+
+.radio-option-H label {
+    flex: 1; /* Permite que el label ocupe todo el espacio horizontal disponible */
+    white-space: normal; /* Cambiado a normal para permitir saltos de línea */
+    overflow: visible; /* Cambiado a visible para mostrar todo el contenido */
+    text-overflow: clip; /* Cambiado a clip para evitar elipsis y mostrar todo el texto */
+}
+
+  .radio-options-container {
+    display: flex;
+    justify-content: space-between; /* Esto añade espacio igual entre los elementos */
+  }
+
+  .radio-options-container-CUADRADO {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Esto crea dos columnas de igual tamaño */
+    gap: 10px; /* Esto añade un espacio de 10px entre los elementos */
+
+  }
+
+  .imagenopcion{
+    display: block;
+    margin: auto; /* Añade esta línea */
+    width: auto;
+    height: 150px;
+    border-radius: 10px;
+    padding: 5px;
+  }
+
+  .radio-option-HORIZONTAL {
+    display: flex; /* Cambia display a flex */
+    align-items: center; /* Alinea verticalmente los elementos hijos al centro */
+    width: 100%;
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+    overflow: hidden; /* Opcional: evita el desbordamiento del contenido */
+}
+
+
+
+/*Aca lo nuevo*/
+
+
+
+
+
