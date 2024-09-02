@@ -20,6 +20,9 @@
         <td>{{ prueba.DESCRIPCION_PRUEBA }}</td>
 
         <td>
+          <button  class="btn-accion" (click)="previewprueba(prueba.ID_PRUEBA)" >
+            <i class="tabler--eye-question"></i> <!-- Icono de eliminar -->
+          </button>
           <button  class="btn-accion" (click)="eliminarPruebaLista( prueba.ID_PRUEBA)" >
             <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
           </button>
@@ -167,7 +170,7 @@
           <button  class="btn-accion" (click)="MatricularEstudiante( estudiante.ID_ESTUDIANTE)" >
             <i class="codicon--code-oss"></i> <!-- Icono de eliminar -->
           </button>
-          
+
           <button  class="btn-accion" (click)="eliminarEstudianteLista( estudiante.ID_ESTUDIANTE)" >
             <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
           </button>

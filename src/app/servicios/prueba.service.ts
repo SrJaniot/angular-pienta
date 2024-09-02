@@ -99,4 +99,8 @@ export class PruebaService {
     });
   }
 
+  ObtenerPruebaDisponibleID(id_estudiante: string): Observable<RespuestaServerObtenerPruebas> {
+    return this.http.get(`${this.url_ms_negocio}ObtenerPruebaDisponible/${id_estudiante}`);
+  }
+
 }

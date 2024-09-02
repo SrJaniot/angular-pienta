@@ -14,6 +14,13 @@ export namespace ConfiguracionMenuLateral {
 
       },
       {
+        menuid: 8,
+        ruta: '/PruebaEstudiantes/control',
+        icono:"bx entypo--book",
+        texto:"Prueba"
+
+      },
+      {
         menuid: 3,
         ruta: '/herramientas',
         icono:"bx entypo--ruler",

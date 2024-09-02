@@ -5,6 +5,7 @@ import { Estudiante } from '../../../Modelos/estudiante.model';
 import { GrupoEstudio } from '../../../Modelos/grupoestudio.model';
 import { prueba } from '../../../Modelos/prueba.model';
 import { PruebaControllService } from '../../../servicios/prueba-controll.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-control',
@@ -41,7 +42,8 @@ export class ControlComponent {
   constructor(
     private InstitucionService: InstitucionService,
     private toast: NgToastService,
-    private PruebaControllService: PruebaControllService
+    private PruebaControllService: PruebaControllService,
+    private Router: Router
   ) { }
 
   ngOnInit(): void {
@@ -80,6 +82,13 @@ export class ControlComponent {
 
   closePruebaListaForm() {
     this.showPruebaListaModal = false;
+  }
+
+  previewprueba(id_prueba: number) {
+    let id_prueba_string = id_prueba.toString()
+    this.tuIdPrueba = id_prueba_string;
+    //cambiar a la pagina de vista previa de la prueba
+    this.Router.navigate(['/prueba/previerPrueba', id_prueba_string]);
   }
 
 

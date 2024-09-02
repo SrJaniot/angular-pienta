@@ -1,0 +1,59 @@
+<div class="contexto-list">
+  <h2>Pruebas Pendientes</h2>
+  <table class="tabla" *ngIf="pruebasPendientes.length > 0; else noPruebasPendientes">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre prueba</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prueba of pruebasPendientes">
+        <td>{{ prueba.ID_PRUEBA }}</td>
+        <td>{{ prueba.NOM_PRUEBA }}</td>
+        <td>{{ prueba.DESCRIPCION_PRUEBA }}</td>
+        <td>
+          <!-- Aquí puedes agregar botones de acción -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #noPruebasPendientes>
+    <div class="no-pruebas">
+      <img src="../../../../assets/img/nodisponible.png" alt="No hay pruebas disponibles">
+      <p>No hay pruebas pendientes disponibles</p>
+    </div>
+  </ng-template>
+</div>
+
+<div class="contexto-list">
+  <h2>Pruebas Finalizadas</h2>
+  <table class="tabla" *ngIf="pruebasFinalizadas.length > 0; else noPruebasFinalizadas">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre prueba</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prueba of pruebasFinalizadas">
+        <td>{{ prueba.ID_PRUEBA }}</td>
+        <td>{{ prueba.NOM_PRUEBA }}</td>
+        <td>{{ prueba.DESCRIPCION_PRUEBA }}</td>
+        <td>
+          <!-- Aquí puedes agregar botones de acción -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #noPruebasFinalizadas>
+    <div class="no-pruebas">
+      <img src="../../../../assets/img/nodisponible.png" alt="No hay pruebas disponibles">
+      <p>No hay pruebas finalizadas disponibles</p>
+    </div>
+  </ng-template>
+</div>

@@ -20,6 +20,11 @@ const routes: Routes = [
     canActivate:[ValidarSesionActivaGuard]
   },
   {
+    path: 'PruebaEstudiantes',
+    loadChildren: () => import('./modulos/prueba-estudiantes/prueba-estudiantes.module').then(m => m.PruebaEstudiantesModule),
+    canActivate:[ValidarSesionActivaGuard]
+  },
+  {
     path: 'preguntas',
     loadChildren: () => import('./modulos/preguntas/preguntas.module').then(m => m.PreguntasModule),
     canActivate:[ValidarSesionActivaGuard]

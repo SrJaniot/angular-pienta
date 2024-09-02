@@ -1,14 +1,14 @@
-<!-- ESTO ES PARA ROL ESRUDIANTE/APRENDIZ-->
+<!-- ESTO ES PARA ROL ESTUDIANTE/APRENDIZ-->
 
 <div class="contenedor-cuerpo-prueba">
   <div class="grid-container">
-      <button *ngFor="let pregunta of Preguntas; let i = index" class="grid-item" (click)="selectPregunta(pregunta.ID_PREGUNTA)">
-        {{ i + 1 }}
-      </button>
-      <!-- Añade más botones según sea necesario -->
+    <button *ngFor="let pregunta of Preguntas; let i = index" class="grid-item" (click)="selectPregunta(pregunta.ID_PREGUNTA)">
+      {{ i + 1 }}
+    </button>
+    <!-- Añade más botones según sea necesario -->
   </div>
 
-  <div *ngIf="selectedPreguntaId">
+  <div *ngIf="selectedPreguntaId" class="preview-container">
     <app-preview-pregunta [preguntaID]="selectedPreguntaId"></app-preview-pregunta>
   </div>
 </div>
