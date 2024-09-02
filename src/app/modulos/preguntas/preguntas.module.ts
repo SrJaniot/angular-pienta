@@ -52,6 +52,10 @@ import { PreviewPreguntaComponent } from './preview-pregunta/preview-pregunta.co
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
+  ],
+  exports: [
+   PreviewPreguntaComponent
+
   ]
 })
 export class PreguntasModule { }

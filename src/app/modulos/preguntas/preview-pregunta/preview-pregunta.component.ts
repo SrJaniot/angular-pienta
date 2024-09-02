@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { PreguntaService } from '../../../servicios/pregunta.service';
 import { RespuestaServerObtenerPreviewPregunta } from '../../../Modelos/RespuestaServer.RespuestaServer.ObtenerPreviewPregunta.model';
 import { ActivatedRoute } from '@angular/router';
@@ -9,9 +9,9 @@ import { Opciones } from '../../../Modelos/Opciones.model';
 @Component({
   selector: 'app-preview-pregunta',
   templateUrl: './preview-pregunta.component.html',
-  styleUrl: './preview-pregunta.component.css'
+  styleUrls: ['./preview-pregunta.component.css']
 })
-export class PreviewPreguntaComponent {
+export class PreviewPreguntaComponent implements OnChanges {
   //variables
   @Input() preguntaID!: string;
 
@@ -20,47 +20,40 @@ export class PreviewPreguntaComponent {
   Opciones: Opciones[] = [];
   Tipo_opcion: string = '';
 
-
-
-
-
-
-
-
-
-
-
-
-
-  //funciones
   constructor(
     private PreguntaService: PreguntaService,
     private route: ActivatedRoute,
   ) {}
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['preguntaID'] && !changes['preguntaID'].isFirstChange()) {
+      console.log('Pregunta ID cambiado:', this.preguntaID);
+      this.cargarPregunta();
+    }
+  }
+
   ngOnInit() {
-    //variable de prueba para mandar por url el parametro OJO CAMBIAR CUANDOS SE TERMINE DE TESTING POR THIS.preguntaID
-    //let id_pregunta = this.route.snapshot.paramMap.get('id_pregunta');
-    //aca se inicializa el componente, es decir tengo que llamar a una funcion que me traiga la preview de la pregunta
-    this.PreguntaService.TraerPreguntaPreview(this.preguntaID!).subscribe(
+    this.cargarPregunta();
+  }
+
+  cargarPregunta() {
+    console.log('Cargando pregunta con ID:', this.preguntaID);
+    this.PreguntaService.TraerPreguntaPreview(this.preguntaID).subscribe(
       (data: RespuestaServerObtenerPreviewPregunta) => {
         if (data.CODIGO == 200){
           this.CapturarDatos(data);
           console.log(this.Contexto);
           console.log(this.Pregunta);
           console.log(this.Opciones);
-        }else{
+        } else {
           console.log(data);
         }
       }
     );
-
-
   }
 
-
-  //funcion para apturar todos los atributos de respuesta del servidor en variables
-  CapturarDatos(data: RespuestaServerObtenerPreviewPregunta){
+  //funcion para capturar todos los atributos de respuesta del servidor en variables
+  CapturarDatos(data: RespuestaServerObtenerPreviewPregunta) {
     //aca capturamos dato por dato de la respuesta del servidor para el objeto Contexto
     this.Contexto.ID_CONTEXTO = data.DATOS?.CONTEXTO?.ID_CONTEXTO;
     this.Contexto.NOM_CONTEXTO = data.DATOS?.CONTEXTO?.NOMBRE_CONTEXTO;
@@ -84,6 +77,7 @@ export class PreviewPreguntaComponent {
     this.Pregunta.LAYOUT_PREGUNTA = data.DATOS?.PREGUNTA?.LAYOUT_PREGUNTA;
     //aca capturamos dato por dato de la respuesta del servidor para el objeto Opciones
     //utilizamos un bucle foreach para recorrer todas las opciones
+    this.Opciones = [];
     data.DATOS?.OPCIONES?.forEach(element => {
       let opcion = new Opciones();
       opcion.ID_OPCION = element.ID_OPCION;
@@ -96,7 +90,4 @@ export class PreviewPreguntaComponent {
       this.Opciones.push(opcion);
     });
   }
-
-
-
 }

@@ -7,6 +7,7 @@ import { RespuestaServer } from '../Modelos/RespuestaServer.model';
 import { RespuestaServerObtenerPruebas } from '../Modelos/RespuestaServerObtenerPruebas.model';
 import { RespuestaServerMatricularGrupo } from '../Modelos/RespuestaServerMatricularGrupo.model';
 import { RespuestaServerObtenerPreviewPrueba } from '../Modelos/RespuestaServerObtenerPreviewPrueba.model';
+import { RespuestaServerObtenerPreguntasPrueba } from '../Modelos/RespuestaServerObtenerPreguntasPrueba.model';
 
 @Injectable({
   providedIn: 'root'
@@ -89,6 +90,12 @@ export class PruebaService {
     console.log(id_prueba);
     return this.http.post(`${this.url_ms_negocio}ObtenerPreviewPrueba`, {
       id: id_prueba
+    });
+  }
+
+  ObtenerPreguntasPrueba(id_prueba: number): Observable<RespuestaServerObtenerPreguntasPrueba> {
+    return this.http.post(`${this.url_ms_negocio}ObtenerPreguntasPrueba`, {
+      id: +id_prueba
     });
   }
 
