@@ -15,6 +15,9 @@ export class PreviewPruebaComponent implements OnInit {
   pruebaID = 0;
   Preguntas: idpreguntas[] = [];
   selectedPreguntaId: string = '';
+  showRulesPanel = true;
+  showPreguntasPanel = false;
+
 
   constructor(
     private PruebaService: PruebaService,
@@ -39,6 +42,44 @@ export class PreviewPruebaComponent implements OnInit {
 
   selectPregunta(id_pregunta: number): void {
     this.selectedPreguntaId = id_pregunta.toString();
-    console.log(this.selectedPreguntaId);
+    this.showRulesPanel = false;
+    this.showPreguntasPanel = true;
+
   }
+  toggleRulesPanel() {
+    this.showRulesPanel = true;
+    this.showPreguntasPanel = false;
+    this.selectedPreguntaId = '';
+  }
+  isLastQuestion(): boolean {
+    if (!this.Preguntas || this.Preguntas.length === 0) {
+      return false;
+    }
+    const currentIndex = this.Preguntas.findIndex(p => p.ID_PREGUNTA === +this.selectedPreguntaId);
+    return currentIndex === this.Preguntas.length - 1;
+  }
+
+
+  goToNextQuestion(): void {
+    const currentIndex = this.Preguntas.findIndex(p => p.ID_PREGUNTA === +this.selectedPreguntaId);
+    if (currentIndex < this.Preguntas.length - 1) {
+      this.selectPregunta(this.Preguntas[currentIndex + 1].ID_PREGUNTA);
+    }
+  }
+
+  goToPreviousQuestion(): void {
+    const currentIndex = this.Preguntas.findIndex(p => p.ID_PREGUNTA === +this.selectedPreguntaId);
+    if (currentIndex > 0) {
+      this.selectPregunta(this.Preguntas[currentIndex - 1].ID_PREGUNTA);
+    } else {
+      this.toggleRulesPanel();
+    }
+  }
+
+
+
+  enviarResultados() {
+    console.log('Enviando resultados...');
+  }
+
 }

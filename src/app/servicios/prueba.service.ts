@@ -24,14 +24,8 @@ export class PruebaService {
 
   //funcion para crear prueba generica
   CrearPruebaGenerica(nombre_prueba: string, descripcion_prueba: string, tipo_prueba: string, fecha_prueba_inicio: Date, fecha_prueba_fin: Date,tiempo_prueba:number,numero_preguntas_prueba: number,id_area_evaluar:number): Observable<RespuestaServerCrearPruebaGenerica> {
-    console.log(nombre_prueba);
-    console.log(descripcion_prueba);
-    console.log(tipo_prueba);
-    console.log(fecha_prueba_inicio);
-    console.log(fecha_prueba_fin);
-    console.log(tiempo_prueba);
-    console.log(numero_preguntas_prueba);
-    console.log(id_area_evaluar);
+
+
 
 
     return this.http.post(`${this.url_ms_negocio}CrearPruebaGenerica`, {
