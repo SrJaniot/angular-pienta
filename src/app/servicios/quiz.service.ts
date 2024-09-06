@@ -78,6 +78,9 @@ export class QuizService {
   getPreguntas(): Pregunta[] {
     return this.preguntas;
   }
+  limpiarListaPreguntas(){
+    this.preguntas = [];
+  }
 
   addPregunta(pregunta: Pregunta) {
     //console.log(pregunta);

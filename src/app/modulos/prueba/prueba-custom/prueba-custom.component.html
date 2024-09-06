@@ -1,1 +1,107 @@
-<p>prueba-custom works!</p>
+<div class="step-container">
+  <div *ngIf="currentStep === 1">
+    <h2>Paso 1</h2>
+    <div  class="contenido-PC ">
+      <form class="form1" [formGroup]="step1Form">
+        <h1> Bienvenido al creador de pruebas CUSTOM</h1>
+        <h5>
+          En este espacio usted solo colocará el nombre de la prueba, fecha de iniciación, fecha final, duración de la
+          prueba y la cantidad de preguntas que desee realizar en la prueba.
+        </h5>
+        <h5 id="importante">TENGA EN CUENTA QUE: Debe seleccionar manualmente las preguntas que desea añadir a la
+          prueba.</h5>
+
+        <label for="text">Nombre de la Prueba</label>
+        <input formControlName="nombre_prueba" type="text" id="nombre" name="nombre" placeholder="Nombre de la prueba"
+          required>
+
+        <div class="date-input-container">
+          <label for="fecha">Fecha de presentación Inicio</label>
+          <input formControlName="fecha_inicio_prueba" type="datetime-local" id="start" name="trip-start"
+            value="2024-07-22" min="2018-01-01" max="2025-12-31" />
+
+          <label for="fecha">Fecha de presentación Fin</label>
+          <input formControlName="fecha_fin_prueba" type="datetime-local" id="start" name="trip-start"
+            value="2024-07-22" min="2018-01-01" max="2025-12-31" />
+
+          <label for="cronometro">Duración de Prueba</label>
+          <input formControlName="duracion_prueba" type="number" id="minutos" placeholder="Cantidad en minutos" min="0">
+        </div>
+
+        <div class="button-container">
+          <button (click)="nextStep()" [disabled]="!step1Form.valid && currentStep===1" class="btn"
+            type="submit">Siguiente</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="tabla-container" *ngIf="currentStep === 2">
+    <h2>Paso 2</h2>
+    <form class="form2" [formGroup]="step2Form">
+      <h5>
+        En este espacio usted seleccionará las preguntas que desea añadir a la prueba usando la lista de preguntas.
+      </h5>
+      <div class="table-container">
+        <h2>Preguntas</h2>
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Enunciado</th>
+              <th>Tipo Pregunta</th>
+              <th>Puntaje</th>
+              <th>Autor</th>
+              <th>Area Evaluar</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pregunta of preguntas">
+              <td>{{ pregunta.id }}</td>
+              <td>{{ pregunta.enunciado }}</td>
+              <td>{{ pregunta.tipo_nombre }}</td>
+              <td>{{ pregunta.puntaje }}</td>
+              <td>{{ pregunta.autor }}</td>
+              <td>{{ pregunta.Area_Evaluar_nombre }}</td>
+              <td>
+                <button class="btn-accion" (click)="previewpregunta(pregunta.id)">
+                  <i class="tabler--eye-question"></i>
+                </button>
+                <button class="btn-accion" (click)="eliminarPreguntaLista(pregunta.id)">
+                  <i class="iwwa--delete"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="button-container">
+          <button class="btn-buscar" (click)="listarPreguntas()">Buscar Pregunta</button>
+          <button class="btn-agregar" (click)="CrearPruebaCustom()">Crear Prueba</button>
+
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+</div>
+
+<ng-container *ngIf="showPreguntaListaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closePreguntaListaForm()">X</button>
+      <app-pregunta-lista></app-pregunta-lista>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showPreguntaPreviewModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estilo" (click)="closePreviewPreguntaForm()">X</button>
+      <app-preview-pregunta [preguntaID]="tuIdDePregunta"></app-preview-pregunta>
+    </div>
+  </div>
+</ng-container>

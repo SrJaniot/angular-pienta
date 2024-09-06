@@ -24,10 +24,6 @@ export class PruebaService {
 
   //funcion para crear prueba generica
   CrearPruebaGenerica(nombre_prueba: string, descripcion_prueba: string, tipo_prueba: string, fecha_prueba_inicio: Date, fecha_prueba_fin: Date,tiempo_prueba:number,numero_preguntas_prueba: number,id_area_evaluar:number): Observable<RespuestaServerCrearPruebaGenerica> {
-
-
-
-
     return this.http.post(`${this.url_ms_negocio}CrearPruebaGenerica`, {
       nombre_prueba: nombre_prueba,
       descripcion_prueba: descripcion_prueba,
@@ -55,6 +51,18 @@ export class PruebaService {
       fecha_prueba_inicio: fecha_prueba_inicio,
       fecha_prueba_fin: fecha_prueba_fin,
       tiempo_prueba: tiempo_prueba
+    });
+  }
+
+  CrearPruebaCustom(nombre_prueba: string, descripcion_prueba: string, tipo_prueba: string, fecha_prueba_inicio: Date, fecha_prueba_fin: Date,tiempo_prueba:number,preguntas:string): Observable<RespuestaServerCrearPruebaGenerica> {
+    return this.http.post(`${this.url_ms_negocio}CrearPruebaCustom`, {
+      nombre_prueba: nombre_prueba,
+      descripcion_prueba: descripcion_prueba,
+      tipo_prueba: tipo_prueba,
+      fecha_inicio_prueba: fecha_prueba_inicio,
+      fecha_fin_prueba: fecha_prueba_fin,
+      duracion_prueba: tiempo_prueba,
+      preguntas_id: preguntas
     });
   }
 

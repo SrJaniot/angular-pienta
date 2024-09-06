@@ -54,7 +54,10 @@ import { PreviewPreguntaComponent } from './preview-pregunta/preview-pregunta.co
     MatPaginatorModule,
   ],
   exports: [
-   PreviewPreguntaComponent
+   PreviewPreguntaComponent,
+   PreguntaListaComponent,
+
+
 
   ]
 })

@@ -32,9 +32,9 @@
   </table>
   <div class="button-container">
     <button class="btn-buscar colorpienta" (click)="CrearPruebaGenerica()">Prueba Genérica</button>
-    <button class="btn-buscar colorpienta" (click)="listarGrupo()">Prueba Custom</button>
-    <button class="btn-buscar colorpienta" (click)="listarGrupo()">Prueba Inicial</button>
-    <button class="btn-buscar colorpienta" (click)="listarGrupo()">Prueba Final</button>
+    <button class="btn-buscar colorpienta" (click)="CrearPruebaCustom()">Prueba Custom</button>
+    <button class="btn-buscar colorpienta disabled" disabled (click)="listarGrupo()">Prueba Inicial</button>
+    <button class="btn-buscar colorpienta disabled" disabled (click)="listarGrupo()">Prueba Final</button>
   </div>
   <div class="button-container">
     <button class="btn-buscar " (click)="listarPrueba()">Buscar Prueba</button>
@@ -60,6 +60,15 @@
     <div class="modal-content modal-content-custom">
       <button class="btn-estiloCustom" (click)="closePruebaGenericaForm()">X</button>
       <app-prueba-generica></app-prueba-generica>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showPruebaCustomModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closePruebaCustomForm()">X</button>
+      <app-prueba-custom></app-prueba-custom>
     </div>
   </div>
 </ng-container>

@@ -22,6 +22,7 @@ export class ControlComponent {
 
 
   showPruebaGenericaModal = false;
+  showPruebaCustomModal = false;
   showPruebaListaModal = false;
 
   showGrupoListaModal = false;
@@ -60,10 +61,17 @@ export class ControlComponent {
   CrearPruebaGenerica() {
     this.showPruebaGenericaModal = true;
   }
+  CrearPruebaCustom() {
+    this.showPruebaCustomModal = true;
+  }
 
 
   closePruebaGenericaForm() {
     this.showPruebaGenericaModal = false;
+  }
+
+  closePruebaCustomForm() {
+    this.showPruebaCustomModal = false;
   }
 
   eliminarPruebaLista(id_prueba: number) {
