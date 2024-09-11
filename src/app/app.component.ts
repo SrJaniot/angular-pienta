@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SeguridadService } from './servicios/seguridad.service';
 import { UsuarioValidadoModel } from './Modelos/UsuarioValidado.model';
 import { ItemMenuModel } from './Modelos/item.menu.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent {
   //constructor
   constructor(
     private servicioSeguridad: SeguridadService,
+    private router: Router
   ){}
 
 ngOnInit() {
@@ -46,6 +48,11 @@ ValidarSesionActiva() {
   });
 
 
+}
+
+
+isPresentarPruebaRoute(): boolean {
+  return this.router.url.startsWith('/presentar-prueba');
 }
 
 

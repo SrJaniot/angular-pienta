@@ -1,0 +1,81 @@
+<div *ngIf="!isFullScreen" class="fullscreen-button-container">
+<button (click)="requestFullScreen()">Entrar en Pantalla Completa</button>
+</div>
+
+<div *ngIf="isFullScreen">
+  <!-- Contenido del componente -->
+
+  <!-- ESTO ES PARA ROL ESTUDIANTE/APRENDIZ-->
+  <div class="cronometro-contenedor">
+    <div class="cronometro">
+      <div class="numbers">
+        00 : 00 : 00
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="contenedor-cuerpo-prueba">
+
+    <div class="grid-container scrollable">
+      <button class="grid-item rules-button" (click)="toggleRulesPanel()">
+        <i class="oi--info"> !</i> <!-- Icono de información -->
+      </button>
+      <button *ngFor="let pregunta of Preguntas; let i = index" class="grid-item"
+        [ngClass]="{'selected': pregunta.ID_PREGUNTA === +selectedPreguntaId}"
+        (click)="selectPregunta(pregunta.ID_PREGUNTA)">
+        {{ i + 1 }}
+      </button>
+
+      <!-- Añade más botones según sea necesario -->
+    </div>
+
+    <div *ngIf="showRulesPanel" class="rules-panel">
+      <h1>¡Hola, estudiante!</h1>
+      <p>
+        Bienvenido a esta prueba. A continuación, encontrarás una serie de preguntas de selección múltiple con una única
+        respuesta correcta. Te pedimos que leas cada pregunta con atención y selecciones la opción que consideres
+        correcta.
+      </p>
+      <ul>
+        <li><strong>Límite de tiempo:</strong> El examen tiene un tiempo limitado. Asegúrate de administrar bien tu
+          tiempo para completar todas las preguntas dentro del plazo establecido.</li>
+        <li><strong>No se permite hacer trampa:</strong> Queremos que demuestres tus conocimientos de manera honesta.
+          Por favor, evita cualquier tipo de ayuda externa o consulta de materiales durante la prueba.</li>
+        <li><strong>Atención al finalizar:</strong> Una vez que hayas terminado todas las preguntas, revisa tus
+          respuestas y, cuando estés seguro, haz clic en el botón "Enviar prueba" para finalizar.</li>
+      </ul>
+      <p>Te deseamos mucho éxito. ¡Confía en tus habilidades y da lo mejor de ti!</p>
+    </div>
+
+
+
+
+    <div *ngIf="showPreguntasPanel" class="preview-container">
+      <app-presentar-pregunta [preguntaID]="selectedPreguntaId"></app-presentar-pregunta>
+    </div>
+  </div>
+
+
+
+
+  <div class="contenedor-botones">
+    <button (click)="goToPreviousQuestion()" [ngStyle]="{ visibility: showRulesPanel ? 'hidden' : 'visible' }"
+      class="anterior">Anterior</button>
+
+    <button *ngIf="!isLastQuestion()" (click)="goToNextQuestion()" class="siguiente">Siguiente</button>
+    <button *ngIf="isLastQuestion()" (click)="enviarResultados()" class="siguiente">Enviar</button>
+
+  </div>
+
+
+
+
+
+
+</div>
+
+
+<div *ngIf="showBlackOverlay" class="black-overlay"></div>

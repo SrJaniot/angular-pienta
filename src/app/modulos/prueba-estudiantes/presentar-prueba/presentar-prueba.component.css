@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 3px;
+    box-sizing: border-box;
+    font-family: 'Work Sans', sans-serif;
+
+
+}
+
+.contenedor-cuerpo-prueba {
+    display: flex;
+    flex-direction: column; /* Esto hará que los hijos de .contenedor-cuerpo-prueba se muestren en una columna */
+  }
+
+.contenido-de-prueba{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.grid-item {
+    padding: 10px; /* Esto añadirá un padding de 10px a los botones */
+    margin: 5px;
+    text-align: center; /* Esto centrará el texto de los botones */
+    background-color: white; /* Esto cambiará el color de fondo de los botones */
+    border-color: #4f2e0d;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3)
+}
+
+.grid-item:hover {
+    background-color: #4f2e0d; /* Esto cambiará el color de fondo de los botones al pasar el ratón por encima */
+    color: white; /* Esto cambiará el color del texto de los botones al pasar el ratón por encima */
+}
+
+h2{
+
+    color: #4f2e0d;
+}
+
+h1{
+    color: #671C34;
+}
+
+
+
+
+
+.oi--info {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23000' d='M5 0c-.55 0-1 .45-1 1s.45 1 1 1s1-.45 1-1s-.45-1-1-1M3.5 2.5C2.67 2.5 2 3.17 2 4h1c0-.28.22-.5.5-.5s.5.22.5.5s-1 1.64-1 2.5S3.67 8 4.5 8S6 7.33 6 6.5H5c0 .28-.22.5-.5.5S4 6.78 4 6.5C4 6.14 5 4.66 5 4c0-.81-.67-1.5-1.5-1.5'/%3E%3C/svg%3E");
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+
+
+
+.rules-panel {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.rules-panel h1 {
+  color: #4f2e0d;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.rules-panel p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.rules-panel ul {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  padding-left: 40px; /* Añade indentación a los items */
+}
+
+.rules-panel li {
+  margin-bottom: 10px;
+}
+
+.rules-panel button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.rules-panel button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+
+.enviar {
+  background-color: #671C34;
+  color: white;
+  border-color: #671C34;
+  border-radius: 3px;
+  padding: 10px 15px; /* Añade padding para un mejor aspecto */
+  margin: 5px auto; /* Centra el botón horizontalmente */
+  display: block; /* Asegura que el botón se comporte como un bloque */
+}
+
+.contenedor-enviar {
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  height: 100
+}
+.contenedor-botones {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.anterior, .siguiente {
+  background-color: #671C34;
+  color: white;
+  border-color: #671C34;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 5px;
+  flex: 0 0 100px; /* Tamaño fijo para los botones */
+  text-align: center;
+}
+
+.anterior {
+  order: 1; /* Asegura que el botón "Anterior" esté a la izquierda */
+}
+
+.siguiente {
+  order: 2; /* Asegura que el botón "Siguiente" esté a la derecha */
+}
+
+.selected {
+  background-color: #671C34;
+  color: white;
+}
+
+
+
+.grid-container {
+  display: flex;
+  overflow-x: auto; /* Permite el desplazamiento horizontal */
+  white-space: nowrap; /* Evita que los elementos se envuelvan a la siguiente línea */
+  width: 100%;
+  padding-bottom: 10px; /* Añade un poco de espacio debajo para el desplazamiento */
+}
+
+.grid-container::-webkit-scrollbar {
+  height: 8px; /* Altura de la barra de desplazamiento */
+}
+
+.grid-container::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* Color del pulgar de la barra de desplazamiento */
+  border-radius: 4px; /* Bordes redondeados para el pulgar */
+}
+
+.grid-container::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color de la pista de la barra de desplazamiento */
+}
+
+
+
+
+/*CRONOMETRO */
+
+.cronometro-contenedor {
+  position: fixed; /* Fija el contenedor en la pantalla */
+  top: 0; /* Posiciona el contenedor en la parte superior */
+  right: 0; /* Posiciona el contenedor en la parte derecha */
+  display: flex; /* Utiliza flexbox para alinear los divs internos */
+  padding: 10px; /* Añade un poco de espacio alrededor del cronómetro */
+  background-color: white; /* Fondo blanco para el cronómetro */
+  border: 1px solid #ccc; /* Borde para el cronómetro */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para el cronómetro */
+  z-index: 1000; /* Asegura que el cronómetro esté por encima de otros elementos */
+}
+
+.cronometro {
+  margin: 0 5px; /* Añade un margen entre los divs */
+  border: 2px solid #671C34; /* Añade un borde de 2px con color */
+  border-radius: 5px; /* Añade bordes redondeados */
+  padding: 2px; /* Añade un padding de 10px */
+  background-color: #ffffff;
+
+}
+
+.numbers {
+  font-family: "Montserrat", sans-serif;
+  color: #183059;
+  margin-right: 5px; /* Añade un margen a la derecha del número */
+}
+
+
+
+
+
+
+/* Deshabilitar la selección de texto */
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.fullscreen-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro con transparencia */
+}
+
+.fullscreen-button-container button {
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff; /* Color de fondo azul */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.fullscreen-button-container button:hover {
+  background-color: #0056b3; /* Color de fondo azul oscuro al pasar el ratón */
+}
+
+.fullscreen-button-container button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Sombra de enfoque */
+}
+
+.black-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 9999;
+  pointer-events: none;
+}
+

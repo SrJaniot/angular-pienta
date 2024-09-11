@@ -16,6 +16,10 @@
         <td>{{ prueba.DESCRIPCION_PRUEBA }}</td>
         <td>
           <!-- Aquí puedes agregar botones de acción -->
+          <button  class="btn-accion" (click)="VerInformacionPrueba(prueba.ID_PRUEBA)" >
+            <i class="tabler--eye-question"></i> <!-- Icono de eliminar -->
+          </button>
+
         </td>
       </tr>
     </tbody>
@@ -27,6 +31,32 @@
     </div>
   </ng-template>
 </div>
+
+
+<ng-container *ngIf="showInformacionPruebawModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estilo" (click)="closeInformacionPruebaForm()">X</button>
+      <app-informacion-prueba [IdPrueba]="tuIdPrueba"></app-informacion-prueba>
+    </div>
+  </div>
+</ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------>
 
 <div class="contexto-list">
   <h2>Pruebas Finalizadas</h2>

@@ -1,0 +1,34 @@
+  <div class="pop-up">
+    <div class="contenido-prueba">
+
+      <table class="preview">
+        <tbody>
+          <tr>
+            <td>Tipo de Prueba:</td>
+            <td>{{prueba.TIPO_PRUEBA}}</td>
+          </tr>
+          <tr>
+            <td>Nombre de Prueba:</td>
+            <td>{{prueba.NOM_PRUEBA}}</td>
+          </tr>
+          <tr>
+            <td>Duración:</td>
+            <td>{{prueba.DURACION_PRUEBA_MINUTOS}} minutos</td>
+          </tr>
+          <tr>
+            <td>Fecha de Inicio:</td>
+            <td>{{prueba.FECHA_PRUEBA_INICIO | date:'short'}}</td>
+          </tr>
+          <tr>
+            <td>Fecha de Fin:</td>
+            <td>{{prueba.FECHA_PRUEBA_FIN | date:'short'}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="presentar">
+        <button (click)="PresentarPrueba()" class="btn-presentar">
+          Presentar
+        </button>
+      </div>
+    </div>
+  </div>

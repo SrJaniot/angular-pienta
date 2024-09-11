@@ -5,19 +5,17 @@ import { SeguridadService } from '../servicios/seguridad.service';
 import { NgToastService } from 'ng-angular-popup';
 
 
-export const ValidarSesionActivaGuard = () => {
+export const ValidarNOPresentandoPruebaGuard = () => {
 
   const servicioSeguridad = inject(SeguridadService);
   const router = inject(Router);
   const toast = inject(NgToastService);
 
-  let existeSesion = servicioSeguridad.validacionDeSesion();
-    if (existeSesion) {
-      return true;
-
-
+  let PresentandoPrueba = servicioSeguridad.ObtenerPruebaActiva();
+    if (PresentandoPrueba.pruebaActiva==true) {
+      router.navigate(["/presentar-prueba/"]);
+      toast.warning({ detail: "ADVERTENCIA", summary: "Navegación no permitida", duration: 5000, position: 'topCenter' });
+      return false;
     }
-    router.navigate(["/"]);
-    toast.warning({ detail: "ADVERTENCIA", summary: "Navegación no permitida", duration: 5000, position: 'topCenter' });
-    return false;
+    return true;
 }

@@ -8,6 +8,7 @@ import { RespuestaServerObtenerPruebas } from '../Modelos/RespuestaServerObtener
 import { RespuestaServerMatricularGrupo } from '../Modelos/RespuestaServerMatricularGrupo.model';
 import { RespuestaServerObtenerPreviewPrueba } from '../Modelos/RespuestaServerObtenerPreviewPrueba.model';
 import { RespuestaServerObtenerPreguntasPrueba } from '../Modelos/RespuestaServerObtenerPreguntasPrueba.model';
+import { RespuestaServerObtenerPrueba } from '../Modelos/RespuestaServerObtenerPrueba.model';
 
 @Injectable({
   providedIn: 'root'
@@ -103,6 +104,9 @@ export class PruebaService {
 
   ObtenerPruebaDisponibleID(id_estudiante: string): Observable<RespuestaServerObtenerPruebas> {
     return this.http.get(`${this.url_ms_negocio}ObtenerPruebaDisponible/${id_estudiante}`);
+  }
+  ObtenerPruebaID(id_prueba: string): Observable<RespuestaServerObtenerPrueba> {
+    return this.http.get(`${this.url_ms_negocio}ObtenerPrueba/${id_prueba}`);
   }
 
 }

@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css?family=Overlock");
+
+
+/* Estilos para el contenido del popup */
+.pop-up {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilos para la imagen */
+.imagen-prueba {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Estilos para el contenido de la prueba */
+.contenido-prueba {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Estilos para el botón de cerrar */
+.btn-estilo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333; /* Color del botón de cerrar */
+}
+
+.btn-estilo:hover {
+  color: #000; /* Color del botón de cerrar al pasar el ratón */
+}
+
+.pop-up .presentar {
+  font-size: 35px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.pop-up .preview {
+  font-weight: 400;
+  text-align: left;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  width: 100%;
+}
+
+.pop-up .preview td {
+  padding: 8px;
+  text-transform: capitalize;
+  vertical-align: top;
+}
+
+/* Estilos para el botón de presentar */
+.btn-presentar {
+  background-color: #671C34; /* red vine */
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px; /* Ajusta el margen superior para mover el botón hacia arriba */
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.btn-presentar:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}

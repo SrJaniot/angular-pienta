@@ -9,6 +9,7 @@ import { PermisoModel } from '../Modelos/Permiso.model';
 import { ItemMenuModel } from '../Modelos/item.menu.model';
 import { ConfiguracionMenuLateral } from '../config/configuracion.menu.latreal';
 import { RespuestaServerObtenerRol } from '../Modelos/RespuestaServerObtenerRol.model';
+import { PruebaActiva } from '../Modelos/pruebaActiva.model';
 
 @Injectable({
   providedIn: 'root'
@@ -71,7 +72,7 @@ export class SeguridadService {
     }
   }
 
- 
+
 
 
   /**
@@ -184,6 +185,8 @@ validacionDeSesion(): boolean{
   }
 }
 
+
+
 ActualizarComportamientoUsuario(datos:UsuarioValidadoModel){
   //console.log(this.datosUsuarioValidado);
   return this.datosUsuarioValidado.next(datos);
@@ -244,6 +247,48 @@ ObtenerRolUsuario():Observable<RespuestaServerObtenerRol>{
     token: token
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------LOGICA DE PRUEBA-------------------------------------------------------------------------------
+
+//Metodo para almacenar en localstorage si una prueba esta activa
+AlmacenarPruebaActiva(id_prueba:string){
+  //crea un objeto json para almacenar la prueba activa y el id de la prueba
+  let objeto= {
+    pruebaActiva: true,
+    idPruebaActiva: id_prueba
+  }
+  let cadena =JSON.stringify(objeto);
+  let datosLS = localStorage.getItem('pruebaActiva');
+  if (datosLS) {
+    console.log('Ya existe una prueba activa');
+  } else {
+    localStorage.setItem('pruebaActiva', cadena);
+    console.log('Prueba activa almacenada');
+  }
+
+}
+//Metodo para obtener si una prueba esta activa
+ObtenerPruebaActiva(): PruebaActiva {
+  let datosLS = localStorage.getItem('pruebaActiva');
+  if (datosLS) {
+    return JSON.parse(datosLS);
+  } else {
+    return new PruebaActiva();
+  }
+}
+
+
 
 
 
