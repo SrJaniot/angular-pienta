@@ -79,3 +79,32 @@
   background-color: #4CAF50; /* Green */
   color: white;
 }
+
+
+.terminos {
+  margin-bottom: 20px;
+}
+
+.terminos input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.terminos label {
+  font-size: 14px;
+  color: #333;
+}
+
+.terminos a {
+  color: #007bff; /* Color azul para el enlace */
+  text-decoration: none;
+}
+
+.terminos a:hover {
+  text-decoration: underline;
+}
+
+.btn-presentar:disabled {
+  background-color: #ccc; /* Color gris para el botón deshabilitado */
+  cursor: not-allowed;
+}
+

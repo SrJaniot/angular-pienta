@@ -1,15 +1,15 @@
 <div *ngIf="!isFullScreen" class="fullscreen-button-container">
-<button (click)="requestFullScreen()">Entrar en Pantalla Completa</button>
+  <button (click)="requestFullScreen()">Clic aquí</button>
 </div>
 
 <div *ngIf="isFullScreen">
   <!-- Contenido del componente -->
 
-  <!-- ESTO ES PARA ROL ESTUDIANTE/APRENDIZ-->
+  <!-- ESTO ES PARA ROL ESTUDIANTE/APRENDIZ -->
   <div class="cronometro-contenedor">
     <div class="cronometro">
       <div class="numbers">
-        00 : 00 : 00
+        {{ hours }} : {{ minutes }} : {{ seconds }}
       </div>
     </div>
   </div>

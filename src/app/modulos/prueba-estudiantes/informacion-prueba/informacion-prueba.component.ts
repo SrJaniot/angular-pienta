@@ -14,6 +14,8 @@ import { RespuestaServerObtenerPrueba } from '../../../Modelos/RespuestaServerOb
 export class InformacionPruebaComponent {
   @Input() IdPrueba!: string;
   prueba!: prueba;
+  aceptoTerminos: boolean = false;
+
 
   constructor(
     private toast: NgToastService,
@@ -53,11 +55,16 @@ export class InformacionPruebaComponent {
   }
 
   PresentarPrueba(): void {
-    //almacenar el id de la prueba en el localstorage
-    this.seguridadService.AlmacenarPruebaActiva(this.IdPrueba);
-    this.router.navigate(['/presentar-prueba']).then(() => {
-      window.location.reload();
+    if (this.aceptoTerminos) {
+      //almacenar el id de la prueba en el localstorage
+      this.seguridadService.AlmacenarPruebaActiva(this.IdPrueba);
+      this.router.navigate(['/presentar-prueba']).then(() => {
+        window.location.reload();
     });
+    }else{
+      this.toast.error({detail:"ERROR",summary:"Debes aceptar los términos y condiciones para continuar",duration:5000,position:'topCenter'});
+    }
+
   }
 
 

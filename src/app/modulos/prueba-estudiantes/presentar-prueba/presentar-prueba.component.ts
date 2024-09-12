@@ -21,6 +21,12 @@ export class PresentarPruebaComponent implements OnInit {
   showBlackOverlay = false; // Variable para controlar la visibilidad del overlay
   watermarkText = 'Confidencial';
 
+  hours: number = 0;
+  minutes: number = 0;
+  seconds: number = 0;
+  private intervalId: any;
+
+
 
 
   constructor(
@@ -45,6 +51,7 @@ export class PresentarPruebaComponent implements OnInit {
       }
     );
 
+    //-- SEGURIDAD--------------------------------------------------------------------------------------------------------------------------------------------
     history.pushState(null, '', location.href);
     this.location.subscribe(() => {
       history.pushState(null, '', location.href);
@@ -59,11 +66,14 @@ export class PresentarPruebaComponent implements OnInit {
         }
       }
     });
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------
+    this.startTimer(1, 0, 0); // Inicia el cronómetro con 1 hora, 0 minutos y 0 segundos
+
   }
 
 
 
-
+  //---------------------------------------------------------------------- SEGURIDAD--------------------------------------------------------------------------------------------------------------------------------------------
   @HostListener('document:keyup', ['$event'])
   handleDocumentKeyUpEvent(event: KeyboardEvent) {
     console.log('Document key up event:', event.key);
@@ -152,6 +162,8 @@ export class PresentarPruebaComponent implements OnInit {
       doc.msFullscreenElement
     );
   }
+  //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------BOTONES DE ACCION------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   requestFullScreen() {
     const elem = document.documentElement as any;
@@ -213,4 +225,35 @@ export class PresentarPruebaComponent implements OnInit {
   enviarResultados() {
     console.log('Enviando resultados...');
   }
+
+  //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------CRONOMETRO------------------------------------------------------------------------------------------------------------------------------------------------------------
+  startTimer(hours: number, minutes: number, seconds: number): void {
+    this.hours = hours;
+    this.minutes = minutes;
+    this.seconds = seconds;
+
+    this.intervalId = setInterval(() => {
+      if (this.seconds > 0) {
+        this.seconds--;
+      } else {
+        if (this.minutes > 0) {
+          this.minutes--;
+          this.seconds = 59;
+        } else {
+          if (this.hours > 0) {
+            this.hours--;
+            this.minutes = 59;
+            this.seconds = 59;
+          } else {
+            clearInterval(this.intervalId);
+          }
+        }
+      }
+    }, 1000);
+  }
+
+
+
 }
+

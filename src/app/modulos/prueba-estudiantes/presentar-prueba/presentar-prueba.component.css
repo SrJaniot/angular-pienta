@@ -188,20 +188,15 @@ h1{
 
 
 
-
-/*CRONOMETRO */
-
 .cronometro-contenedor {
-  position: fixed; /* Fija el contenedor en la pantalla */
-  top: 0; /* Posiciona el contenedor en la parte superior */
-  right: 0; /* Posiciona el contenedor en la parte derecha */
+  position: static; /* Posiciona el contenedor de manera absoluta */
+  top: 10px; /* Posiciona el contenedor a 10px de la parte superior */
+  right: 10px; /* Posiciona el contenedor a 10px de la parte derecha */
   display: flex; /* Utiliza flexbox para alinear los divs internos */
   padding: 10px; /* Añade un poco de espacio alrededor del cronómetro */
-  background-color: white; /* Fondo blanco para el cronómetro */
-  border: 1px solid #ccc; /* Borde para el cronómetro */
   border-radius: 5px; /* Bordes redondeados */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para el cronómetro */
   z-index: 1000; /* Asegura que el cronómetro esté por encima de otros elementos */
+
 }
 
 .cronometro {
@@ -218,7 +213,6 @@ h1{
   color: #183059;
   margin-right: 5px; /* Añade un margen a la derecha del número */
 }
-
 
 
 
@@ -271,4 +265,6 @@ h1{
   z-index: 9999;
   pointer-events: none;
 }
+
+
 
