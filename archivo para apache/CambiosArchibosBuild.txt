@@ -3,11 +3,18 @@ ARCHIVOS QUE TOCA CAMBIAR PARA QUE FUNCIONE EN EL SERVIDOR DEL SENA: CAMBIAR LAS
 src\app\config\configuracion.rutas.backend.ts
 
 src\app\modulos\preguntas\preview-pregunta\preview-pregunta.component.html
+src\app\modulos\prueba-estudiantes\presentar-pregunta\presentar-pregunta.component.html
 
 src\app\modulos\preguntas\quiz\quiz.component.html
 
 CAMBIAR LA RUTA DE INICIO POR /PIENTAS/
 
 src/index.html
+
+
+
+
+ojo: cambiar imagen para que salga en control de estudiante
+src\app\modulos\prueba-estudiantes\control\control.component.html
 
 

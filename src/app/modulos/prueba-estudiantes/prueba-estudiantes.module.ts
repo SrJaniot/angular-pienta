@@ -8,6 +8,7 @@ import { PresentarPruebaComponent } from './presentar-prueba/presentar-prueba.co
 import { PresentarPreguntaComponent } from './presentar-pregunta/presentar-pregunta.component';
 import { TerminosCondicionesPruebaComponent } from './terminos-condiciones-prueba/terminos-condiciones-prueba.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ContinuarPruebaComponent } from './continuar-prueba/continuar-prueba.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InformacionPruebaComponent,
     PresentarPruebaComponent,
     PresentarPreguntaComponent,
-    TerminosCondicionesPruebaComponent
+    TerminosCondicionesPruebaComponent,
+    ContinuarPruebaComponent
   ],
   imports: [
     CommonModule,

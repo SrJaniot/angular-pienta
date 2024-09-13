@@ -41,6 +41,51 @@
     </div>
   </div>
 </ng-container>
+<!------------------------------------------------------------------------------------------------------------------------------------------------>
+
+<div class="contexto-list">
+  <h2>Pruebas En Curso</h2>
+  <table class="tabla" *ngIf="pruebasEnCurso.length > 0; else noPruebasEncurso">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre prueba</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prueba of pruebasEnCurso">
+        <td>{{ prueba.ID_PRUEBA }}</td>
+        <td>{{ prueba.NOM_PRUEBA }}</td>
+        <td>{{ prueba.DESCRIPCION_PRUEBA }}</td>
+        <td>
+          <!-- Aquí puedes agregar botones de acción -->
+          <button  class="btn-accion" (click)="ContinuarPrueba(prueba.ID_PRUEBA)" >
+            <i class="tabler--eye-question"></i> <!-- Icono de eliminar -->
+          </button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #noPruebasEncurso>
+    <div class="no-pruebas">
+      <img src="../../../../assets/img/nodisponible.png" alt="No hay pruebas en curso">
+      <p>No hay pruebas en curso</p>
+    </div>
+  </ng-template>
+</div>
+
+
+<ng-container *ngIf="showContinuarPruebaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estilo" (click)="closeInformacionPruebaForm()">X</button>
+      <app-continuar-prueba [IdPrueba]="tuIdPrueba"></app-continuar-prueba>
+    </div>
+  </div>
+</ng-container>
 
 
 

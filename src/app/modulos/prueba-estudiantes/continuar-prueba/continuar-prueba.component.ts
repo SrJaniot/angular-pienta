@@ -1,21 +1,20 @@
 import { Component, Input } from '@angular/core';
-import { PruebaService } from '../../../servicios/prueba.service';
+import { prueba } from '../../../Modelos/prueba.model';
 import { NgToastService } from 'ng-angular-popup';
 import { SeguridadService } from '../../../servicios/seguridad.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { prueba } from '../../../Modelos/prueba.model';
+import { PruebaService } from '../../../servicios/prueba.service';
 import { RespuestaServerObtenerPrueba } from '../../../Modelos/RespuestaServerObtenerPrueba.model';
 import { RespuestaServer } from '../../../Modelos/RespuestaServer.model';
 
 @Component({
-  selector: 'app-informacion-prueba',
-  templateUrl: './informacion-prueba.component.html',
-  styleUrl: './informacion-prueba.component.css'
+  selector: 'app-continuar-prueba',
+  templateUrl: './continuar-prueba.component.html',
+  styleUrl: './continuar-prueba.component.css'
 })
-export class InformacionPruebaComponent {
+export class ContinuarPruebaComponent {
   @Input() IdPrueba!: string;
   prueba!: prueba;
-  aceptoTerminos: boolean = false;
 
 
   constructor(
@@ -56,14 +55,14 @@ export class InformacionPruebaComponent {
   }
 
   PresentarPrueba(): void {
-    if (this.aceptoTerminos) {
+
       //llamar al servicio de prueba para almacenar la fecha de inicio de la prueba
       //capturar el id del estudiante
       let usuario = this.seguridadService.ObtenerDatosUsuarioIdentificadoSESION();
       let id_usuario = usuario?.usuario?.id_usuario;
       //capturar duracion de la prueba
       let duracion = this.prueba.DURACION_PRUEBA_MINUTOS;
-      this.pruebaService.IniciarPruebaEstudiante(+this.IdPrueba, id_usuario!, duracion).subscribe(
+      this.pruebaService.ObtenerPruebaEnCursoID( id_usuario!).subscribe(
         (data: RespuestaServer) => {
           if (data.CODIGO == 200) {
             //almacenar el id de la prueba en el localstorage
@@ -74,13 +73,11 @@ export class InformacionPruebaComponent {
               window.location.reload();
             });
           } else {
-            this.toast.error({ detail: "ERROR", summary: "La prueba ya se inicio", duration: 5000, position: 'topCenter' });
+            this.toast.error({ detail: "ERROR", summary: "La prueba ya Finalizo", duration: 5000, position: 'topCenter' });
           }
         }
       );
-    } else {
-      this.toast.error({ detail: "ERROR", summary: "Debes aceptar los términos y condiciones para continuar", duration: 5000, position: 'topCenter' });
-    }
+
   }
 
 

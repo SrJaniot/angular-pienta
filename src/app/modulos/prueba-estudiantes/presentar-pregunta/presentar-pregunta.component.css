@@ -108,6 +108,19 @@
     overflow: hidden; /* Opcional: evita el desbordamiento del contenido */
 }
 
+.imagenpregunta{
+  display: block;
+  margin: auto; /* Añade esta línea */
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.radio-option-HORIZONTAL input[type="radio"] {
+    margin-right: 10px; /* Espacio entre el botón de radio y el texto */
+}
+
 
 
 /*Aca lo nuevo*/

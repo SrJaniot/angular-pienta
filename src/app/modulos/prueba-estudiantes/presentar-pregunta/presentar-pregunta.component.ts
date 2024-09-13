@@ -19,6 +19,8 @@ export class PresentarPreguntaComponent implements OnChanges {
   Pregunta: Preguntas = new Preguntas();
   Opciones: Opciones[] = [];
   Tipo_opcion: string = '';
+  respuestaSeleccionada: number | null = null;
+
 
   constructor(
     private PreguntaService: PreguntaService,
@@ -29,11 +31,15 @@ export class PresentarPreguntaComponent implements OnChanges {
     if (changes['preguntaID'] && !changes['preguntaID'].isFirstChange()) {
       console.log('Pregunta ID cambiado:', this.preguntaID);
       this.cargarPregunta();
+      this.cargarSeleccion();
+
     }
   }
 
   ngOnInit() {
     this.cargarPregunta();
+    this.cargarSeleccion();
+
   }
 
   cargarPregunta() {
@@ -89,5 +95,54 @@ export class PresentarPreguntaComponent implements OnChanges {
       this.Tipo_opcion = element.TIPO_OPCION_CONTENIDO;
       this.Opciones.push(opcion);
     });
+
+
   }
+
+  cargarSeleccion(): void {
+    // Obtener la lista actual de respuestas del localStorage
+    let respuestas = JSON.parse(localStorage.getItem('respuestas')!) || [];
+    // Buscar si ya existe una respuesta para la pregunta actual
+    console.log('Respuestas:', respuestas);
+
+    console.log('id_pregunta', this.preguntaID);
+    const respuesta = respuestas.find((respuesta: any) => respuesta.idPregunta === +this.preguntaID);
+
+
+    console.log('Respuesta encontrada:', respuesta);
+
+
+
+    if (respuesta) {
+      // Si existe, establecer la opción seleccionada
+      this.respuestaSeleccionada = respuesta.idOpcion;
+    }
+  }
+
+  guardarSeleccion(idPregunta: number, idOpcion: number): void {
+    // Obtener la lista actual de respuestas del localStorage
+    let respuestas = JSON.parse(localStorage.getItem('respuestas')!) || [];
+
+    // Buscar si ya existe una respuesta para la pregunta dada
+    const index = respuestas.findIndex((respuesta: any) => respuesta.idPregunta === idPregunta);
+
+    if (index !== -1) {
+      // Si ya existe, actualiza la respuesta
+      respuestas[index].idOpcion = idOpcion;
+    } else {
+      // Si no existe, crea la nueva dupla de pregunta y opción
+      const nuevaRespuesta = { idPregunta, idOpcion };
+      // Añadir la nueva respuesta a la lista
+      respuestas.push(nuevaRespuesta);
+    }
+
+    // Guardar la lista actualizada en el localStorage
+    localStorage.setItem('respuestas', JSON.stringify(respuestas));
+  }
+
+
+
+
+
+
 }

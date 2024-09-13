@@ -105,8 +105,23 @@ export class PruebaService {
   ObtenerPruebaDisponibleID(id_estudiante: string): Observable<RespuestaServerObtenerPruebas> {
     return this.http.get(`${this.url_ms_negocio}ObtenerPruebaDisponible/${id_estudiante}`);
   }
+  ObtenerPruebaEnCursoID(id_estudiante: string): Observable<RespuestaServerObtenerPruebas> {
+    return this.http.get(`${this.url_ms_negocio}ObtenerPruebaEnCurso/${id_estudiante}`);
+  }
+
+
+
+
   ObtenerPruebaID(id_prueba: string): Observable<RespuestaServerObtenerPrueba> {
     return this.http.get(`${this.url_ms_negocio}ObtenerPrueba/${id_prueba}`);
+  }
+
+  IniciarPruebaEstudiante(id_prueba: number,id_estudiante:string,duracion_prueba:number): Observable<RespuestaServer> {
+    return this.http.post(`${this.url_ms_negocio}RegistrarFechaInicioPrueba`, {
+      id_prueba: id_prueba,
+      id_estudiante: id_estudiante,
+      Duracion_minutos_Prueba: duracion_prueba
+    });
   }
 
 }
