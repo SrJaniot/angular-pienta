@@ -48,6 +48,7 @@ export class ControlComponent implements OnInit, OnDestroy {
       //limpiar pruebas pendientes
       this.obtenerPruebasDisponibles(id_usuario!);
       this.obtenerPruebasEnCurso(id_usuario!);
+      this.obtenerPruebasFinalizadas(id_usuario!);
     }, 5000); // Intervalo de 5 segundos
   }
 
@@ -78,6 +79,19 @@ export class ControlComponent implements OnInit, OnDestroy {
       this.pruebaService.ObtenerPruebaEnCursoID(id_usuario).subscribe(
         (data: RespuestaServerObtenerPruebas) => {
           this.pruebasEnCurso = data.DATOS ? data.DATOS : [];
+        },
+        (error) => {
+          this.toast.error({ detail: "ERROR", summary: 'Error al obtener pruebas', duration: 5000, position: 'topCenter' });
+        }
+      )
+    );
+  }
+
+  obtenerPruebasFinalizadas(id_usuario: string): void {
+    this.subscription.add(
+      this.pruebaService.ObtenerPruebasFinalizadasID(id_usuario).subscribe(
+        (data: RespuestaServerObtenerPruebas) => {
+          this.pruebasFinalizadas = data.DATOS ? data.DATOS : [];
         },
         (error) => {
           this.toast.error({ detail: "ERROR", summary: 'Error al obtener pruebas', duration: 5000, position: 'topCenter' });

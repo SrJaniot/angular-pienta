@@ -9,6 +9,8 @@ import { RespuestaServerMatricularGrupo } from '../Modelos/RespuestaServerMatric
 import { RespuestaServerObtenerPreviewPrueba } from '../Modelos/RespuestaServerObtenerPreviewPrueba.model';
 import { RespuestaServerObtenerPreguntasPrueba } from '../Modelos/RespuestaServerObtenerPreguntasPrueba.model';
 import { RespuestaServerObtenerPrueba } from '../Modelos/RespuestaServerObtenerPrueba.model';
+import { RespuestaServerObtenerFechasInicioFinDuracionPrueba } from '../Modelos/RespuestaServerObtenerFechasInicioFinDuracionPrueba.model';
+import { RespuestaServeEnviarRespuestasPruebar } from '../Modelos/RespuestaServeEnviarRespuestasPruebar.model';
 
 @Injectable({
   providedIn: 'root'
@@ -102,12 +104,21 @@ export class PruebaService {
     });
   }
 
+  ObtenerFechasInicioFinDuracionPrueba(id_prueba: string,id_estudiante: string): Observable<RespuestaServerObtenerFechasInicioFinDuracionPrueba> {
+    return this.http.get(`${this.url_ms_negocio}ObtenerFechaInicioFinDuracionPrueba/${id_prueba}/${id_estudiante}`);
+  }
+
+
   ObtenerPruebaDisponibleID(id_estudiante: string): Observable<RespuestaServerObtenerPruebas> {
     return this.http.get(`${this.url_ms_negocio}ObtenerPruebaDisponible/${id_estudiante}`);
   }
   ObtenerPruebaEnCursoID(id_estudiante: string): Observable<RespuestaServerObtenerPruebas> {
     return this.http.get(`${this.url_ms_negocio}ObtenerPruebaEnCurso/${id_estudiante}`);
   }
+  ObtenerPruebasFinalizadasID(id_estudiante: string): Observable<RespuestaServerObtenerPruebas> {
+    return this.http.get(`${this.url_ms_negocio}ObtenerPruebaFinalizadas/${id_estudiante}`);
+  }
+
 
 
 
@@ -121,6 +132,14 @@ export class PruebaService {
       id_prueba: id_prueba,
       id_estudiante: id_estudiante,
       Duracion_minutos_Prueba: duracion_prueba
+    });
+  }
+
+  EnviarResultadosPrueba(id_prueba: number, id_estudiante: string, respuestas: string): Observable<RespuestaServeEnviarRespuestasPruebar> {
+    return this.http.post(`${this.url_ms_negocio}RegistrarRespuestasPreguntasPruebaEstudiante`, {
+      id_prueba: id_prueba,
+      id_estudiante: id_estudiante,
+      preguntas_opciones: respuestas
     });
   }
 

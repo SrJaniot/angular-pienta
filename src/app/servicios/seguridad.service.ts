@@ -288,6 +288,25 @@ ObtenerPruebaActiva(): PruebaActiva {
   }
 }
 
+  // Método para remover si una prueba está activa
+  RemoverPruebaActiva(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      let datosLS = localStorage.getItem('pruebaActiva');
+      let datosLS2 = localStorage.getItem('respuestas');
+      if (datosLS) {
+        localStorage.removeItem('pruebaActiva');
+        localStorage.removeItem('respuestas');
+        console.log('Prueba activa removida');
+        resolve();
+      } else {
+        console.log('No hay una prueba activa');
+        resolve();
+      }
+    });
+  }
+
+
+
 
 
 
