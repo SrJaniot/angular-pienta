@@ -126,9 +126,9 @@ export class PruebaGenericaComponent {
       }
       if (+id_area_evaluar < 1) {
         this.PruebaService.CrearPruebaGenericaTYT(nombre,descripcion,tipo,fecha_inicio,fecha_fin,Cantidad_minutos).subscribe({
-          next: (data: any) => {
+          next: (data: RespuestaServerCrearPruebaGenerica) => {
             console.log(data);
-            if (data.success == true) {
+            if (data.CODIGO == 200) {
               console.log(data);
               this.toast.success({detail:"EXITO",summary:"Tutor creado correctamente",duration:5000, position:'topCenter'});
               //console.log(this.institucionForm.value);

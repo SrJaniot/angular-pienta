@@ -14,7 +14,11 @@ src/index.html
 
 
 
-ojo: cambiar imagen para que salga en control de estudiante y logo sena
+ojo: cambiar imagen para que salga en control de estudiante y logo sena   10.200.138.62
 src\app\modulos\prueba-estudiantes\control\control.component.html
+src\app\app.component.html
+
+
+
 
 
