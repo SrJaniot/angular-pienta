@@ -1,0 +1,77 @@
+<div class="center-content">
+  <h2>Resultados de la Prueba</h2>
+  <table class="info-table">
+    <tr>
+      <th>Nombre de la Prueba</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Fecha inicio de la Prueba</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Fecha fin de la Prueba</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Preguntas Acertadas</th>
+      <td>0 / 0</td>
+    </tr>
+    <tr>
+      <th>Tiempo Total</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Calificación</th>
+      <td>0%</td>
+    </tr>
+  </table>
+</div>
+
+<div class="charts-grid">
+  <div class="center-content">
+    <h3 class="chart-title">Gráfico de Resultado</h3>
+    <div class="chart-container">
+      <ngx-charts-pie-chart
+        [results]="pieChartData"
+        [view]="[600, 400]"
+        [scheme]="colorScheme"
+        [legend]="true"
+        [labels]="true"
+        [doughnut]="false">
+      </ngx-charts-pie-chart>
+    </div>
+  </div>
+
+  <div class="center-content">
+    <h3 class="chart-title">Gráfico de Promedio</h3>
+    <div class="chart-container">
+      <ngx-charts-bar-vertical
+      [results]="singleBarChartData"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="false"
+      [showDataLabel]="true"
+      [xAxisLabel]="'Categorías'"
+      [yAxisLabel]="'Promedio'">
+    </ngx-charts-bar-vertical>
+    </div>
+  </div>
+</div>
+
+<div class="center-content">
+  <div class="center-content">
+    <h3 class="chart-title">Resultado Por Área</h3>
+    <div class="chart-container">
+      <ngx-charts-pie-grid
+        [results]="pieChartData"
+        [view]="[600, 400]"
+        [scheme]="colorScheme"
+        >
+      </ngx-charts-pie-grid>
+    </div>
+  </div>
+</div>
+
+
+
