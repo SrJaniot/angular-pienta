@@ -9,6 +9,7 @@ import { PresentarPreguntaComponent } from './presentar-pregunta/presentar-pregu
 import { TerminosCondicionesPruebaComponent } from './terminos-condiciones-prueba/terminos-condiciones-prueba.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContinuarPruebaComponent } from './continuar-prueba/continuar-prueba.component';
+import { ResultadosModule } from '../resultados/resultados.module';
 
 
 @NgModule({
@@ -25,6 +26,8 @@ import { ContinuarPruebaComponent } from './continuar-prueba/continuar-prueba.co
     PruebaEstudiantesRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    ResultadosModule
+
 
 
   ]

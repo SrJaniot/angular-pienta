@@ -4,7 +4,7 @@ import { ResultadosEstudiantesComponentComponent } from './resultados-estudiante
 
 const routes: Routes = [
   {
-    path: 'resultados-estudiantes',
+    path: 'resultados-estudiantes/:IdPrueba/:IdEstudiante',
     component: ResultadosEstudiantesComponentComponent
   }
 ];

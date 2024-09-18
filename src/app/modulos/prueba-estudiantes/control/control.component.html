@@ -121,6 +121,9 @@
         <td>{{ prueba.DESCRIPCION_PRUEBA }}</td>
         <td>
           <!-- Aquí puedes agregar botones de acción -->
+          <button  class="btn-accion" (click)="VerResultados(prueba.ID_PRUEBA,''+prueba.FECHA_PRUEBA_FIN)" >
+            <i class="tabler--eye-question"></i> <!-- Icono de eliminar -->
+          </button>
         </td>
       </tr>
     </tbody>

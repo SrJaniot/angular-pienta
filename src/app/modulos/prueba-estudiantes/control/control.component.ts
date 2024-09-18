@@ -119,4 +119,26 @@ export class ControlComponent implements OnInit, OnDestroy {
   closeInformacionPruebaForm(): void {
     this.showInformacionPruebawModal = false;
   }
+
+
+  VerResultados(idPrueba: number, fecha_fin: string): void {
+    let id_estudiante = this.seguridadService.ObtenerDatosUsuarioIdentificadoSESION()?.usuario?.id_usuario;
+
+    // Convertir la fecha de la base de datos a un objeto Date
+    let fechaFinPrueba = new Date(fecha_fin);
+    let fechaActual = new Date();
+
+    console.log(fechaFinPrueba);
+    console.log(fechaActual);
+
+    // Comparar las fechas
+    if (fechaFinPrueba < fechaActual) {
+      this.Router.navigate(['/resultados/resultados-estudiantes', idPrueba, id_estudiante]);
+    } else {
+      this.toast.error({ detail: "ERROR", summary: 'No Permitido', duration: 5000, position: 'topCenter' });
+    }
+  }
+
+
+  
 }

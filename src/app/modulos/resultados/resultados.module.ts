@@ -21,7 +21,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     CommonModule,
     ResultadosRoutingModule,
     NgxChartsModule  // Importa el módulo de ngx-charts
-
+  ],
+  exports: [
+    ResultadosEstudiantesComponentComponent
   ]
 })
 export class ResultadosModule { }
