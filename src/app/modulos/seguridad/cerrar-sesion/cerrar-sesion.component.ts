@@ -17,12 +17,31 @@ export class CerrarSesionComponent {
   ngOnInit() {
     this.CerrarSesion();
   }
-  CerrarSesion() {
-    this.servicioSeguridad.RemoverDatosUsuarioValidadoSesion();
-    //window.location.href = '';
-    this.router.navigate(['/seguridad/login']).then(() => {
-      window.location.reload();
-    });
+  async CerrarSesion() {
+      await this.removerUsuarioActivo();
+      await this.removerPruebaActiva();
+      this.delayNavigation(5000);
    }
+
+   removerUsuarioActivo(): Promise<void> {
+    return new Promise((resolve) => {
+      this.servicioSeguridad.RemoverDatosUsuarioValidadoSesion();
+      resolve();
+    });
+  }
+
+
+   removerPruebaActiva(): Promise<void> {
+    return new Promise((resolve) => {
+      this.servicioSeguridad.RemoverPruebaActiva();
+      resolve();
+    });
+  }
+
+  delayNavigation(ms: number): void {
+    setTimeout(() => {
+      window.location.href = '/';
+    }, ms);
+  }
 
 }

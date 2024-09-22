@@ -11,12 +11,13 @@ import { ResultadosEstudiantesComponentComponent } from './resultados-estudiante
 // npm install --save-dev @types/d3-shape @types/d3-scale @types/d3-selection
 // Importa NgxChartsModule
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ControlComponent } from './control/control.component';
 
 
 
 
 @NgModule({
-  declarations: [ResultadosEstudiantesComponentComponent],
+  declarations: [ResultadosEstudiantesComponentComponent, ControlComponent],
   imports: [
     CommonModule,
     ResultadosRoutingModule,

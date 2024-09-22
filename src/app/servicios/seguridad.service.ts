@@ -132,7 +132,8 @@ export class SeguridadService {
   }
 
 
-  RemoverDatosUsuarioValidadoSesion(){
+  RemoverDatosUsuarioValidadoSesion() :Promise<void>{
+    return new Promise((resolve, reject) => {
     let datosLS = localStorage.getItem('datosSesion');
     let datosMenu = localStorage.getItem('menuLateral');
     if (datosLS) {
@@ -144,13 +145,17 @@ export class SeguridadService {
           localStorage.removeItem('datosSesion');
           localStorage.removeItem('menuLateral');
           this.ActualizarComportamientoUsuario(new UsuarioValidadoModel());
+          resolve();
         }else{
           console.log('Sesion cerrada SOLO en angular');
           localStorage.removeItem('datosSesion');
           localStorage.removeItem('menuLateral');
-          this.ActualizarComportamientoUsuario(new UsuarioValidadoModel());        }
+          this.ActualizarComportamientoUsuario(new UsuarioValidadoModel());
+          resolve();
+         }
       });
     }
+  } );
   }
 
   CerrarSesion(id_usuario: string ,token: string):Observable <RespuestaServer> {

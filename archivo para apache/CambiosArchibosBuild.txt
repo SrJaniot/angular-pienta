@@ -19,6 +19,14 @@ src\app\modulos\prueba-estudiantes\control\control.component.html
 src\app\app.component.html
 
 
+OJO: cambiar enlace de rutas cuando se cierre sesion o acabe la prueba:  window.location.href = '/';
+
+src\app\modulos\seguridad\cerrar-sesion\cerrar-sesion.component.ts
+src\app\modulos\prueba-estudiantes\presentar-prueba\presentar-prueba.component.ts
+
+
+
+
 
 
 

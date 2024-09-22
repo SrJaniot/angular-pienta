@@ -19,6 +19,8 @@ export class ResultadosEstudiantesComponentComponent {
 
   //variables para almacenar los resultados de la prueba
   //tabla
+  Nombre_estudiante: string = '';
+  Num_documento_estudiante: string = '';
   Nombre_prueba: string = '';
   Fecha_inicio_prueba_estudiante: Date = new Date();
   Fecha_fin_prueba_estudiante: Date = new Date();
@@ -95,6 +97,8 @@ export class ResultadosEstudiantesComponentComponent {
         if (data.CODIGO == 200) {
           console.log(data.DATOS);
           // Almacena los resultados de la prueba
+          this.Nombre_estudiante = data.DATOS?.NOMBRE_ESTUDIANTE!;
+          this.Num_documento_estudiante = data.DATOS?.NUM_DOC_ESTUDIANTE!;
           this.Nombre_prueba = data.DATOS?.DATOS_PRUEBA.NOM_PRUEBA!;
           this.Fecha_inicio_prueba_estudiante = data.DATOS?.DATOS_PRUEBA.FECHA_PRUEBA_INICIO_ESTUDIANTE!;
           this.Fecha_fin_prueba_estudiante = data.DATOS?.DATOS_PRUEBA.FECHA_PRUEBA_FIN_ESTUDIANTE!;

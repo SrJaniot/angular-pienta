@@ -23,6 +23,7 @@ export class PresentarPruebaComponent implements OnInit {
   isFullScreen = false;
   showBlackOverlay = false; // Variable para controlar la visibilidad del overlay
   watermarkText = 'Confidencial';
+  btn_enviar=true;
 
   hours: number = 0;
   minutes: number = 0;
@@ -217,6 +218,7 @@ export class PresentarPruebaComponent implements OnInit {
       resolve();
     });
   }
+
   delayNavigation(ms: number): void {
     setTimeout(() => {
       window.location.href = '/';
@@ -317,6 +319,7 @@ export class PresentarPruebaComponent implements OnInit {
         if (data.CODIGO == 200) {
           this.toast.success({ detail: "EXITO", summary: "Resultados enviados correctamente", duration: 5000, position: 'topCenter' });
           this.resultadosEnviados = true;
+          this.btn_enviar=false;
           // Remover la prueba activa y los resultados del localstorage
           await this.removerPruebaActiva();
           // Detener el cronómetro

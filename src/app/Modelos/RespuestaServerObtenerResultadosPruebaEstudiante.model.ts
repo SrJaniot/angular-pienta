@@ -18,6 +18,9 @@ export class RespuestaServerObtenerResultadosPruebaEstudiante{
     PROMEDIO_PRUEBA_GRUPO: number;
     PROMEDIO_PRUEBA_CARRERA: number;
     PROMEDIO_PRUEBA_TOTAL: number;
+    NOMBRE_ESTUDIANTE: string;
+    NUM_DOC_ESTUDIANTE: string;
+
   }
 }
 

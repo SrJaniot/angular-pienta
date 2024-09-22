@@ -29,7 +29,7 @@ export namespace ConfiguracionMenuLateral {
       },
       {
         menuid: 4,
-        ruta: '/resultados',
+        ruta: '/resultados/control',
         icono:"bx entypo--area-graph",
         texto:"Resultados"
 
