@@ -1,93 +1,88 @@
-<div class="grid-container">
-  <div class="center-content">
-    <h2>Resultados de la Prueba</h2>
-    <table class="info-table">
-      <tr>
-        <th>Nombre del estudiante</th>
-        <td>{{Nombre_estudiante}}</td>
-      </tr>
-      <tr>
-        <th>Numero documento estudiante</th>
-        <td>{{Num_documento_estudiante}}</td>
-      </tr>
-      <tr>
-        <th>Nombre de la Prueba</th>
-        <td>{{Nombre_prueba}}</td>
-      </tr>
-      <tr>
-        <th>Fecha inicio de la Prueba</th>
-        <td>{{fechainicioLegible}}</td>
-      </tr>
-      <tr>
-        <th>Fecha fin de la Prueba</th>
-        <td>{{fechafinLegible}}</td>
-      </tr>
-      <tr>
-        <th>Duracion Prueba (min)</th>
-        <td>{{Duracion_prueba_minutos}}</td>
-      </tr>
-      <tr>
-        <th>Tiempo Implementado Estudiante (min)</th>
-        <td>{{Tiempo_duracion_prueba_estudiante_minutos}}</td>
-      </tr>
-      <tr>
-        <th>Total Preguntas</th>
-        <td>{{Total_preguntas}}</td>
-      </tr>
-      <tr>
-        <th>Total Preguntas Correctas</th>
-        <td>{{Total_preguntas_acertadas}}</td>
-      </tr>
-      <tr>
-        <th>Total Preguntas Incorrectas </th>
-        <td>{{Total_preguntas_incorrectas}}</td>
-      </tr>
-      <tr>
-        <th>Total Preguntas Sin Responder</th>
-        <td>{{Total_preguntas_sin_responder}}</td>
-      </tr>
-      <tr>
-        <th>Calificación</th>
-        <td>{{puntaje_obtenido}}%</td>
-      </tr>
-    </table>
-  </div>
+<div id="resultados-estudiantes">
+  <div class="grid-container">
+    <div class="center-content">
+      <h2>Resultados de la Prueba</h2>
+      <table class="info-table">
+        <tr>
+          <th>Nombre del estudiante</th>
+          <td>{{Nombre_estudiante}}</td>
+        </tr>
+        <tr>
+          <th>Numero documento estudiante</th>
+          <td>{{Num_documento_estudiante}}</td>
+        </tr>
+        <tr>
+          <th>Nombre de la Prueba</th>
+          <td>{{Nombre_prueba}}</td>
+        </tr>
+        <tr>
+          <th>Fecha inicio de la Prueba</th>
+          <td>{{fechainicioLegible}}</td>
+        </tr>
+        <tr>
+          <th>Fecha fin de la Prueba</th>
+          <td>{{fechafinLegible}}</td>
+        </tr>
+        <tr>
+          <th>Duracion Prueba (min)</th>
+          <td>{{Duracion_prueba_minutos}}</td>
+        </tr>
+        <tr>
+          <th>Tiempo Implementado Estudiante (min)</th>
+          <td>{{Tiempo_duracion_prueba_estudiante_minutos}}</td>
+        </tr>
+        <tr>
+          <th>Total Preguntas</th>
+          <td>{{Total_preguntas}}</td>
+        </tr>
+        <tr>
+          <th>Total Preguntas Correctas</th>
+          <td>{{Total_preguntas_acertadas}}</td>
+        </tr>
+        <tr>
+          <th>Total Preguntas Incorrectas </th>
+          <td>{{Total_preguntas_incorrectas}}</td>
+        </tr>
+        <tr>
+          <th>Total Preguntas Sin Responder</th>
+          <td>{{Total_preguntas_sin_responder}}</td>
+        </tr>
+        <tr>
+          <th>Calificación</th>
+          <td>{{puntaje_obtenido}}%</td>
+        </tr>
+      </table>
+    </div>
 
-  <div class="center-content">
-    <h3 class="chart-title">Gráfico de Resultado</h3>
-    <div class="chart-container">
-      <ngx-charts-pie-chart
-        [results]="GraficoTortaResultados"
-        [view]="[600, 400]"
-        [scheme]="colorScheme"
-        [legend]="true"
-        [labels]="true"
-        [doughnut]="false">
-      </ngx-charts-pie-chart>
+    <div class="center-content">
+      <h3 class="chart-title">Gráfico de Resultado</h3>
+      <div class="chart-container">
+        <ngx-charts-pie-chart
+          [results]="GraficoTortaResultados"
+          [view]="[600, 400]"
+          [scheme]="colorScheme"
+          [legend]="true"
+          [labels]="true"
+          [doughnut]="false">
+        </ngx-charts-pie-chart>
+      </div>
     </div>
   </div>
-</div>
-
-
-
-
 
   <div class="center-content">
     <h3 class="chart-title">Gráfico de Promedio</h3>
     <div class="chart-container">
       <ngx-charts-bar-vertical
-      [results]="GraficoBarrasPromedios"
-      [xAxis]="true"
-      [yAxis]="true"
-      [legend]="false"
-      [showDataLabel]="true"
-      [xAxisLabel]="'Categorías'"
-      [yAxisLabel]="'Promedio'">
-    </ngx-charts-bar-vertical>
+        [results]="GraficoBarrasPromedios"
+        [xAxis]="true"
+        [yAxis]="true"
+        [legend]="false"
+        [showDataLabel]="true"
+        [xAxisLabel]="'Categorías'"
+        [yAxisLabel]="'Promedio'">
+      </ngx-charts-bar-vertical>
     </div>
   </div>
-
-
 
   <div *ngIf="num_areas_evaluadas > 1" class="custom-grid-container">
     <div *ngFor="let area of GraficoPastelAreas" class="custom-center-content">
@@ -98,13 +93,14 @@
           [view]="[300, 300]"
           [scheme]="colorScheme"
           [doughnut]="true"
-
-
           class="custom-pie-chart">
         </ngx-charts-pie-chart>
-
       </div>
     </div>
   </div>
+</div>
 
-
+<!-- Botón para descargar el PDF -->
+<div class="download-button-container">
+  <button (click)="downloadPDF()">Descargar PDF</button>
+</div>

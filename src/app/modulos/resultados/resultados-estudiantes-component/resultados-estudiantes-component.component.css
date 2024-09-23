@@ -12,6 +12,7 @@
   max-width: 600px;
   border-collapse: collapse;
   margin: 20px 0;
+  
 }
 
 .info-table th, .info-table td {
@@ -203,6 +204,35 @@ ngx-charts-bar-vertical-2d {
   max-width: 300px;
 }
 
+
+
+
+.download-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+
+
+svg {
+  background-color: white; /* Asegúrate de que el fondo sea blanco */
+  opacity: 1; /* Asegúrate de que la opacidad sea 1 */
+}
 
 
 

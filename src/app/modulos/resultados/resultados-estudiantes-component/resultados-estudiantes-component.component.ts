@@ -7,6 +7,12 @@ import { RespuestaServerObtenerResultadosPruebaEstudiante } from '../../../Model
 import { ActivatedRoute, Route, Router } from '@angular/router';
 
 
+//npm install jspdf
+//npm install dom-to-image
+//npm i --save-dev @types/dom-to-image
+import jsPDF from 'jspdf';
+import domtoimage from 'dom-to-image';
+
 @Component({
   selector: 'app-resultados-estudiantes-component',
   templateUrl: './resultados-estudiantes-component.component.html',
@@ -183,26 +189,49 @@ export class ResultadosEstudiantesComponentComponent {
 
 
 
+  //FUNCION PARA EXPORTAR A PDF SE INSTALO npm install html2canvas jspdf
+
+  // Función para generar y descargar el PDF
+  downloadPDF() {
+    const element = document.getElementById('resultados-estudiantes');
+    if (element) {
+      // Usa dom-to-image para capturar el contenido del elemento
+      domtoimage.toPng(element)
+        .then((dataUrl) => {
+          const pdf = new jsPDF('p', 'mm', 'a4');
+
+          // Calcula las dimensiones para ajustar la imagen al tamaño del PDF
+          const img = new Image();
+          img.src = dataUrl;
+          img.onload = () => {
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = (img.height * pdfWidth) / img.width;
+
+            // Añade la imagen al PDF
+            pdf.addImage(dataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight);
+
+            // Descarga el PDF
+            pdf.save('resultados-estudiantes.pdf');
+          };
+        })
+        .catch((error) => {
+          console.error('Error al generar la imagen:', error);
+        });
+    } else {
+      console.error('El elemento con ID "resultados-estudiantes" no se encontró.');
+    }
+  }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+  //FUNCION PARA OBTENER EL NOMBRE DEL AREA
   getAreaName(name: string): string {
     const index = name.indexOf('%');
     return index !== -1 ? name.substring(0, index + 1) : name;
   }
 
+  //FUNCION PARA CONFIGURAR LOS COLORES DE LOS GRAFICOS
   public colorScheme: Color = {
     name: 'custom',
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'],
