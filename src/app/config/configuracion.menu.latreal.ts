@@ -2,7 +2,7 @@ export namespace ConfiguracionMenuLateral {
     export const listaMenus =[
       {
         menuid: 1,
-        ruta: '/perfil',
+        ruta: '/perfil/perfil-usuario',
         icono:"bx entypo--user",
         texto:"Perfil"
       },

@@ -1,0 +1,242 @@
+/* *************** R O L  P E R F I L *************** */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+	box-sizing: border-box;
+  font-family: 'work sans', sans-serif;
+}
+
+/* *************** C O N T E N E D O R *************** */
+.contenedoruno {
+    display: flex;
+    flex-direction: row; /* Esto hará que los divs dentro de .contenedoruno se alineen verticalmente */
+  }
+
+
+/* *************** S U B  F I L A S *************** */
+
+.subfilauno, .subfilados {
+  width: 35%; /* Esto hará que cada div ocupe la mitad del ancho disponible en su contenedor */
+}
+
+
+/* *************** F I L A S *************** */
+.filauno, .filados {
+    width: 50%; /* Esto hará que cada div ocupe la mitad del ancho disponible en su contenedor */
+  }
+
+.filauno {
+    width: 30%; /* Ajusta este valor para cambiar el ancho de .filauno */
+    background-color: #671C34;
+  }
+
+.filados {
+    width: 70%; /* Ajusta este valor para cambiar el ancho de .filados */
+    padding-left: 25px; /* Añade un espacio interno de 20px alrededor de .filados */
+  }
+
+
+/* *************** I N F O  F I L A  D O S *************** */
+.info_data {
+    display: flex; /* Esto hará que los divs dentro de .info_data se alineen horizontalmente */
+  }
+
+.projects_data {
+    display: flex; /* Esto hará que los divs dentro de .projects_data se alineen horizontalmente */
+    flex-wrap: wrap; /* Esto permitirá que los elementos hijos se envuelvan si no hay suficiente espacio en una sola línea */
+
+  }
+
+.projects_data h4, .projects_data input {
+    display: block; /* Esto hará que cada elemento ocupe su propia línea */
+}
+
+
+  .projects_data input {
+    margin-top: 10px; /* Añade un margen en la parte superior para dar espacio entre el input y el h4 */
+  }
+
+  .projects_data input {
+    width: 90%; /* Ajusta este valor para cambiar el ancho de los inputs */
+    margin: 20px 5%; /* Ajusta este valor para cambiar el espacio entre la imagen y el input */
+    margin-bottom: 5px; /* Ajusta este valor para cambiar el espacio entre los inputs */
+    color: #704214;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+  }
+
+
+.projects_data input {
+    padding: 0 0 15px 0 ; /* Ajusta este valor para cambiar el padding de los inputs */
+    /* Resto de las propiedades */
+
+}
+
+.projects_data h2{
+
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #353c4e;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+
+}
+
+.data{
+
+    justify-content: space-between;
+
+}
+
+.data h4, .data input {
+
+    display: block; /* Esto hará que cada elemento ocupe su propia línea */
+
+}
+
+.data input {
+
+    margin-top: 10px; /* Añade un margen en la parte superior para dar espacio entre el input y el h4 */
+
+}
+
+  input {
+    width: 375px; /* Ajusta este valor para cambiar el ancho de los inputs */
+    margin-top: 20px; /* Ajusta este valor para cambiar el espacio entre la imagen y el input */
+    margin-bottom: 5px; /* Ajusta este valor para cambiar el espacio entre los inputs */
+    color: #704214;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+
+
+  }
+
+  input {
+    padding: 0 0 15px 0 ; /* Ajusta este valor para cambiar el padding de los inputs */
+    /* Resto de las propiedades */
+  }
+
+  h2{
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #353c4e;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+  }
+
+
+/* *************** I N F O  F I L A  U N O *************** */
+
+.vertical-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Esto centrará los elementos hijos en el eje vertical */
+
+}
+
+  .name {
+    font-size: 24px; /* Ajusta este valor para cambiar el tamaño de la fuente */
+    color: #fff;
+    margin-bottom: 5px;
+    background-color: transparent;
+    border: none;
+    padding: 15px;
+    font-family: 'work sans', sans-serif;
+    text-align: center; /* Esto centrará el texto en el eje horizontal */
+
+  }
+
+  .infofilauno {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Esto centrará los elementos hijos en el eje horizontal */
+    justify-content: center; /* Esto centrará los elementos hijos en el eje vertical */
+  }
+
+
+  .infofilauno img {
+    width: 150px; /* Ajusta este valor para cambiar el ancho de la imagen */
+    height: 150px; /* Ajusta este valor para cambiar la altura de la imagen */
+    margin-top: 50px; /* Esto añadirá un espacio entre la imagen y el input */
+  }
+
+
+.rol, .rolperfil{
+
+  font-size: 16px; /* Ajusta este valor para cambiar el tamaño de la fuente */
+  color: #fff;
+  text-align: center; /* Esto centrará el texto en el eje horizontal */
+  margin-bottom: 10px; /* Ajusta este valor para cambiar el espacio debajo del h3 */
+}
+
+.rol h3 {
+  margin-bottom: 10px; /* Ajusta este valor para cambiar el espacio debajo del h3 */
+}
+
+.rol input {
+  margin-top: 10px; /* Ajusta este valor para cambiar el espacio encima del input */
+}
+
+/* *************** B O T O N E S *************** */
+
+  button.primary {
+	margin-top: 20px; /* Ajusta este valor para cambiar el espacio entre la imagen y el input */
+	margin-bottom: 5px; /* Ajusta este valor para cambiar el espacio entre los inputs */
+	background-color: white;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+	border: none;
+	border-radius: 10px;
+	color: #704214;
+	font-family:'work sans', sans-serif;
+	font-weight: 500;
+	padding: 10px 25px;
+}
+
+button.primary-ghost {
+
+	margin-top: 20px; /* Ajusta este valor para cambiar el espacio entre la imagen y el input */
+	margin-bottom: 5px; /* Ajusta este valor para cambiar el espacio entre los inputs */
+	background-color: white;
+  margin-left: 5px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+	border: none;
+	border-radius: 10px;
+	color: #704214;
+	font-family:'work sans', sans-serif;
+	font-weight: 500;
+	padding: 10px 25px;
+}
+
+button:hover {
+	background-color: #e8e8e8;
+}
+
+button:active {
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+	transform: scale(0.95); /* Esto hará que el botón se reduzca ligeramente cuando se presione, dando la ilusión de profundidad */
+
+}
+
+/* Estilo para el botón primario deshabilitado */
+button.primary:disabled {
+  background-color: #cccccc; /* Color de fondo gris */
+  color: #666666; /* Color del texto gris oscuro */
+  cursor: not-allowed; /* Cursor no permitido */
+  border: 1px solid #cccccc; /* Borde gris */
+}
+
+/* Estilo para el botón primario fantasma deshabilitado */
+button.primary-ghost:disabled {
+  background-color: transparent; /* Fondo transparente */
+  color: #cccccc; /* Color del texto gris */
+  cursor: not-allowed; /* Cursor no permitido */
+  border: 1px solid #cccccc; /* Borde gris */
+}
+
+

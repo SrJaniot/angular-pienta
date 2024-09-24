@@ -23,6 +23,12 @@ OJO: cambiar enlace de rutas cuando se cierre sesion o acabe la prueba:  window.
 
 src\app\modulos\seguridad\cerrar-sesion\cerrar-sesion.component.ts
 src\app\modulos\prueba-estudiantes\presentar-prueba\presentar-prueba.component.ts
+src\app\modulos\perfil\perfil-usuario\perfil-usuario.component.html
+
+
+
+OJO: PARA 24/9/2024
+MOVER LA IMAGEN DE PERFIL A LA CARPETA DE ARCHIVOS/CONTEXTO LA IMAGEN DE PERFIL user.png AL SERVIDOR
 
 
 
