@@ -12,16 +12,32 @@ import { ResultadosEstudiantesComponentComponent } from './resultados-estudiante
 // Importa NgxChartsModule
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ControlComponent } from './control/control.component';
+import { InstitucionModule } from '../institucion/institucion.module';
+import { PreguntasModule } from '../preguntas/preguntas.module';
+import { PruebaModule } from '../prueba/prueba.module';
+import { PruebaListarFilanizadoComponent } from './prueba-listar-filanizado/prueba-listar-filanizado.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ResultadosPruebaComponent } from './resultados-prueba/resultados-prueba.component';
+import { BuscarPruebasEstudiantesResultadosComponent } from './buscar-pruebas-estudiantes-resultados/buscar-pruebas-estudiantes-resultados.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 
 @NgModule({
-  declarations: [ResultadosEstudiantesComponentComponent, ControlComponent],
+  declarations: [ResultadosEstudiantesComponentComponent, ControlComponent, PruebaListarFilanizadoComponent, ResultadosPruebaComponent, BuscarPruebasEstudiantesResultadosComponent],
   imports: [
     CommonModule,
     ResultadosRoutingModule,
-    NgxChartsModule  // Importa el módulo de ngx-charts
+    NgxChartsModule,  // Importa el módulo de ngx-charts
+    InstitucionModule, // Importa el módulo Institucion
+    PreguntasModule, // Importa el módulo Preguntas
+    PruebaModule, // Importa el módulo Prueba
+    MatTableModule,
+    MatPaginatorModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     ResultadosEstudiantesComponentComponent

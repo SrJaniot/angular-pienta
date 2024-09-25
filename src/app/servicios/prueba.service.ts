@@ -118,7 +118,9 @@ export class PruebaService {
   ObtenerPruebasFinalizadasID(id_estudiante: string): Observable<RespuestaServerObtenerPruebas> {
     return this.http.get(`${this.url_ms_negocio}ObtenerPruebaFinalizadas/${id_estudiante}`);
   }
-
+  ObtenerPruebasFinalizadas(): Observable<RespuestaServerObtenerPruebas> {
+    return this.http.get(`${this.url_ms_negocio}ObtenerPruebasFinalizadas`);
+  }
 
 
 

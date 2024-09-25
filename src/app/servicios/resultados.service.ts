@@ -4,6 +4,7 @@ import { RespuestaServer } from '../Modelos/RespuestaServer.model';
 import { Observable, Timestamp } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { RespuestaServerObtenerResultadosPruebaEstudiante } from '../Modelos/RespuestaServerObtenerResultadosPruebaEstudiante.model';
+import { RespuestaServerObtenerResultadosPrueba } from '../Modelos/RespuestaServerObtenerResultadosPrueba.model';
 
 
 
@@ -25,6 +26,12 @@ export class ResultadosService {
   ObtenerResultadosPruebaEstudiante(id_prueba: string,id_estudiante: string): Observable<RespuestaServerObtenerResultadosPruebaEstudiante> {
     return this.http.get(`${this.url_ms_negocio}ObtenerResultadosPruebaEstudiante/${id_prueba}/${id_estudiante}`);
   }
+
+    //FUNCION PARA OBTENER LOS RESULTADOS DE LA PRUEBA
+    ObtenerResultadosPrueba(id_prueba: string): Observable<RespuestaServerObtenerResultadosPrueba> {
+      return this.http.get(`${this.url_ms_negocio}ObtenerResultadosPrueba/${id_prueba}`);
+    }
+
 
 
 

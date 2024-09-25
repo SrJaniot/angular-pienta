@@ -1,1 +1,132 @@
-<p>control works!</p>
+<!---------------------------------------------------------------Pruebas----------------------------------------------------------------------------------------------------->
+
+<div class="contexto-list">
+  <h2>Pruebas</h2>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre prueba</th>
+        <th>Descripción</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prueba of pruebas">
+        <td>{{ prueba.ID_PRUEBA }}</td>
+        <td>{{ prueba.NOM_PRUEBA }}</td>
+        <td>{{ prueba.DESCRIPCION_PRUEBA }}</td>
+
+        <td>
+          <button  class="btn-accion" (click)="previewprueba(prueba.ID_PRUEBA)" >
+            <i class="tabler--eye-question"></i> <!-- Icono de eliminar -->
+          </button>
+          <button  class="btn-accion" (click)="resultadosprueba( prueba.ID_PRUEBA)" >
+            <i class="solar--presentation-graph-bold"></i> <!-- Icono de eliminar -->
+          </button>
+          <button  class="btn-accion" (click)="eliminarPruebaLista( prueba.ID_PRUEBA)" >
+            <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="button-container">
+
+  </div>
+  <div class="button-container">
+    <button class="btn-buscar " (click)="listarPrueba()">Buscar Prueba</button>
+
+  </div>
+
+</div>
+
+<ng-container *ngIf="showPruebaListaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closePruebaListaForm()">X</button>
+      <app-prueba-listar-filanizado></app-prueba-listar-filanizado>
+    </div>
+  </div>
+</ng-container>
+
+
+<!---------------------------------------------------------------Estudiantes----------------------------------------------------------------------------------------------------->
+
+<div class="contexto-list">
+  <h2>Estudiantes</h2>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>Documento</th>
+        <th>Tipo Documento</th>
+        <th>ID Grupo</th>
+        <th>Nombre Estudiante</th>
+        <th>Correo</th>
+        <th>Telefono</th>
+        <th>Acciones</th> <!-- Nueva columna para acciones -->
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let estudiante of estudiantes">
+        <td>{{ estudiante.ID_ESTUDIANTE }}</td>
+        <td>{{ estudiante.TIPO_DOCUMENTO }}</td>
+        <td>{{ estudiante.ID_GRUPO_ESTUDIO }}</td>
+        <td>{{ estudiante.NOM_ESTUDIANTE }}</td>
+        <td>{{ estudiante.EMAIL_ESTUDIANTE }}</td>
+        <td>{{ estudiante.TEL_ESTUDIANTE }}</td>
+
+        <td>
+          <button  class="btn-accion" (click)="resultadospruebaEstudiante( estudiante.ID_ESTUDIANTE)" >
+            <i class="solar--presentation-graph-bold"></i> <!-- Icono de eliminar -->
+          </button>
+
+          <button  class="btn-accion" (click)="eliminarEstudianteLista( estudiante.ID_ESTUDIANTE)" >
+            <i class="iwwa--delete"></i> <!-- Icono de eliminar -->
+          </button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="button-container">
+    <button class="btn-buscar" (click)="listarEstudiante()">Buscar Estudiante</button>
+  </div>
+</div>
+
+
+
+<ng-container *ngIf="showEstudianteListaModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closeEstudianteListaForm()">X</button>
+      <app-estudiante-listar></app-estudiante-listar>
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="showResultadoPruebaEstudianteModal">
+  <div class="modal modal-custom">
+    <div class="modal-content modal-content-custom">
+      <button class="btn-estiloCustom" (click)="closeResultadoPruebaEstudianteModal()">X</button>
+      <app-buscar-pruebas-estudiantes-resultados [ID_Estudiante]="tuIdDeEstudiante" ></app-buscar-pruebas-estudiantes-resultados>
+    </div>
+  </div>
+</ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
