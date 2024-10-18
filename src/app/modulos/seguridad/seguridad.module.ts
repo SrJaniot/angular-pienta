@@ -7,12 +7,14 @@ import { LoginComponent } from './login/login.component';
 //imports para que mis formularios funcionen (formgroup, formbuilder, validators)
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
+import { RegistrarEstudianteComponent } from './registrar-estudiante/registrar-estudiante.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    CerrarSesionComponent
+    CerrarSesionComponent,
+    RegistrarEstudianteComponent
   ],
   imports: [
     CommonModule,

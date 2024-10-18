@@ -40,7 +40,7 @@ export class CerrarSesionComponent {
 
   delayNavigation(ms: number): void {
     setTimeout(() => {
-      window.location.href = '/';
+      window.location.href = '/pienta/seguridad/login';
     }, ms);
   }
 

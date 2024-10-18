@@ -19,16 +19,58 @@ src\app\modulos\prueba-estudiantes\control\control.component.html
 src\app\app.component.html
 
 
-OJO: cambiar enlace de rutas cuando se cierre sesion o acabe la prueba:  window.location.href = '/';
+OJO: cambiar enlace de rutas cuando se cierre sesion o acabe la prueba:  window.location.href = '/pientas/seguridad/login';
+
+
 
 src\app\modulos\seguridad\cerrar-sesion\cerrar-sesion.component.ts
 src\app\modulos\prueba-estudiantes\presentar-prueba\presentar-prueba.component.ts
+
+
+
+cambiar ruta de imagen 127.0.0.1
 src\app\modulos\perfil\perfil-usuario\perfil-usuario.component.html
 
 
 
-OJO: PARA 24/9/2024
-MOVER LA IMAGEN DE PERFIL A LA CARPETA DE ARCHIVOS/CONTEXTO LA IMAGEN DE PERFIL user.png AL SERVIDOR
+
+
+
+
+
+
+
+
+
+
+
+--OJO CONFIGURACION APACHE PARA QUE NO SE PIERDA EN LAS RUTAS:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Permitir que Apache use .htaccess: En tu archivo de configuración de Apache para el sitio
+(normalmente ubicado en /etc/apache2/sites-available/000-default.conf o en tu archivo de configuración de sitio virtual),
+ asegúrate de que la directiva AllowOverride esté configurada como All en el bloque correspondiente al
+ directorio donde se encuentra
+ tu aplicación Angular:
+
+apache
+Copiar código
+
+
+<Directory /var/www/html/tu-carpeta-angular>
+  AllowOverride All
+</Directory>
+
+
+Esto permite que Apache respete las reglas definidas en el archivo .htaccess.
+
+Reiniciar Apache:
+Después de realizar estos cambios, asegúrate de reiniciar Apache para aplicar las configuraciones:
+
+bash
+Copiar código
+sudo systemctl restart apache2
+
+
+
 
 
 

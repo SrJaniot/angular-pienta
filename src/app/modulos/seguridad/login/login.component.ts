@@ -108,6 +108,10 @@ export class LoginComponent {
     return this.formularioLogin.controls;
   }
 
+  registrarEstudiante(){
+    this.router.navigate(['/seguridad/registrar-estudiante']);
+  }
+
 
 
 

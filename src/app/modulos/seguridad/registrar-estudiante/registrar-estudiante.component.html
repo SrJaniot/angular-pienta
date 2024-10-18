@@ -1,0 +1,69 @@
+<!-- partial:index.partial.html -->
+<form [formGroup]="formularioLogin">
+  <div class="form_wrapper">
+    <div class="form_container">
+      <div class="title_container">
+        <h2>Bienvenido a Pienta</h2>
+        <h3>Registro</h3>
+      </div>
+
+      <div class="entradas">
+
+        <input formControlName="id_gurpo_estudio" type="text" name="ficha" placeholder="Ficha" required />
+      </div>
+
+      <div class="row clearfix">
+
+
+        <div class="entradas">
+
+          <input formControlName="nombre" type="text" name="nombre" placeholder="Nombre completo" required />
+        </div>
+
+      </div>
+      <div class="row clearfix">
+        <div class="">
+            <div class="entradas">
+
+              <input formControlName="correo" type="email" name="email" placeholder="Correo" required />
+            </div>
+
+            <div class="entradas select_option">
+              <!-- Tipo de documento -->
+              <label for="nombre">Tipo de documento</label>
+              <select formControlName="tipo_documento">
+                <!-- Los datos que vayas añadir aquí-->
+
+                <option value="RC">RC (Registro Civil)</option>
+                <option value="TI">TI (Tarjeta de Identidad)</option>
+                <option value="CC">CC (Cédula de Ciudadanía)</option>
+                <option value="CE">CE (Cédula de Extranjería)</option>
+                <option value="PP">PP (Pasaporte)</option>
+                <option value="PEP">PEP (Permiso Especial de Permanencia)</option>
+
+              </select>
+            </div>
+
+            <div class="entradas">
+
+              <input formControlName="num_documento" type="text" name="documento" placeholder="Número de documento"
+                required />
+            </div>
+
+            <div class="entradas">
+
+              <input formControlName="direccion" type="text" name="direccion" placeholder="Dirección" required />
+            </div>
+
+            <div class="entradas">
+
+              <input formControlName="telefono" type="text" name="celular" placeholder="Teléfono celular" required />
+            </div>
+
+            <button [disabled]="!formularioLogin.valid"   (click)="onSubmit()" class="btn"
+              type="submit">Registrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

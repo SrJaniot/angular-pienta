@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
 import { ValidarSesionInactivaGuard } from '../../guardianes/validar-sesion-inactiva.guard';
 import { ValidarSesionActivaGuard } from '../../guardianes/validar-sesion-activa.guard';
+import { RegistrarEstudianteComponent } from './registrar-estudiante/registrar-estudiante.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,11 @@ const routes: Routes = [
     component: CerrarSesionComponent,
     canActivate:[ValidarSesionActivaGuard]
   },
+  {
+    path: 'registrar-estudiante',
+    component: RegistrarEstudianteComponent,
+    canActivate:[ValidarSesionInactivaGuard]
+  }
 ];
 
 @NgModule({
