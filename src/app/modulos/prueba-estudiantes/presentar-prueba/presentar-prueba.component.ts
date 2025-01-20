@@ -221,7 +221,7 @@ export class PresentarPruebaComponent implements OnInit {
 
   delayNavigation(ms: number): void {
     setTimeout(() => {
-      window.location.href = '/pienta/home';
+      window.location.href = '/home';
     }, ms);
   }
 

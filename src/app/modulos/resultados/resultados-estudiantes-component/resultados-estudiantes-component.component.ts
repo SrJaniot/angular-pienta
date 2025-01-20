@@ -39,6 +39,7 @@ export class ResultadosEstudiantesComponentComponent {
   fechafinLegible: string = '';
 
   num_areas_evaluadas: number = 0;
+  num_temas_evaluados: number = 0;
 
   // Gráficos
   porcentaje_aciertos: number = 0;
@@ -47,6 +48,7 @@ export class ResultadosEstudiantesComponentComponent {
 
   GraficoTortaResultados: any[] = [];
   GraficoPastelAreas: any[] = [];
+  GtaficoPastelTemas: any[] = [];
   GraficoBarrasPromedios: any[] = [];
 
   constructor(
@@ -135,6 +137,26 @@ export class ResultadosEstudiantesComponentComponent {
             }
             console.log(this.GraficoPastelAreas);
           }
+
+          this.num_temas_evaluados = data.DATOS?.NUMERO_DE_TEMAS_AREAS_EVALUADAS_EN_LA_PRUEBA!;
+          if (data.DATOS?.NUMERO_DE_TEMAS_AREAS_EVALUADAS_EN_LA_PRUEBA! > 1) {
+            let ListadeTemas = data.DATOS?.PORCENTAJE_ASIERTO_TEMAS_AREAS_EVALUADAS!;
+            for (let tema of ListadeTemas) {
+              this.GtaficoPastelTemas.push([
+                { name: tema.NOMBRE_TEMA + " % Correcto ", value: tema.PORCENTAJE_ACIERTO },
+                { name: tema.NOMBRE_TEMA + " % Incorrecto ", value: 100 - tema.PORCENTAJE_ACIERTO! }
+              ]);
+            }
+            console.log(this.GtaficoPastelTemas);
+          }
+
+
+
+
+
+
+
+
 
         } else {
           console.log(data);

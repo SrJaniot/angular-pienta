@@ -44,6 +44,9 @@ src\app\modulos\perfil\perfil-usuario\perfil-usuario.component.html
 
 
 
+
+
+
 --OJO CONFIGURACION APACHE PARA QUE NO SE PIERDA EN LAS RUTAS:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Permitir que Apache use .htaccess: En tu archivo de configuración de Apache para el sitio
 (normalmente ubicado en /etc/apache2/sites-available/000-default.conf o en tu archivo de configuración de sitio virtual),

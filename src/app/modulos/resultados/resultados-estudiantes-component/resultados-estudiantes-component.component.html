@@ -69,6 +69,9 @@
     </div>
   </div>
 
+  <hr class="divider">
+
+
   <div class="center-content">
     <h3 class="chart-title">Gráfico de Promedio</h3>
     <div class="chart-container">
@@ -84,8 +87,30 @@
     </div>
   </div>
 
+  <hr class="divider">
+
+
   <div *ngIf="num_areas_evaluadas > 1" class="custom-grid-container">
+    <h2>% Áreas Evaluadas</h2>
     <div *ngFor="let area of GraficoPastelAreas" class="custom-center-content">
+      <h3 class="custom-chart-title">{{ getAreaName(area[0]?.name) }}</h3>
+      <div class="custom-chart-container">
+        <ngx-charts-pie-chart
+          [results]="area"
+          [view]="[300, 300]"
+          [scheme]="colorScheme"
+          [doughnut]="true"
+          class="custom-pie-chart">
+        </ngx-charts-pie-chart>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div *ngIf="num_temas_evaluados > 1" class="custom-grid-container">
+    <h2>% Temas Evaluados</h2>
+    <div *ngFor="let area of GtaficoPastelTemas" class="custom-center-content">
       <h3 class="custom-chart-title">{{ getAreaName(area[0]?.name) }}</h3>
       <div class="custom-chart-container">
         <ngx-charts-pie-chart
