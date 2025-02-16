@@ -3,6 +3,7 @@ import { SeguridadService } from './servicios/seguridad.service';
 import { UsuarioValidadoModel } from './Modelos/UsuarioValidado.model';
 import { ItemMenuModel } from './Modelos/item.menu.model';
 import { Router } from '@angular/router';
+import { ConfiguracionRutasBackend } from './config/configuracion.rutas.backend';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,8 @@ export class AppComponent {
   status = false;
   sesionActiva= false;
   listaMenus: ItemMenuModel[] = [];
+
+  url_backend_ms_negocio = ConfiguracionRutasBackend.url_backend_ms_negocio;
 
   //constructor
   constructor(

@@ -5,6 +5,7 @@ import { Contexto } from '../../../Modelos/contexto.model';
 import { Pregunta } from '../../../Modelos/pregunta.model';
 import { Opcion } from '../../../Modelos/opcion.model';
 import { NgToastService } from 'ng-angular-popup';
+import { ConfiguracionRutasBackend } from '../../../config/configuracion.rutas.backend';
 
 @Component({
   selector: 'app-quiz',
@@ -37,6 +38,8 @@ export class QuizComponent implements OnInit {
   tuIdDeContexto = ''; // El ID del contexto que quieres editar
   tuIdDePregunta = ''; // El ID de la pregunta que quieres editar
   tuIdDeOpcion = ''; // El ID de la pregunta que quieres editar
+
+  url_backend_ms_negocio = ConfiguracionRutasBackend.url_backend_ms_negocio;
 
 
   constructor(

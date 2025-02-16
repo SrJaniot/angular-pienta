@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ConfiguracionRutasBackend } from '../config/configuracion.rutas.backend';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Timestamp } from 'rxjs';
 import { RespuestaServerCrearPruebaGenerica } from '../Modelos/RespuestaServerCrearPruebaGenerica.model';
 import { RespuestaServer } from '../Modelos/RespuestaServer.model';
@@ -11,6 +11,7 @@ import { RespuestaServerObtenerPreguntasPrueba } from '../Modelos/RespuestaServe
 import { RespuestaServerObtenerPrueba } from '../Modelos/RespuestaServerObtenerPrueba.model';
 import { RespuestaServerObtenerFechasInicioFinDuracionPrueba } from '../Modelos/RespuestaServerObtenerFechasInicioFinDuracionPrueba.model';
 import { RespuestaServeEnviarRespuestasPruebar } from '../Modelos/RespuestaServeEnviarRespuestasPruebar.model';
+import { SeguridadService } from './seguridad.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,12 +23,23 @@ export class PruebaService {
 
   constructor(
     private http: HttpClient,
+    private servicioseguridad:SeguridadService
 
   ) { }
 
+
+  private getHeaders(): HttpHeaders {
+    const token = this.servicioseguridad.ObtenerDatosLocalStorage_TOKEN(); // Reemplaza con tu token de autenticación
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  }
+
+
   //funcion para crear prueba generica
-  CrearPruebaGenerica(nombre_prueba: string, descripcion_prueba: string, tipo_prueba: string, fecha_prueba_inicio: Date, fecha_prueba_fin: Date,tiempo_prueba:number,numero_preguntas_prueba: number,id_area_evaluar:number): Observable<RespuestaServerCrearPruebaGenerica> {
-    return this.http.post(`${this.url_ms_negocio}CrearPruebaGenerica`, {
+  CrearPruebaGenerica(nombre_prueba: string, descripcion_prueba: string, tipo_prueba: string, fecha_prueba_inicio: Date, fecha_prueba_fin: Date, tiempo_prueba: number, numero_preguntas_prueba: number, id_area_evaluar: number): Observable<RespuestaServerCrearPruebaGenerica> {
+    const headers = this.getHeaders();
+    return this.http.post<RespuestaServerCrearPruebaGenerica>(`${this.url_ms_negocio}CrearPruebaGenerica`, {
       nombre_prueba: nombre_prueba,
       descripcion_prueba: descripcion_prueba,
       tipo_prueba: tipo_prueba,
@@ -36,29 +48,24 @@ export class PruebaService {
       tiempo_prueba: tiempo_prueba,
       numero_preguntas_prueba: numero_preguntas_prueba,
       id_area_evaluar: id_area_evaluar
-    });
+    }, { headers });
   }
-  CrearPruebaGenericaTYT(nombre_prueba: string, descripcion_prueba: string, tipo_prueba: string, fecha_prueba_inicio: Date, fecha_prueba_fin: Date,tiempo_prueba:number): Observable<RespuestaServerCrearPruebaGenerica> {
-    console.log(nombre_prueba);
-    console.log(descripcion_prueba);
-    console.log(tipo_prueba);
-    console.log(fecha_prueba_inicio);
-    console.log(fecha_prueba_fin);
-    console.log(tiempo_prueba);
 
-
-    return this.http.post(`${this.url_ms_negocio}CrearPruebaGenericaTYT`, {
+  CrearPruebaGenericaTYT(nombre_prueba: string, descripcion_prueba: string, tipo_prueba: string, fecha_prueba_inicio: Date, fecha_prueba_fin: Date, tiempo_prueba: number): Observable<RespuestaServerCrearPruebaGenerica> {
+    const headers = this.getHeaders();
+    return this.http.post<RespuestaServerCrearPruebaGenerica>(`${this.url_ms_negocio}CrearPruebaGenericaTYT`, {
       nombre_prueba: nombre_prueba,
       descripcion_prueba: descripcion_prueba,
       tipo_prueba: tipo_prueba,
       fecha_prueba_inicio: fecha_prueba_inicio,
       fecha_prueba_fin: fecha_prueba_fin,
       tiempo_prueba: tiempo_prueba
-    });
+    }, { headers });
   }
 
-  CrearPruebaCustom(nombre_prueba: string, descripcion_prueba: string, tipo_prueba: string, fecha_prueba_inicio: Date, fecha_prueba_fin: Date,tiempo_prueba:number,preguntas:string): Observable<RespuestaServerCrearPruebaGenerica> {
-    return this.http.post(`${this.url_ms_negocio}CrearPruebaCustom`, {
+  CrearPruebaCustom(nombre_prueba: string, descripcion_prueba: string, tipo_prueba: string, fecha_prueba_inicio: Date, fecha_prueba_fin: Date, tiempo_prueba: number, preguntas: string): Observable<RespuestaServerCrearPruebaGenerica> {
+    const headers = this.getHeaders();
+    return this.http.post<RespuestaServerCrearPruebaGenerica>(`${this.url_ms_negocio}CrearPruebaCustom`, {
       nombre_prueba: nombre_prueba,
       descripcion_prueba: descripcion_prueba,
       tipo_prueba: tipo_prueba,
@@ -66,83 +73,90 @@ export class PruebaService {
       fecha_fin_prueba: fecha_prueba_fin,
       duracion_prueba: tiempo_prueba,
       preguntas_id: preguntas
-    });
+    }, { headers });
   }
 
   VincularGrupoPrueba(id_prueba: number, id_grupo: number): Observable<RespuestaServerMatricularGrupo> {
-    console.log(id_prueba);
-    console.log(id_grupo);
-    return this.http.post(`${this.url_ms_negocio}MatricularGrupoPrueba`, {
+    const headers = this.getHeaders();
+    return this.http.post<RespuestaServerMatricularGrupo>(`${this.url_ms_negocio}MatricularGrupoPrueba`, {
       id_prueba: +id_prueba,
       id_grupo: +id_grupo
-    });
+    }, { headers });
   }
 
   VincularEstudiantePrueba(id_prueba: number, id_estudiante: string): Observable<RespuestaServerMatricularGrupo> {
-    console.log(id_prueba);
-    console.log(id_estudiante);
-    return this.http.post(`${this.url_ms_negocio}MatricularEstudiantePrueba`, {
+    const headers = this.getHeaders();
+    return this.http.post<RespuestaServerMatricularGrupo>(`${this.url_ms_negocio}MatricularEstudiantePrueba`, {
       id_prueba: +id_prueba,
       id_estudiante: id_estudiante
-    });
+    }, { headers });
   }
 
   ObtenerPruebas(): Observable<RespuestaServerObtenerPruebas> {
-    return this.http.get(`${this.url_ms_negocio}ObtenerPruebas`);
+    const headers = this.getHeaders();
+    return this.http.get<RespuestaServerObtenerPruebas>(`${this.url_ms_negocio}ObtenerPruebas`, { headers });
   }
 
   TraerPruebaPreview(id_prueba: number): Observable<RespuestaServerObtenerPreviewPrueba> {
-    console.log(id_prueba);
-    return this.http.post(`${this.url_ms_negocio}ObtenerPreviewPrueba`, {
+    const headers = this.getHeaders();
+    return this.http.post<RespuestaServerObtenerPreviewPrueba>(`${this.url_ms_negocio}ObtenerPreviewPrueba`, {
       id: id_prueba
-    });
+    }, { headers });
   }
 
   ObtenerPreguntasPrueba(id_prueba: number): Observable<RespuestaServerObtenerPreguntasPrueba> {
-    return this.http.post(`${this.url_ms_negocio}ObtenerPreguntasPrueba`, {
+    const headers = this.getHeaders();
+    return this.http.post<RespuestaServerObtenerPreguntasPrueba>(`${this.url_ms_negocio}ObtenerPreguntasPrueba`, {
       id: +id_prueba
-    });
+    }, { headers });
   }
 
-  ObtenerFechasInicioFinDuracionPrueba(id_prueba: string,id_estudiante: string): Observable<RespuestaServerObtenerFechasInicioFinDuracionPrueba> {
-    return this.http.get(`${this.url_ms_negocio}ObtenerFechaInicioFinDuracionPrueba/${id_prueba}/${id_estudiante}`);
+  ObtenerFechasInicioFinDuracionPrueba(id_prueba: string, id_estudiante: string): Observable<RespuestaServerObtenerFechasInicioFinDuracionPrueba> {
+    const headers = this.getHeaders();
+    return this.http.get<RespuestaServerObtenerFechasInicioFinDuracionPrueba>(`${this.url_ms_negocio}ObtenerFechaInicioFinDuracionPrueba/${id_prueba}/${id_estudiante}`, { headers });
   }
-
 
   ObtenerPruebaDisponibleID(id_estudiante: string): Observable<RespuestaServerObtenerPruebas> {
-    return this.http.get(`${this.url_ms_negocio}ObtenerPruebaDisponible/${id_estudiante}`);
+    const headers = this.getHeaders();
+    return this.http.get<RespuestaServerObtenerPruebas>(`${this.url_ms_negocio}ObtenerPruebaDisponible/${id_estudiante}`, { headers });
   }
+
   ObtenerPruebaEnCursoID(id_estudiante: string): Observable<RespuestaServerObtenerPruebas> {
-    return this.http.get(`${this.url_ms_negocio}ObtenerPruebaEnCurso/${id_estudiante}`);
+    const headers = this.getHeaders();
+    return this.http.get<RespuestaServerObtenerPruebas>(`${this.url_ms_negocio}ObtenerPruebaEnCurso/${id_estudiante}`, { headers });
   }
+
   ObtenerPruebasFinalizadasID(id_estudiante: string): Observable<RespuestaServerObtenerPruebas> {
-    return this.http.get(`${this.url_ms_negocio}ObtenerPruebaFinalizadas/${id_estudiante}`);
+    const headers = this.getHeaders();
+    return this.http.get<RespuestaServerObtenerPruebas>(`${this.url_ms_negocio}ObtenerPruebaFinalizadas/${id_estudiante}`, { headers });
   }
+
   ObtenerPruebasFinalizadas(): Observable<RespuestaServerObtenerPruebas> {
-    return this.http.get(`${this.url_ms_negocio}ObtenerPruebasFinalizadas`);
+    const headers = this.getHeaders();
+    return this.http.get<RespuestaServerObtenerPruebas>(`${this.url_ms_negocio}ObtenerPruebasFinalizadas`, { headers });
   }
-
-
-
 
   ObtenerPruebaID(id_prueba: string): Observable<RespuestaServerObtenerPrueba> {
-    return this.http.get(`${this.url_ms_negocio}ObtenerPrueba/${id_prueba}`);
+    const headers = this.getHeaders();
+    return this.http.get<RespuestaServerObtenerPrueba>(`${this.url_ms_negocio}ObtenerPrueba/${id_prueba}`, { headers });
   }
 
-  IniciarPruebaEstudiante(id_prueba: number,id_estudiante:string,duracion_prueba:number): Observable<RespuestaServer> {
-    return this.http.post(`${this.url_ms_negocio}RegistrarFechaInicioPrueba`, {
+  IniciarPruebaEstudiante(id_prueba: number, id_estudiante: string, duracion_prueba: number): Observable<RespuestaServer> {
+    const headers = this.getHeaders();
+    return this.http.post<RespuestaServer>(`${this.url_ms_negocio}RegistrarFechaInicioPrueba`, {
       id_prueba: id_prueba,
       id_estudiante: id_estudiante,
       Duracion_minutos_Prueba: duracion_prueba
-    });
+    }, { headers });
   }
 
   EnviarResultadosPrueba(id_prueba: number, id_estudiante: string, respuestas: string): Observable<RespuestaServeEnviarRespuestasPruebar> {
-    return this.http.post(`${this.url_ms_negocio}RegistrarRespuestasPreguntasPruebaEstudiante`, {
+    const headers = this.getHeaders();
+    return this.http.post<RespuestaServeEnviarRespuestasPruebar>(`${this.url_ms_negocio}RegistrarRespuestasPreguntasPruebaEstudiante`, {
       id_prueba: id_prueba,
       id_estudiante: id_estudiante,
       preguntas_opciones: respuestas
-    });
+    }, { headers });
   }
 
 }

@@ -247,7 +247,7 @@ span {
   cursor: pointer;
 }
 .colorpienta{
-  background-color: #704214; /* Cambia este valor según tus necesidades */
+  background-color: #4caf50; /* Cambia este valor según tus necesidades */
 
 
 }
@@ -256,7 +256,7 @@ span {
   background-color: #0069d9; /* Cambia este valor según tus necesidades */
 }
 .colorpienta:hover{
-  background-color: #4f2e0d;
+  background-color: #357a38;
 }
 
 .btn-agregar, .btn-buscar {

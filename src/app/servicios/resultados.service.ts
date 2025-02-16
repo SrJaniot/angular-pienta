@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { ConfiguracionRutasBackend } from '../config/configuracion.rutas.backend';
 import { RespuestaServer } from '../Modelos/RespuestaServer.model';
 import { Observable, Timestamp } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RespuestaServerObtenerResultadosPruebaEstudiante } from '../Modelos/RespuestaServerObtenerResultadosPruebaEstudiante.model';
 import { RespuestaServerObtenerResultadosPrueba } from '../Modelos/RespuestaServerObtenerResultadosPrueba.model';
+import { SeguridadService } from './seguridad.service';
 
 
 
@@ -19,18 +20,29 @@ export class ResultadosService {
 
   constructor(
     private http: HttpClient,
+    private seguridadService: SeguridadService
   ) { }
 
 
-  //FUNCION PARA OBTENER LOS RESULTADOS DE LA PRUEBA UN ESTUDIANTE
-  ObtenerResultadosPruebaEstudiante(id_prueba: string,id_estudiante: string): Observable<RespuestaServerObtenerResultadosPruebaEstudiante> {
-    return this.http.get(`${this.url_ms_negocio}ObtenerResultadosPruebaEstudiante/${id_prueba}/${id_estudiante}`);
+
+  private getHeaders(): HttpHeaders {
+    const token = this.seguridadService.ObtenerDatosLocalStorage_TOKEN(); // Reemplaza con tu token de autenticación
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
   }
 
-    //FUNCION PARA OBTENER LOS RESULTADOS DE LA PRUEBA
-    ObtenerResultadosPrueba(id_prueba: string): Observable<RespuestaServerObtenerResultadosPrueba> {
-      return this.http.get(`${this.url_ms_negocio}ObtenerResultadosPrueba/${id_prueba}`);
-    }
+  //FUNCION PARA OBTENER LOS RESULTADOS DE LA PRUEBA UN ESTUDIANTE
+  ObtenerResultadosPruebaEstudiante(id_prueba: string, id_estudiante: string): Observable<RespuestaServerObtenerResultadosPruebaEstudiante> {
+    const headers = this.getHeaders();
+    return this.http.get<RespuestaServerObtenerResultadosPruebaEstudiante>(`${this.url_ms_negocio}ObtenerResultadosPruebaEstudiante/${id_prueba}/${id_estudiante}`, { headers });
+  }
+
+  //FUNCION PARA OBTENER LOS RESULTADOS DE LA PRUEBA
+  ObtenerResultadosPrueba(id_prueba: string): Observable<RespuestaServerObtenerResultadosPrueba> {
+    const headers = this.getHeaders();
+    return this.http.get<RespuestaServerObtenerResultadosPrueba>(`${this.url_ms_negocio}ObtenerResultadosPrueba/${id_prueba}`, { headers });
+  }
 
 
 

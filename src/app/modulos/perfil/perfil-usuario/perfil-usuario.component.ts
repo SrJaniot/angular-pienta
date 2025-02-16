@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SeguridadService } from '../../../servicios/seguridad.service';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { ConfiguracionRutasBackend } from '../../../config/configuracion.rutas.backend';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -14,11 +15,14 @@ export class PerfilUsuarioComponent {
   correo_usuario: string = '';
   num_documento_usuario: string = '';
   telefono_usuario: string = '';
+  url_backend_ms_negocio = ConfiguracionRutasBackend.url_backend_ms_negocio;
+
 
   constructor(
     private seguridadService: SeguridadService,
     private router: Router,
-    private toast: NgToastService
+    private toast: NgToastService,
+
   ) { }
 
   ngOnInit(): void {

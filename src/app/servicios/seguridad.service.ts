@@ -72,6 +72,17 @@ export class SeguridadService {
     }
   }
 
+  ObtenerDatosLocalStorage_TOKEN(): string | null{
+    let datosLS = localStorage.getItem('datosSesion');
+    if (datosLS) {
+      let datos = JSON.parse(datosLS);
+      const token = datos.token;
+      return token;
+    } else {
+      return null;
+    }
+  }
+
 
 
 

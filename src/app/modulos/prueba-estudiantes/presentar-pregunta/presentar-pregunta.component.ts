@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Contextos } from '../../../Modelos/Contextos.model';
 import { Preguntas } from '../../../Modelos/Preguntas.model';
 import { Opciones } from '../../../Modelos/Opciones.model';
+import { ConfiguracionRutasBackend } from '../../../config/configuracion.rutas.backend';
 
 @Component({
   selector: 'app-presentar-pregunta',
@@ -20,6 +21,8 @@ export class PresentarPreguntaComponent implements OnChanges {
   Opciones: Opciones[] = [];
   Tipo_opcion: string = '';
   respuestaSeleccionada: number | null = null;
+
+  url_backend_ms_negocio = ConfiguracionRutasBackend.url_backend_ms_negocio;
 
 
   constructor(

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { PruebaService } from '../../../servicios/prueba.service';
 import { SeguridadService } from '../../../servicios/seguridad.service';
 import { RespuestaServerObtenerPruebas } from '../../../Modelos/RespuestaServerObtenerPruebas.model';
+import { ConfiguracionRutasBackend } from '../../../config/configuracion.rutas.backend';
 
 @Component({
   selector: 'app-control',
@@ -27,6 +28,8 @@ export class ControlComponent implements OnInit, OnDestroy {
 
   showInformacionPruebawModal = false;
   showContinuarPruebaModal = false;
+
+  url_backend_ms_negocio = ConfiguracionRutasBackend.url_backend_ms_negocio;
 
   constructor(
     private toast: NgToastService,
@@ -140,5 +143,5 @@ export class ControlComponent implements OnInit, OnDestroy {
   }
 
 
-  
+
 }
